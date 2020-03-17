@@ -11,6 +11,7 @@ namespace configurador_tlf_V2
 
         public String notariaabuscar;
         public String idbuscarext;
+        public int extensionocupada;
 
         public Form1()
         {
@@ -42,6 +43,13 @@ namespace configurador_tlf_V2
             Conexion.Close();
             gridnotarias.DataSource = ds.Tables[0];
 
+            gridnotarias.Columns["Id"].Visible = false;
+            gridnotarias.Columns[1].HeaderText = "Nombre de la notaría";
+            gridnotarias.Columns[2].HeaderText = "IP Centralita";
+            gridnotarias.Columns[3].HeaderText = "Máscara de red";
+            gridnotarias.Columns[4].HeaderText = "Puerta de enlace";
+            gridnotarias.Columns[1].Width = 150;
+
         }
 
 
@@ -52,15 +60,29 @@ namespace configurador_tlf_V2
             {
                 idbuscarext = row.Cells[0].Value.ToString();
 
+                ipcentralitainput.Text = "";
+                mascararedinput.Text = "";
+                puertadeenlaceinput.Text = "";
+                extensioninput.Text = "";
+                ipaonfigurarinput.Text = "";
+                aliasinput.Text = "";
+
+                String ipcentralitanotaria = row.Cells[2].Value.ToString();
+                ipcentralitainput.Text = ipcentralitanotaria;
+
+                String mascararednotaria = row.Cells[3].Value.ToString();
+                mascararedinput.Text = mascararednotaria;
+
+                String puertaenlacenotaria = row.Cells[4].Value.ToString();
+                puertadeenlaceinput.Text = puertaenlacenotaria;
+
             }
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, NomNotaria FROM telefonos WHERE IDNotaria ='" + idbuscarext + "'", Conexion);
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, NomNotaria FROM telefonos WHERE IDNotaria ='" + idbuscarext + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
             gridextensiones.DataSource = ds2.Tables[0];
             Conexion.Close();
-
-
 
         }
 
@@ -80,6 +102,8 @@ namespace configurador_tlf_V2
                 puertadeenlaceinput.Enabled = false;
                 textomascarared.Enabled = false;
                 mascararedinput.Enabled = false;
+                aliasinput.Enabled = false;
+                textoalias.Enabled = false;
             }
         }
 
@@ -99,7 +123,51 @@ namespace configurador_tlf_V2
                 puertadeenlaceinput.Enabled = true;
                 textomascarared.Enabled = true;
                 mascararedinput.Enabled = true;
+                aliasinput.Enabled = true;
+                textoalias.Enabled = true;
             }
+        }
+
+        private void gridextensiones_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in gridextensiones.SelectedRows)
+            {
+                extensioninput.Text = "";
+                ipaonfigurarinput.Text = "";
+                aliasinput.Text = "";
+
+                String extensionlinea = row.Cells[0].Value.ToString();
+                extensioninput.Text = extensionlinea;
+
+                String iptelefonolinea = row.Cells[1].Value.ToString();
+                ipaonfigurarinput.Text = iptelefonolinea;
+
+                String aliaslinea = row.Cells[2].Value.ToString();
+                aliasinput.Text = aliaslinea;
+            }
+        }
+
+        private void btnnuevoext_Click(object sender, EventArgs e)
+        {
+            int numerototalext = gridextensiones.SelectedRows.Count;
+            String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
+            extensionocupada = Int32.Parse(extensionprimerastring);
+            int contadorext = Int32.Parse(extensionprimerastring);
+
+
+            while (contadorext == extensionocupada)
+            {
+                MessageBox.Show(contadorext.ToString());
+                MessageBox.Show(extensionocupada.ToString());
+
+                int contadorintentos = 1;
+                String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
+                extensionocupada = Int32.Parse(extensionocupadastring);
+                contadorext++;
+            }
+
+            MessageBox.Show(extensionocupada.ToString());
+
         }
     }
 }

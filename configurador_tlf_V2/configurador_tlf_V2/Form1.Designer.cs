@@ -40,12 +40,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
             this.btnnuevoext = new System.Windows.Forms.Button();
-            this.btneditarext = new System.Windows.Forms.Button();
             this.btnreconfigurartlf = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnagregar = new System.Windows.Forms.Button();
+            this.aliasinput = new System.Windows.Forms.TextBox();
+            this.textoalias = new System.Windows.Forms.Label();
             this.mascararedinput = new System.Windows.Forms.TextBox();
             this.textomascarared = new System.Windows.Forms.Label();
             this.puertadeenlaceinput = new System.Windows.Forms.TextBox();
@@ -62,6 +62,7 @@
             this.textoipactual = new System.Windows.Forms.Label();
             this.listamodelotelefonos = new System.Windows.Forms.ComboBox();
             this.textomodelotelefonos = new System.Windows.Forms.Label();
+            this.btnagregar = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
@@ -133,13 +134,13 @@
             // 
             this.buscadornotaria.Location = new System.Drawing.Point(137, 18);
             this.buscadornotaria.Name = "buscadornotaria";
-            this.buscadornotaria.Size = new System.Drawing.Size(265, 20);
+            this.buscadornotaria.Size = new System.Drawing.Size(295, 20);
             this.buscadornotaria.TabIndex = 7;
             // 
             // btnbuscar
             // 
             this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Location = new System.Drawing.Point(421, 16);
+            this.btnbuscar.Location = new System.Drawing.Point(438, 16);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(75, 23);
             this.btnbuscar.TabIndex = 8;
@@ -153,7 +154,7 @@
             this.gridnotarias.Location = new System.Drawing.Point(39, 45);
             this.gridnotarias.Name = "gridnotarias";
             this.gridnotarias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridnotarias.Size = new System.Drawing.Size(457, 93);
+            this.gridnotarias.Size = new System.Drawing.Size(474, 93);
             this.gridnotarias.TabIndex = 9;
             this.gridnotarias.SelectionChanged += new System.EventHandler(this.gridnotarias_SelectionChanged);
             // 
@@ -171,30 +172,24 @@
             this.gridextensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridextensiones.Location = new System.Drawing.Point(39, 162);
             this.gridextensiones.Name = "gridextensiones";
-            this.gridextensiones.Size = new System.Drawing.Size(457, 110);
+            this.gridextensiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridextensiones.Size = new System.Drawing.Size(474, 110);
             this.gridextensiones.TabIndex = 11;
+            this.gridextensiones.SelectionChanged += new System.EventHandler(this.gridextensiones_SelectionChanged);
             // 
             // btnnuevoext
             // 
-            this.btnnuevoext.Location = new System.Drawing.Point(502, 162);
+            this.btnnuevoext.Location = new System.Drawing.Point(519, 162);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
             this.btnnuevoext.TabIndex = 12;
             this.btnnuevoext.Text = "Nuevo";
             this.btnnuevoext.UseVisualStyleBackColor = true;
-            // 
-            // btneditarext
-            // 
-            this.btneditarext.Location = new System.Drawing.Point(502, 191);
-            this.btneditarext.Name = "btneditarext";
-            this.btneditarext.Size = new System.Drawing.Size(88, 23);
-            this.btneditarext.TabIndex = 13;
-            this.btneditarext.Text = "Editar";
-            this.btneditarext.UseVisualStyleBackColor = true;
+            this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
             // 
             // btnreconfigurartlf
             // 
-            this.btnreconfigurartlf.Location = new System.Drawing.Point(502, 249);
+            this.btnreconfigurartlf.Location = new System.Drawing.Point(519, 220);
             this.btnreconfigurartlf.Name = "btnreconfigurartlf";
             this.btnreconfigurartlf.Size = new System.Drawing.Size(88, 23);
             this.btnreconfigurartlf.TabIndex = 14;
@@ -203,7 +198,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(502, 220);
+            this.button1.Location = new System.Drawing.Point(519, 191);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
             this.button1.TabIndex = 15;
@@ -223,7 +218,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnagregar);
+            this.groupBox1.Controls.Add(this.aliasinput);
+            this.groupBox1.Controls.Add(this.textoalias);
             this.groupBox1.Controls.Add(this.mascararedinput);
             this.groupBox1.Controls.Add(this.textomascarared);
             this.groupBox1.Controls.Add(this.puertadeenlaceinput);
@@ -242,21 +238,28 @@
             this.groupBox1.Controls.Add(this.textomodelotelefonos);
             this.groupBox1.Location = new System.Drawing.Point(39, 278);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(457, 112);
+            this.groupBox1.Size = new System.Drawing.Size(474, 112);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuración nuevos teléfonos";
             // 
-            // btnagregar
+            // aliasinput
             // 
-            this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Location = new System.Drawing.Point(376, 73);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(75, 23);
-            this.btnagregar.TabIndex = 30;
-            this.btnagregar.Text = "Agregar";
-            this.btnagregar.UseVisualStyleBackColor = false;
+            this.aliasinput.Enabled = false;
+            this.aliasinput.Location = new System.Drawing.Point(402, 75);
+            this.aliasinput.Name = "aliasinput";
+            this.aliasinput.Size = new System.Drawing.Size(66, 20);
+            this.aliasinput.TabIndex = 31;
+            // 
+            // textoalias
+            // 
+            this.textoalias.AutoSize = true;
+            this.textoalias.Enabled = false;
+            this.textoalias.Location = new System.Drawing.Point(366, 78);
+            this.textoalias.Name = "textoalias";
+            this.textoalias.Size = new System.Drawing.Size(32, 13);
+            this.textoalias.TabIndex = 30;
+            this.textoalias.Text = "Alias:";
             // 
             // mascararedinput
             // 
@@ -299,7 +302,7 @@
             this.extensioninput.Enabled = false;
             this.extensioninput.Location = new System.Drawing.Point(402, 45);
             this.extensioninput.Name = "extensioninput";
-            this.extensioninput.Size = new System.Drawing.Size(49, 20);
+            this.extensioninput.Size = new System.Drawing.Size(66, 20);
             this.extensioninput.TabIndex = 25;
             // 
             // textoextension
@@ -357,7 +360,7 @@
             0,
             0});
             this.NTLFinput.Name = "NTLFinput";
-            this.NTLFinput.Size = new System.Drawing.Size(48, 20);
+            this.NTLFinput.Size = new System.Drawing.Size(65, 20);
             this.NTLFinput.TabIndex = 5;
             this.NTLFinput.Value = new decimal(new int[] {
             1,
@@ -407,11 +410,22 @@
             this.textomodelotelefonos.TabIndex = 0;
             this.textomodelotelefonos.Text = "Modelo teléfono:";
             // 
+            // btnagregar
+            // 
+            this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.Location = new System.Drawing.Point(519, 356);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(75, 23);
+            this.btnagregar.TabIndex = 30;
+            this.btnagregar.Text = "Agregar";
+            this.btnagregar.UseVisualStyleBackColor = false;
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(502, 303);
+            this.radioButton1.Location = new System.Drawing.Point(519, 303);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
             this.radioButton1.TabIndex = 18;
@@ -423,7 +437,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(502, 326);
+            this.radioButton2.Location = new System.Drawing.Point(519, 326);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
             this.radioButton2.TabIndex = 19;
@@ -467,7 +481,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 413);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(457, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(474, 147);
             this.dataGridView1.TabIndex = 23;
             // 
             // btnconfigurar
@@ -475,7 +489,7 @@
             this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
             this.btnconfigurar.Enabled = false;
             this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Location = new System.Drawing.Point(503, 514);
+            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
             this.btnconfigurar.Name = "btnconfigurar";
             this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
             this.btnconfigurar.TabIndex = 24;
@@ -487,6 +501,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 586);
+            this.Controls.Add(this.btnagregar);
             this.Controls.Add(this.btnconfigurar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label16);
@@ -498,7 +513,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnreconfigurartlf);
-            this.Controls.Add(this.btneditarext);
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label5);
@@ -538,7 +552,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridextensiones;
         private System.Windows.Forms.Button btnnuevoext;
-        private System.Windows.Forms.Button btneditarext;
         private System.Windows.Forms.Button btnreconfigurartlf;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
@@ -567,6 +580,8 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnconfigurar;
+        private System.Windows.Forms.TextBox aliasinput;
+        private System.Windows.Forms.Label textoalias;
     }
 }
 
