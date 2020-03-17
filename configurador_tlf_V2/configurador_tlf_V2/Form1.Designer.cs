@@ -39,6 +39,10 @@
             this.gridnotarias = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
+            this.btnnuevoext = new System.Windows.Forms.Button();
+            this.btneditarext = new System.Windows.Forms.Button();
+            this.btnreconfigurartlf = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +50,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(566, 535);
+            this.label1.Location = new System.Drawing.Point(641, 514);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 0;
@@ -54,16 +58,16 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(569, 12);
+            this.webBrowser1.Location = new System.Drawing.Point(613, 12);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(534, 483);
+            this.webBrowser1.Size = new System.Drawing.Size(490, 490);
             this.webBrowser1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(856, 535);
+            this.label2.Location = new System.Drawing.Point(991, 514);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 2;
@@ -71,16 +75,16 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(665, 526);
+            this.progressBar1.Location = new System.Drawing.Point(613, 535);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(163, 32);
+            this.progressBar1.Size = new System.Drawing.Size(150, 25);
             this.progressBar1.TabIndex = 3;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(937, 525);
+            this.progressBar2.Location = new System.Drawing.Point(952, 535);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(166, 33);
+            this.progressBar2.Size = new System.Drawing.Size(150, 25);
             this.progressBar2.TabIndex = 4;
             // 
             // label4
@@ -96,12 +100,12 @@
             // 
             this.buscadornotaria.Location = new System.Drawing.Point(137, 19);
             this.buscadornotaria.Name = "buscadornotaria";
-            this.buscadornotaria.Size = new System.Drawing.Size(305, 20);
+            this.buscadornotaria.Size = new System.Drawing.Size(265, 20);
             this.buscadornotaria.TabIndex = 7;
             // 
             // btnbuscar
             // 
-            this.btnbuscar.Location = new System.Drawing.Point(466, 17);
+            this.btnbuscar.Location = new System.Drawing.Point(421, 17);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(75, 23);
             this.btnbuscar.TabIndex = 8;
@@ -114,7 +118,7 @@
             this.gridnotarias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridnotarias.Location = new System.Drawing.Point(39, 46);
             this.gridnotarias.Name = "gridnotarias";
-            this.gridnotarias.Size = new System.Drawing.Size(502, 93);
+            this.gridnotarias.Size = new System.Drawing.Size(457, 93);
             this.gridnotarias.TabIndex = 9;
             // 
             // label5
@@ -131,14 +135,54 @@
             this.gridextensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridextensiones.Location = new System.Drawing.Point(39, 170);
             this.gridextensiones.Name = "gridextensiones";
-            this.gridextensiones.Size = new System.Drawing.Size(502, 120);
+            this.gridextensiones.Size = new System.Drawing.Size(457, 120);
             this.gridextensiones.TabIndex = 11;
+            // 
+            // btnnuevoext
+            // 
+            this.btnnuevoext.Location = new System.Drawing.Point(502, 170);
+            this.btnnuevoext.Name = "btnnuevoext";
+            this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
+            this.btnnuevoext.TabIndex = 12;
+            this.btnnuevoext.Text = "Nuevo";
+            this.btnnuevoext.UseVisualStyleBackColor = true;
+            // 
+            // btneditarext
+            // 
+            this.btneditarext.Location = new System.Drawing.Point(502, 199);
+            this.btneditarext.Name = "btneditarext";
+            this.btneditarext.Size = new System.Drawing.Size(88, 23);
+            this.btneditarext.TabIndex = 13;
+            this.btneditarext.Text = "Editar";
+            this.btneditarext.UseVisualStyleBackColor = true;
+            // 
+            // btnreconfigurartlf
+            // 
+            this.btnreconfigurartlf.Location = new System.Drawing.Point(502, 257);
+            this.btnreconfigurartlf.Name = "btnreconfigurartlf";
+            this.btnreconfigurartlf.Size = new System.Drawing.Size(88, 23);
+            this.btnreconfigurartlf.TabIndex = 14;
+            this.btnreconfigurartlf.Text = "Reconfigurar";
+            this.btnreconfigurartlf.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(502, 228);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 586);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnreconfigurartlf);
+            this.Controls.Add(this.btneditarext);
+            this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.gridnotarias);
@@ -172,6 +216,10 @@
         private System.Windows.Forms.DataGridView gridnotarias;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridextensiones;
+        private System.Windows.Forms.Button btnnuevoext;
+        private System.Windows.Forms.Button btneditarext;
+        private System.Windows.Forms.Button btnreconfigurartlf;
+        private System.Windows.Forms.Button button1;
     }
 }
 
