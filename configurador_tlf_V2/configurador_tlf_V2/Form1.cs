@@ -13,6 +13,7 @@ namespace configurador_tlf_V2
         public String idbuscarext;
         public int extensionocupada;
         public int contadorintentos;
+        public String nombrenotariaext;
 
         public Form1()
         {
@@ -82,6 +83,8 @@ namespace configurador_tlf_V2
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
+
+
             gridextensiones.DataSource = ds2.Tables[0];
             Conexion.Close();
 
@@ -158,15 +161,38 @@ namespace configurador_tlf_V2
 
             while (contadorext == extensionocupada)
             {
-
-                
                 String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
                 extensionocupada = Int32.Parse(extensionocupadastring);
                 contadorext++;
                 contadorintentos++;
             }
 
-            MessageBox.Show(contadorext.ToString());
+            int contadorintentosbien = contadorintentos - 2;
+            String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
+            string[] ultimocachoip = iplibreext.Split('.');
+            int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+            ultimocachonumero++;
+            string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
+
+            foreach (DataGridViewRow row in gridnotarias.SelectedRows)
+            {
+                nombrenotariaext = row.Cells[1].Value.ToString();
+
+            }
+
+            DataTable dt = (DataTable)gridextensiones.DataSource;
+
+            var row2 = dt.NewRow();
+            row2["Extension"] = contadorext;
+            row2["Iptelefono"] = ipaasignaraext;
+            row2["Alias"] = contadorext;
+            row2["NomNotaria"] = nombrenotariaext;
+            //resto
+            dt.Rows.Add(row2);
+
+            gridextensiones.DataSource = dt;
+
+            this.gridextensiones.Sort(this.gridextensiones.Columns["Extension"], System.ComponentModel.ListSortDirection.Ascending);
 
         }
     }

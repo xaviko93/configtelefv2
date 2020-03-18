@@ -169,6 +169,8 @@
             // 
             // gridextensiones
             // 
+            this.gridextensiones.AllowUserToOrderColumns = true;
+            this.gridextensiones.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.gridextensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridextensiones.Location = new System.Drawing.Point(39, 162);
             this.gridextensiones.Name = "gridextensiones";
