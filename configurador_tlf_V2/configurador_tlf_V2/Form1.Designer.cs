@@ -68,13 +68,22 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
             this.btnconfigurar = new System.Windows.Forms.Button();
+            this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridtelefonosaconfigurar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -206,6 +215,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Eliminar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label3
             // 
@@ -422,6 +432,7 @@
             this.btnagregar.TabIndex = 30;
             this.btnagregar.Text = "Agregar";
             this.btnagregar.UseVisualStyleBackColor = false;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // radioButton1
             // 
@@ -478,13 +489,23 @@
             this.label16.TabIndex = 22;
             this.label16.Text = "Teléfonos a configurar:";
             // 
-            // dataGridView1
+            // gridtelefonosaconfigurar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(39, 413);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(474, 147);
-            this.dataGridView1.TabIndex = 23;
+            this.gridtelefonosaconfigurar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridtelefonosaconfigurar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Extension,
+            this.Alias,
+            this.NombreNotaria,
+            this.IP,
+            this.IPCentralita,
+            this.Mascarared,
+            this.PuertaEnlace,
+            this.Modelo,
+            this.Ipactual});
+            this.gridtelefonosaconfigurar.Location = new System.Drawing.Point(39, 413);
+            this.gridtelefonosaconfigurar.Name = "gridtelefonosaconfigurar";
+            this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 147);
+            this.gridtelefonosaconfigurar.TabIndex = 23;
             // 
             // btnconfigurar
             // 
@@ -498,6 +519,52 @@
             this.btnconfigurar.Text = "Configurar";
             this.btnconfigurar.UseVisualStyleBackColor = false;
             // 
+            // Extension
+            // 
+            this.Extension.HeaderText = "Extensión";
+            this.Extension.Name = "Extension";
+            // 
+            // Alias
+            // 
+            this.Alias.HeaderText = "Alias";
+            this.Alias.Name = "Alias";
+            // 
+            // NombreNotaria
+            // 
+            this.NombreNotaria.HeaderText = "Nombre Notaría";
+            this.NombreNotaria.Name = "NombreNotaria";
+            // 
+            // IP
+            // 
+            this.IP.HeaderText = "IP";
+            this.IP.Name = "IP";
+            // 
+            // IPCentralita
+            // 
+            this.IPCentralita.HeaderText = "IP Centralita";
+            this.IPCentralita.Name = "IPCentralita";
+            // 
+            // Mascarared
+            // 
+            this.Mascarared.HeaderText = "Máscara red";
+            this.Mascarared.Name = "Mascarared";
+            // 
+            // PuertaEnlace
+            // 
+            this.PuertaEnlace.HeaderText = "Puerta Enlace";
+            this.PuertaEnlace.Name = "PuertaEnlace";
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
+            // Ipactual
+            // 
+            this.Ipactual.HeaderText = "Ipactual";
+            this.Ipactual.Name = "Ipactual";
+            this.Ipactual.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +572,7 @@
             this.ClientSize = new System.Drawing.Size(1126, 586);
             this.Controls.Add(this.btnagregar);
             this.Controls.Add(this.btnconfigurar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridtelefonosaconfigurar);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -534,7 +601,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridtelefonosaconfigurar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,10 +647,19 @@
         private System.Windows.Forms.TextBox extensioninput;
         private System.Windows.Forms.Label textoextension;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridtelefonosaconfigurar;
         private System.Windows.Forms.Button btnconfigurar;
         private System.Windows.Forms.TextBox aliasinput;
         private System.Windows.Forms.Label textoalias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Extension;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreNotaria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
     }
 }
 

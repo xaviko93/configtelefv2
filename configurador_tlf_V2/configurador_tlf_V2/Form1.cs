@@ -14,7 +14,9 @@ namespace configurador_tlf_V2
         public int extensionocupada;
         public int contadorintentos;
         public String nombrenotariaext;
-
+        public String ipcentralitaext;
+        public String mascaraext;
+        public String puertaenlaceext;
         public Form1()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace configurador_tlf_V2
             gridnotarias.Columns[2].HeaderText = "IP Centralita";
             gridnotarias.Columns[3].HeaderText = "Máscara de red";
             gridnotarias.Columns[4].HeaderText = "Puerta de enlace";
-            gridnotarias.Columns[1].Width = 150;
+            gridnotarias.Columns[1].Width = 180;
 
         }
 
@@ -177,11 +179,8 @@ namespace configurador_tlf_V2
             foreach (DataGridViewRow row in gridnotarias.SelectedRows)
             {
                 nombrenotariaext = row.Cells[1].Value.ToString();
-
             }
-
             DataTable dt = (DataTable)gridextensiones.DataSource;
-
             var row2 = dt.NewRow();
             row2["Extension"] = contadorext;
             row2["Iptelefono"] = ipaasignaraext;
@@ -189,11 +188,58 @@ namespace configurador_tlf_V2
             row2["NomNotaria"] = nombrenotariaext;
             //resto
             dt.Rows.Add(row2);
-
             gridextensiones.DataSource = dt;
-
             this.gridextensiones.Sort(this.gridextensiones.Columns["Extension"], System.ComponentModel.ListSortDirection.Ascending);
+        }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar esta extensión? Si la eliminas no será configurada su extensión en los teléfonos que configures", "Eliminar extensión", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                gridextensiones.Rows.RemoveAt(gridextensiones.CurrentRow.Index);
+            }
+            
+        }
+
+        private void btnagregar_Click(object sender, EventArgs e)
+        {
+            if(radioButton1.Checked == true)
+            {
+
+                int numerototalext = gridextensiones.SelectedRows.Count;
+                String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                extensionocupada = Int32.Parse(extensionprimerastring);
+                int contadorext = Int32.Parse(extensionprimerastring);
+                contadorintentos = 1;
+
+                while (contadorext == extensionocupada)
+                {
+                    String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
+                    extensionocupada = Int32.Parse(extensionocupadastring);
+                    contadorext++;
+                    contadorintentos++;
+                }
+
+                int contadorintentosbien = contadorintentos - 2;
+                String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
+                string[] ultimocachoip = iplibreext.Split('.');
+                int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+                ultimocachonumero++;
+                string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
+
+                foreach (DataGridViewRow row in gridnotarias.SelectedRows)
+                {
+                    nombrenotariaext = row.Cells[1].Value.ToString();
+                    ipcentralitaext = row.Cells[2].Value.ToString();
+                    mascaraext = row.Cells[3].Value.ToString();
+                    puertaenlaceext = row.Cells[4].Value.ToString();
+                }
+
+                gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext);
+
+            }
         }
     }
 }
