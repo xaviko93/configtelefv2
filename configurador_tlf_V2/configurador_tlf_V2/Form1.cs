@@ -12,6 +12,7 @@ namespace configurador_tlf_V2
         public String notariaabuscar;
         public String idbuscarext;
         public int extensionocupada;
+        public int contadorintentos;
 
         public Form1()
         {
@@ -153,20 +154,19 @@ namespace configurador_tlf_V2
             String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
             extensionocupada = Int32.Parse(extensionprimerastring);
             int contadorext = Int32.Parse(extensionprimerastring);
-
+            contadorintentos = 1;
 
             while (contadorext == extensionocupada)
             {
-                MessageBox.Show(contadorext.ToString());
-                MessageBox.Show(extensionocupada.ToString());
 
-                int contadorintentos = 1;
+                
                 String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
                 extensionocupada = Int32.Parse(extensionocupadastring);
                 contadorext++;
+                contadorintentos++;
             }
 
-            MessageBox.Show(extensionocupada.ToString());
+            MessageBox.Show(contadorext.ToString());
 
         }
     }
