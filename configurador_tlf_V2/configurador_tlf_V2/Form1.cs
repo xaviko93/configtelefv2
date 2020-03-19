@@ -17,6 +17,7 @@ namespace configurador_tlf_V2
         public String ipcentralitaext;
         public String mascaraext;
         public String puertaenlaceext;
+        public int contadorext;
         public Form1()
         {
             InitializeComponent();
@@ -207,37 +208,62 @@ namespace configurador_tlf_V2
         {
             if(radioButton1.Checked == true)
             {
+                String cantidadtlfaconfigurarstring = NTLFinput.Value.ToString();
+                int cantidadtlfaconfigurar = Int32.Parse(cantidadtlfaconfigurarstring);
 
                 int numerototalext = gridextensiones.SelectedRows.Count;
                 String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
                 extensionocupada = Int32.Parse(extensionprimerastring);
-                int contadorext = Int32.Parse(extensionprimerastring);
+                contadorext = Int32.Parse(extensionprimerastring);
                 contadorintentos = 1;
 
-                while (contadorext == extensionocupada)
-                {
-                    String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
-                    extensionocupada = Int32.Parse(extensionocupadastring);
-                    contadorext++;
-                    contadorintentos++;
-                }
-
-                int contadorintentosbien = contadorintentos - 2;
-                String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
+                int contadorintentosbien = contadorext - 2;
+                String iplibreext = gridextensiones.Rows[0].Cells[1].Value.ToString();
                 string[] ultimocachoip = iplibreext.Split('.');
                 int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
-                ultimocachonumero++;
-                string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
 
-                foreach (DataGridViewRow row in gridnotarias.SelectedRows)
+
+                for (int i = 1; i <= cantidadtlfaconfigurar; i++)
                 {
-                    nombrenotariaext = row.Cells[1].Value.ToString();
-                    ipcentralitaext = row.Cells[2].Value.ToString();
-                    mascaraext = row.Cells[3].Value.ToString();
-                    puertaenlaceext = row.Cells[4].Value.ToString();
+
+                    while (contadorext == extensionocupada)
+                    {
+                        try
+                        {
+                            String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
+                            extensionocupada = Int32.Parse(extensionocupadastring);
+                        }
+                        catch (NullReferenceException ex)
+                        {
+
+                        }
+
+                        contadorext++;
+                        contadorintentos++;
+                        ultimocachonumero++;
+                    }
+
+                    string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
+
+                    foreach (DataGridViewRow row in gridnotarias.SelectedRows)
+                    {
+                        nombrenotariaext = row.Cells[1].Value.ToString();
+                        ipcentralitaext = row.Cells[2].Value.ToString();
+                        mascaraext = row.Cells[3].Value.ToString();
+                        puertaenlaceext = row.Cells[4].Value.ToString();
+                    }
+
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext);
+                    contadorext++;
+                    ultimocachonumero++;
                 }
 
-                gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext);
+
+
+            }
+
+            if (radioButton2.Checked == true)
+            {
 
             }
         }

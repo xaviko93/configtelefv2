@@ -69,7 +69,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
-            this.btnconfigurar = new System.Windows.Forms.Button();
             this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +78,9 @@
             this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnconfigurar = new System.Windows.Forms.Button();
+            this.btneliminartlf = new System.Windows.Forms.Button();
+            this.btnprobar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -507,18 +509,6 @@
             this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 147);
             this.gridtelefonosaconfigurar.TabIndex = 23;
             // 
-            // btnconfigurar
-            // 
-            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnconfigurar.Enabled = false;
-            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
-            this.btnconfigurar.Name = "btnconfigurar";
-            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
-            this.btnconfigurar.TabIndex = 24;
-            this.btnconfigurar.Text = "Configurar";
-            this.btnconfigurar.UseVisualStyleBackColor = false;
-            // 
             // Extension
             // 
             this.Extension.HeaderText = "Extensión";
@@ -565,11 +555,43 @@
             this.Ipactual.Name = "Ipactual";
             this.Ipactual.Visible = false;
             // 
+            // btnconfigurar
+            // 
+            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnconfigurar.Enabled = false;
+            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
+            this.btnconfigurar.Name = "btnconfigurar";
+            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
+            this.btnconfigurar.TabIndex = 24;
+            this.btnconfigurar.Text = "Configurar";
+            this.btnconfigurar.UseVisualStyleBackColor = false;
+            // 
+            // btneliminartlf
+            // 
+            this.btneliminartlf.Location = new System.Drawing.Point(519, 413);
+            this.btneliminartlf.Name = "btneliminartlf";
+            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
+            this.btneliminartlf.TabIndex = 31;
+            this.btneliminartlf.Text = "Eliminar";
+            this.btneliminartlf.UseVisualStyleBackColor = true;
+            // 
+            // btnprobar
+            // 
+            this.btnprobar.Location = new System.Drawing.Point(519, 485);
+            this.btnprobar.Name = "btnprobar";
+            this.btnprobar.Size = new System.Drawing.Size(88, 23);
+            this.btnprobar.TabIndex = 32;
+            this.btnprobar.Text = "Probar";
+            this.btnprobar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 586);
+            this.Controls.Add(this.btnprobar);
+            this.Controls.Add(this.btneliminartlf);
             this.Controls.Add(this.btnagregar);
             this.Controls.Add(this.btnconfigurar);
             this.Controls.Add(this.gridtelefonosaconfigurar);
@@ -660,6 +682,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
+        private System.Windows.Forms.Button btneliminartlf;
+        private System.Windows.Forms.Button btnprobar;
     }
 }
 
