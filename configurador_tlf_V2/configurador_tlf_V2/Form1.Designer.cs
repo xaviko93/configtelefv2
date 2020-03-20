@@ -69,6 +69,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
+            this.btnconfigurar = new System.Windows.Forms.Button();
+            this.btneliminartlf = new System.Windows.Forms.Button();
+            this.btnprobar = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,9 +83,6 @@
             this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnconfigurar = new System.Windows.Forms.Button();
-            this.btneliminartlf = new System.Windows.Forms.Button();
-            this.btnprobar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -428,7 +430,7 @@
             // 
             this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
             this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Location = new System.Drawing.Point(519, 356);
+            this.btnagregar.Location = new System.Drawing.Point(526, 367);
             this.btnagregar.Name = "btnagregar";
             this.btnagregar.Size = new System.Drawing.Size(75, 23);
             this.btnagregar.TabIndex = 30;
@@ -440,7 +442,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(519, 303);
+            this.radioButton1.Location = new System.Drawing.Point(526, 322);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
             this.radioButton1.TabIndex = 18;
@@ -452,7 +454,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(519, 326);
+            this.radioButton2.Location = new System.Drawing.Point(526, 344);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
             this.radioButton2.TabIndex = 19;
@@ -509,6 +511,55 @@
             this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 147);
             this.gridtelefonosaconfigurar.TabIndex = 23;
             // 
+            // btnconfigurar
+            // 
+            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnconfigurar.Enabled = false;
+            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
+            this.btnconfigurar.Name = "btnconfigurar";
+            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
+            this.btnconfigurar.TabIndex = 24;
+            this.btnconfigurar.Text = "Configurar";
+            this.btnconfigurar.UseVisualStyleBackColor = false;
+            // 
+            // btneliminartlf
+            // 
+            this.btneliminartlf.Location = new System.Drawing.Point(519, 456);
+            this.btneliminartlf.Name = "btneliminartlf";
+            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
+            this.btneliminartlf.TabIndex = 31;
+            this.btneliminartlf.Text = "Eliminar";
+            this.btneliminartlf.UseVisualStyleBackColor = true;
+            // 
+            // btnprobar
+            // 
+            this.btnprobar.Location = new System.Drawing.Point(519, 485);
+            this.btnprobar.Name = "btnprobar";
+            this.btnprobar.Size = new System.Drawing.Size(88, 23);
+            this.btnprobar.TabIndex = 32;
+            this.btnprobar.Text = "Probar";
+            this.btnprobar.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(526, 433);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 33;
+            this.checkBox1.Text = "Multi-config";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Location = new System.Drawing.Point(526, 249);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(74, 47);
+            this.checkBox2.TabIndex = 34;
+            this.checkBox2.Text = "Reconfig. notaria completa";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // Extension
             // 
             this.Extension.HeaderText = "Extensión";
@@ -553,43 +604,14 @@
             // 
             this.Ipactual.HeaderText = "Ipactual";
             this.Ipactual.Name = "Ipactual";
-            this.Ipactual.Visible = false;
-            // 
-            // btnconfigurar
-            // 
-            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnconfigurar.Enabled = false;
-            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
-            this.btnconfigurar.Name = "btnconfigurar";
-            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
-            this.btnconfigurar.TabIndex = 24;
-            this.btnconfigurar.Text = "Configurar";
-            this.btnconfigurar.UseVisualStyleBackColor = false;
-            // 
-            // btneliminartlf
-            // 
-            this.btneliminartlf.Location = new System.Drawing.Point(519, 413);
-            this.btneliminartlf.Name = "btneliminartlf";
-            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
-            this.btneliminartlf.TabIndex = 31;
-            this.btneliminartlf.Text = "Eliminar";
-            this.btneliminartlf.UseVisualStyleBackColor = true;
-            // 
-            // btnprobar
-            // 
-            this.btnprobar.Location = new System.Drawing.Point(519, 485);
-            this.btnprobar.Name = "btnprobar";
-            this.btnprobar.Size = new System.Drawing.Size(88, 23);
-            this.btnprobar.TabIndex = 32;
-            this.btnprobar.Text = "Probar";
-            this.btnprobar.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 586);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnprobar);
             this.Controls.Add(this.btneliminartlf);
             this.Controls.Add(this.btnagregar);
@@ -673,6 +695,10 @@
         private System.Windows.Forms.Button btnconfigurar;
         private System.Windows.Forms.TextBox aliasinput;
         private System.Windows.Forms.Label textoalias;
+        private System.Windows.Forms.Button btneliminartlf;
+        private System.Windows.Forms.Button btnprobar;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Extension;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreNotaria;
@@ -682,8 +708,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
-        private System.Windows.Forms.Button btneliminartlf;
-        private System.Windows.Forms.Button btnprobar;
     }
 }
 

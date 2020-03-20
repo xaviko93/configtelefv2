@@ -233,10 +233,7 @@ namespace configurador_tlf_V2
                             String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
                             extensionocupada = Int32.Parse(extensionocupadastring);
                         }
-                        catch (NullReferenceException ex)
-                        {
-
-                        }
+                        catch (NullReferenceException){}
 
                         contadorext++;
                         contadorintentos++;
@@ -253,7 +250,7 @@ namespace configurador_tlf_V2
                         puertaenlaceext = row.Cells[4].Value.ToString();
                     }
 
-                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext);
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext, listamodelotelefonos.SelectedItem.ToString(), ipactualinput.Text.ToString());
                     contadorext++;
                     ultimocachonumero++;
                 }
