@@ -18,9 +18,15 @@ namespace configurador_tlf_V2
         public String mascaraext;
         public String puertaenlaceext;
         public int contadorext;
+        public int ultimocachonumeroaconfig;
+
         public Form1()
         {
             InitializeComponent();
+
+            listamodelo.Items.Add("YEALINK T27G");
+            listamodelo.Items.Add("YEALINK T23G");
+            listamodelo.SelectedIndex = 0;
         }
 
         MySqlConnection Conexion = new MySqlConnection("server=remotemysql.com; database=wWWHH1xcMX; Uid=wWWHH1xcMX; pwd=MmxyP2R8ey");
@@ -212,9 +218,15 @@ namespace configurador_tlf_V2
                 int cantidadtlfaconfigurar = Int32.Parse(cantidadtlfaconfigurarstring);
 
                 int numerototalext = gridextensiones.SelectedRows.Count;
-                String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
-                extensionocupada = Int32.Parse(extensionprimerastring);
-                contadorext = Int32.Parse(extensionprimerastring);
+                try
+                {
+                    String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                    extensionocupada = Int32.Parse(extensionprimerastring);
+                    contadorext = Int32.Parse(extensionprimerastring);
+
+                } catch (System.ArgumentOutOfRangeException) { }
+                
+
                 contadorintentos = 1;
 
                 int contadorintentosbien = contadorext - 2;
@@ -222,6 +234,9 @@ namespace configurador_tlf_V2
                 string[] ultimocachoip = iplibreext.Split('.');
                 int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
 
+                string ipaconfigurartexto = ipactualinput.Text.ToString();
+                string[] ultimocachoipaconfnigurar = ipactualinput.Text.ToString().Split('.');
+                ultimocachonumeroaconfig = Int32.Parse(ultimocachoipaconfnigurar[3]);
 
                 for (int i = 1; i <= cantidadtlfaconfigurar; i++)
                 {
@@ -250,19 +265,27 @@ namespace configurador_tlf_V2
                         puertaenlaceext = row.Cells[4].Value.ToString();
                     }
 
-                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, nombrenotariaext, ipaasignaraext, ipcentralitaext, mascaraext, puertaenlaceext, listamodelotelefonos.SelectedItem.ToString(), ipactualinput.Text.ToString());
+                    if (nombrenotariaext == "" || ipaasignaraext == "" || ipcentralitaext == "" || mascaraext == "" || puertaenlaceext == "" || ipaconfigurartexto == "")
+                    {
+                        MessageBox.Show("Hay campos vacíos, revisa los datos introducidos para continuar");
+                        break;
+                    }
+
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, listamodelo.SelectedItem.ToString(), nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext);
                     contadorext++;
                     ultimocachonumero++;
+
+                    if (checkmulticonfig.Checked == true)
+                        ultimocachonumeroaconfig++;
+                        ipaconfigurartexto = ultimocachoipaconfnigurar[0] + "." + ultimocachoipaconfnigurar[1] + "." + ultimocachoipaconfnigurar[2] + "." + ultimocachonumeroaconfig;
+                    }
                 }
-
-
-
-            }
 
             if (radioButton2.Checked == true)
             {
 
             }
         }
+        
     }
 }

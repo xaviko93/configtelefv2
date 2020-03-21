@@ -60,7 +60,7 @@
             this.NTLF = new System.Windows.Forms.Label();
             this.ipactualinput = new System.Windows.Forms.TextBox();
             this.textoipactual = new System.Windows.Forms.Label();
-            this.listamodelotelefonos = new System.Windows.Forms.ComboBox();
+            this.listamodelo = new System.Windows.Forms.ComboBox();
             this.textomodelotelefonos = new System.Windows.Forms.Label();
             this.btnagregar = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -72,17 +72,19 @@
             this.btnconfigurar = new System.Windows.Forms.Button();
             this.btneliminartlf = new System.Windows.Forms.Button();
             this.btnprobar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkmulticonfig = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -250,7 +252,7 @@
             this.groupBox1.Controls.Add(this.NTLF);
             this.groupBox1.Controls.Add(this.ipactualinput);
             this.groupBox1.Controls.Add(this.textoipactual);
-            this.groupBox1.Controls.Add(this.listamodelotelefonos);
+            this.groupBox1.Controls.Add(this.listamodelo);
             this.groupBox1.Controls.Add(this.textomodelotelefonos);
             this.groupBox1.Location = new System.Drawing.Point(39, 278);
             this.groupBox1.Name = "groupBox1";
@@ -289,18 +291,18 @@
             // 
             this.textomascarared.AutoSize = true;
             this.textomascarared.Enabled = false;
-            this.textomascarared.Location = new System.Drawing.Point(193, 78);
+            this.textomascarared.Location = new System.Drawing.Point(206, 78);
             this.textomascarared.Name = "textomascarared";
-            this.textomascarared.Size = new System.Drawing.Size(69, 13);
+            this.textomascarared.Size = new System.Drawing.Size(51, 13);
             this.textomascarared.TabIndex = 28;
-            this.textomascarared.Text = "Máscara red:";
+            this.textomascarared.Text = "Máscara:";
             // 
             // puertadeenlaceinput
             // 
             this.puertadeenlaceinput.Enabled = false;
             this.puertadeenlaceinput.Location = new System.Drawing.Point(97, 75);
             this.puertadeenlaceinput.Name = "puertadeenlaceinput";
-            this.puertadeenlaceinput.Size = new System.Drawing.Size(93, 20);
+            this.puertadeenlaceinput.Size = new System.Drawing.Size(102, 20);
             this.puertadeenlaceinput.TabIndex = 27;
             // 
             // textopuertadeenlace
@@ -343,18 +345,18 @@
             // 
             this.textoipcentralita.AutoSize = true;
             this.textoipcentralita.Enabled = false;
-            this.textoipcentralita.Location = new System.Drawing.Point(196, 50);
+            this.textoipcentralita.Location = new System.Drawing.Point(206, 48);
             this.textoipcentralita.Name = "textoipcentralita";
-            this.textoipcentralita.Size = new System.Drawing.Size(66, 13);
+            this.textoipcentralita.Size = new System.Drawing.Size(55, 13);
             this.textoipcentralita.TabIndex = 22;
-            this.textoipcentralita.Text = "IP centralita:";
+            this.textoipcentralita.Text = "IP central:";
             // 
             // ipaonfigurarinput
             // 
             this.ipaonfigurarinput.Enabled = false;
             this.ipaonfigurarinput.Location = new System.Drawing.Point(97, 45);
             this.ipaonfigurarinput.Name = "ipaonfigurarinput";
-            this.ipaonfigurarinput.Size = new System.Drawing.Size(93, 20);
+            this.ipaonfigurarinput.Size = new System.Drawing.Size(102, 20);
             this.ipaonfigurarinput.TabIndex = 7;
             // 
             // textoipaconfigurar
@@ -409,13 +411,14 @@
             this.textoipactual.TabIndex = 2;
             this.textoipactual.Text = "IP actual:";
             // 
-            // listamodelotelefonos
+            // listamodelo
             // 
-            this.listamodelotelefonos.FormattingEnabled = true;
-            this.listamodelotelefonos.Location = new System.Drawing.Point(98, 16);
-            this.listamodelotelefonos.Name = "listamodelotelefonos";
-            this.listamodelotelefonos.Size = new System.Drawing.Size(92, 21);
-            this.listamodelotelefonos.TabIndex = 1;
+            this.listamodelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.listamodelo.FormattingEnabled = true;
+            this.listamodelo.Location = new System.Drawing.Point(98, 16);
+            this.listamodelo.Name = "listamodelo";
+            this.listamodelo.Size = new System.Drawing.Size(101, 21);
+            this.listamodelo.TabIndex = 1;
             // 
             // textomodelotelefonos
             // 
@@ -442,7 +445,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(526, 322);
+            this.radioButton1.Location = new System.Drawing.Point(526, 299);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
             this.radioButton1.TabIndex = 18;
@@ -454,7 +457,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(526, 344);
+            this.radioButton2.Location = new System.Drawing.Point(526, 321);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
             this.radioButton2.TabIndex = 19;
@@ -499,15 +502,16 @@
             this.gridtelefonosaconfigurar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Extension,
             this.Alias,
-            this.NombreNotaria,
             this.IP,
+            this.Ipactual,
+            this.Modelo,
+            this.NombreNotaria,
             this.IPCentralita,
             this.Mascarared,
-            this.PuertaEnlace,
-            this.Modelo,
-            this.Ipactual});
+            this.PuertaEnlace});
             this.gridtelefonosaconfigurar.Location = new System.Drawing.Point(39, 413);
             this.gridtelefonosaconfigurar.Name = "gridtelefonosaconfigurar";
+            this.gridtelefonosaconfigurar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 147);
             this.gridtelefonosaconfigurar.TabIndex = 23;
             // 
@@ -541,24 +545,43 @@
             this.btnprobar.Text = "Probar";
             this.btnprobar.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkmulticonfig
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(526, 433);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 33;
-            this.checkBox1.Text = "Multi-config";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkmulticonfig.AutoSize = true;
+            this.checkmulticonfig.Location = new System.Drawing.Point(526, 344);
+            this.checkmulticonfig.Name = "checkmulticonfig";
+            this.checkmulticonfig.Size = new System.Drawing.Size(80, 17);
+            this.checkmulticonfig.TabIndex = 33;
+            this.checkmulticonfig.Text = "Multi-config";
+            this.checkmulticonfig.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
-            this.checkBox2.Location = new System.Drawing.Point(526, 249);
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
+            this.checkBox2.Location = new System.Drawing.Point(518, 249);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(74, 47);
+            this.checkBox2.Size = new System.Drawing.Size(97, 34);
             this.checkBox2.TabIndex = 34;
             this.checkBox2.Text = "Reconfig. notaria completa";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(518, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 23);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "Eliminar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(518, 45);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 23);
+            this.button3.TabIndex = 35;
+            this.button3.Text = "Nuevo";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Extension
             // 
@@ -570,15 +593,25 @@
             this.Alias.HeaderText = "Alias";
             this.Alias.Name = "Alias";
             // 
-            // NombreNotaria
-            // 
-            this.NombreNotaria.HeaderText = "Nombre Notaría";
-            this.NombreNotaria.Name = "NombreNotaria";
-            // 
             // IP
             // 
             this.IP.HeaderText = "IP";
             this.IP.Name = "IP";
+            // 
+            // Ipactual
+            // 
+            this.Ipactual.HeaderText = "Ipactual";
+            this.Ipactual.Name = "Ipactual";
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
+            // NombreNotaria
+            // 
+            this.NombreNotaria.HeaderText = "Nombre Notaría";
+            this.NombreNotaria.Name = "NombreNotaria";
             // 
             // IPCentralita
             // 
@@ -595,23 +628,15 @@
             this.PuertaEnlace.HeaderText = "Puerta Enlace";
             this.PuertaEnlace.Name = "PuertaEnlace";
             // 
-            // Modelo
-            // 
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            // 
-            // Ipactual
-            // 
-            this.Ipactual.HeaderText = "Ipactual";
-            this.Ipactual.Name = "Ipactual";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 586);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkmulticonfig);
             this.Controls.Add(this.btnprobar);
             this.Controls.Add(this.btneliminartlf);
             this.Controls.Add(this.btnagregar);
@@ -673,7 +698,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox listamodelotelefonos;
+        private System.Windows.Forms.ComboBox listamodelo;
         private System.Windows.Forms.Label textomodelotelefonos;
         private System.Windows.Forms.Label NTLF;
         private System.Windows.Forms.TextBox ipactualinput;
@@ -697,17 +722,19 @@
         private System.Windows.Forms.Label textoalias;
         private System.Windows.Forms.Button btneliminartlf;
         private System.Windows.Forms.Button btnprobar;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkmulticonfig;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Extension;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreNotaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreNotaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
     }
 }
 
