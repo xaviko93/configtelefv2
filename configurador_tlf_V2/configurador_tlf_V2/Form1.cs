@@ -271,7 +271,9 @@ namespace configurador_tlf_V2
                         break;
                     }
 
-                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, listamodelo.SelectedItem.ToString(), nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext);
+                    String modelotlf = listamodelo.SelectedItem.ToString();
+
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, modelotlf, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext);
                     contadorext++;
                     ultimocachonumero++;
 
@@ -283,6 +285,22 @@ namespace configurador_tlf_V2
 
             if (radioButton2.Checked == true)
             {
+                foreach (DataGridViewRow row in gridnotarias.SelectedRows)
+                {
+                    nombrenotariaext = row.Cells[1].Value.ToString();
+                }
+
+                String extensiontlf = extensioninput.Text.ToString();
+                String aliastlf = aliasinput.Text.ToString();
+                String iptlf = ipactualinput.Text.ToString();
+                String ipaconfigurartlf = ipaonfigurarinput.Text.ToString();
+                String modelotlf = listamodelo.SelectedItem.ToString();
+                String ipcentralitatlf = ipcentralitainput.Text.ToString();
+                String mascaratlf = mascararedinput.Text.ToString();
+                String puertatlf = puertadeenlaceinput.Text.ToString();
+
+                gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, iptlf, ipaconfigurartlf, modelotlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf);
+
 
             }
         }
