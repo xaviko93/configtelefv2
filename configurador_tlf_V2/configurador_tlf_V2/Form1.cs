@@ -267,7 +267,7 @@ namespace configurador_tlf_V2
 
                     if (nombrenotariaext == "" || ipaasignaraext == "" || ipcentralitaext == "" || mascaraext == "" || puertaenlaceext == "" || ipaconfigurartexto == "")
                     {
-                        MessageBox.Show("Hay campos vacíos, revisa los datos introducidos para continuar");
+                        MessageBox.Show("Hay campos vacíos, revisa los datos introducidos para continuar", "Datos incompletos");
                         break;
                     }
 
@@ -290,6 +290,8 @@ namespace configurador_tlf_V2
                     nombrenotariaext = row.Cells[1].Value.ToString();
                 }
 
+                
+
                 String extensiontlf = extensioninput.Text.ToString();
                 String aliastlf = aliasinput.Text.ToString();
                 String iptlf = ipactualinput.Text.ToString();
@@ -298,6 +300,16 @@ namespace configurador_tlf_V2
                 String ipcentralitatlf = ipcentralitainput.Text.ToString();
                 String mascaratlf = mascararedinput.Text.ToString();
                 String puertatlf = puertadeenlaceinput.Text.ToString();
+
+                if (aliasinput.Text.ToString() == "")
+                {
+                    aliastlf = extensioninput.Text.ToString();
+                }
+
+                if (nombrenotariaext == "" || extensiontlf == "" || iptlf == "" || puertaenlaceext == "" || ipaconfigurartlf == "" || modelotlf == "" || ipcentralitatlf == "" || mascaratlf == "" || puertatlf == "")
+                {
+                    MessageBox.Show("Hay campos vacíos, revisa los datos introducidos introducidos en el cuadro de teléfonos", "Datos incompletos");
+                }
 
                 gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, iptlf, ipaconfigurartlf, modelotlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf);
 
