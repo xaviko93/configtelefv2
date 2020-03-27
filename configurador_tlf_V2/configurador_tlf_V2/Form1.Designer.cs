@@ -708,7 +708,7 @@
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Configurador de teléfonos Notin";
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -727,7 +727,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox buscadornotaria;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridextensiones;
@@ -775,13 +774,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
-        private System.Windows.Forms.TextBox ipcentralitanotaria;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox mascararednotaria;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox puertaenlacenotaria;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.TextBox buscadornotaria;
+        public System.Windows.Forms.TextBox ipcentralitanotaria;
+        public System.Windows.Forms.TextBox mascararednotaria;
+        public System.Windows.Forms.TextBox puertaenlacenotaria;
     }
 }
 

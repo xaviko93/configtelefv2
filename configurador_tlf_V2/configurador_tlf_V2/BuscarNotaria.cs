@@ -1,13 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace configurador_tlf_V2
@@ -45,6 +37,19 @@ namespace configurador_tlf_V2
             }
             cmd.Connection.Close();
 
+        }
+
+        private void btnSeleccionarNotaria_Click(object sender, EventArgs e)
+        {
+            Form1 pantallaprincipal = Owner as Form1;
+            pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
+            pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
+            pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
+            pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
+            int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
+            pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
+            pantallaprincipal.cargarextensiones();
+            this.Close();
         }
     }
 }

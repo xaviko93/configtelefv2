@@ -19,6 +19,7 @@ namespace configurador_tlf_V2
         public String puertaenlaceext;
         public int contadorext;
         public int ultimocachonumeroaconfig;
+        public int idnotariaseleccionada;
 
         public Form1()
         {
@@ -41,11 +42,38 @@ namespace configurador_tlf_V2
         private void button1_Click(object sender, EventArgs e)
         {
             Form frm = new BuscarNotaria();
+            AddOwnedForm(frm);
             frm.Show();
 
         }
 
+        public void cargarextensiones()
+        {
+            Conexion.Open();
 
+                ipcentralitainput.Text = "";
+                mascararedinput.Text = "";
+                puertadeenlaceinput.Text = "";
+                extensioninput.Text = "";
+                ipaonfigurarinput.Text = "";
+                aliasinput.Text = "";
+
+                ipcentralitainput.Text = ipcentralitanotaria.Text.ToString();
+
+                mascararedinput.Text = mascararednotaria.Text.ToString();
+
+                puertadeenlaceinput.Text = puertaenlacenotaria.Text.ToString();
+
+            
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, NomNotaria FROM telefonos WHERE IDNotaria ='" + idnotariaseleccionada + "' ORDER BY Extension", Conexion);
+            MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
+            ds2 = new DataSet();
+            m_datos2.Fill(ds2);
+
+
+            gridextensiones.DataSource = ds2.Tables[0];
+            Conexion.Close();
+        }
 
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

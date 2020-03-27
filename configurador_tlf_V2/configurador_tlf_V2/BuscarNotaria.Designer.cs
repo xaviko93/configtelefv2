@@ -106,6 +106,7 @@
             this.btnSeleccionarNotaria.TabIndex = 13;
             this.btnSeleccionarNotaria.Text = "Aceptar";
             this.btnSeleccionarNotaria.UseVisualStyleBackColor = true;
+            this.btnSeleccionarNotaria.Click += new System.EventHandler(this.btnSeleccionarNotaria_Click);
             // 
             // btnBuscarNotaria
             // 
