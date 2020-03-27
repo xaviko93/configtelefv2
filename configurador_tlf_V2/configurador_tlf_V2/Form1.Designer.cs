@@ -36,7 +36,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buscadornotaria = new System.Windows.Forms.TextBox();
             this.btnbuscar = new System.Windows.Forms.Button();
-            this.gridnotarias = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
             this.btnnuevoext = new System.Windows.Forms.Button();
@@ -69,12 +68,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
-            this.btnconfigurar = new System.Windows.Forms.Button();
-            this.btneliminartlf = new System.Windows.Forms.Button();
-            this.btnprobar = new System.Windows.Forms.Button();
-            this.checkmulticonfig = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,7 +77,18 @@
             this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).BeginInit();
+            this.btnconfigurar = new System.Windows.Forms.Button();
+            this.btneliminartlf = new System.Windows.Forms.Button();
+            this.btnprobar = new System.Windows.Forms.Button();
+            this.checkmulticonfig = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.ipcentralitanotaria = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.mascararednotaria = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.puertaenlacenotaria = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -94,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(641, 514);
+            this.label1.Location = new System.Drawing.Point(663, 557);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 0;
@@ -103,16 +107,16 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(613, 12);
+            this.webBrowser1.Location = new System.Drawing.Point(586, 12);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(490, 490);
+            this.webBrowser1.Size = new System.Drawing.Size(583, 530);
             this.webBrowser1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(991, 514);
+            this.label2.Location = new System.Drawing.Point(1013, 557);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 2;
@@ -121,7 +125,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(613, 535);
+            this.progressBar1.Location = new System.Drawing.Point(635, 578);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(150, 25);
             this.progressBar1.TabIndex = 3;
@@ -129,7 +133,7 @@
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(952, 535);
+            this.progressBar2.Location = new System.Drawing.Point(974, 578);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(150, 25);
             this.progressBar2.TabIndex = 4;
@@ -138,44 +142,35 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 21);
+            this.label4.Location = new System.Drawing.Point(9, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(112, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Nombre notaría:";
+            this.label4.Text = "Notaría seleccionada:";
             // 
             // buscadornotaria
             // 
-            this.buscadornotaria.Location = new System.Drawing.Point(137, 18);
+            this.buscadornotaria.Enabled = false;
+            this.buscadornotaria.Location = new System.Drawing.Point(127, 19);
             this.buscadornotaria.Name = "buscadornotaria";
-            this.buscadornotaria.Size = new System.Drawing.Size(295, 20);
+            this.buscadornotaria.Size = new System.Drawing.Size(359, 20);
             this.buscadornotaria.TabIndex = 7;
             // 
             // btnbuscar
             // 
             this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Location = new System.Drawing.Point(438, 16);
+            this.btnbuscar.Location = new System.Drawing.Point(492, 12);
             this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnbuscar.Size = new System.Drawing.Size(88, 38);
             this.btnbuscar.TabIndex = 8;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = true;
             this.btnbuscar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // gridnotarias
-            // 
-            this.gridnotarias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridnotarias.Location = new System.Drawing.Point(39, 45);
-            this.gridnotarias.Name = "gridnotarias";
-            this.gridnotarias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridnotarias.Size = new System.Drawing.Size(474, 93);
-            this.gridnotarias.TabIndex = 9;
-            this.gridnotarias.SelectionChanged += new System.EventHandler(this.gridnotarias_SelectionChanged);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 145);
+            this.label5.Location = new System.Drawing.Point(9, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 10;
@@ -186,16 +181,16 @@
             this.gridextensiones.AllowUserToOrderColumns = true;
             this.gridextensiones.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.gridextensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridextensiones.Location = new System.Drawing.Point(39, 162);
+            this.gridextensiones.Location = new System.Drawing.Point(12, 116);
             this.gridextensiones.Name = "gridextensiones";
             this.gridextensiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridextensiones.Size = new System.Drawing.Size(474, 110);
+            this.gridextensiones.Size = new System.Drawing.Size(474, 162);
             this.gridextensiones.TabIndex = 11;
             this.gridextensiones.SelectionChanged += new System.EventHandler(this.gridextensiones_SelectionChanged);
             // 
             // btnnuevoext
             // 
-            this.btnnuevoext.Location = new System.Drawing.Point(519, 162);
+            this.btnnuevoext.Location = new System.Drawing.Point(491, 116);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
             this.btnnuevoext.TabIndex = 12;
@@ -205,7 +200,7 @@
             // 
             // btnreconfigurartlf
             // 
-            this.btnreconfigurartlf.Location = new System.Drawing.Point(519, 220);
+            this.btnreconfigurartlf.Location = new System.Drawing.Point(491, 174);
             this.btnreconfigurartlf.Name = "btnreconfigurartlf";
             this.btnreconfigurartlf.Size = new System.Drawing.Size(88, 23);
             this.btnreconfigurartlf.TabIndex = 14;
@@ -214,7 +209,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(519, 191);
+            this.button1.Location = new System.Drawing.Point(491, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
             this.button1.TabIndex = 15;
@@ -226,7 +221,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label3.Location = new System.Drawing.Point(788, 514);
+            this.label3.Location = new System.Drawing.Point(810, 557);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 54);
             this.label3.TabIndex = 16;
@@ -253,7 +248,8 @@
             this.groupBox1.Controls.Add(this.textoipactual);
             this.groupBox1.Controls.Add(this.listamodelo);
             this.groupBox1.Controls.Add(this.textomodelotelefonos);
-            this.groupBox1.Location = new System.Drawing.Point(39, 278);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 284);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(474, 112);
             this.groupBox1.TabIndex = 17;
@@ -432,7 +428,7 @@
             // 
             this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
             this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Location = new System.Drawing.Point(526, 367);
+            this.btnagregar.Location = new System.Drawing.Point(492, 364);
             this.btnagregar.Name = "btnagregar";
             this.btnagregar.Size = new System.Drawing.Size(75, 23);
             this.btnagregar.TabIndex = 30;
@@ -444,7 +440,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(526, 299);
+            this.radioButton1.Location = new System.Drawing.Point(492, 296);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(78, 17);
             this.radioButton1.TabIndex = 18;
@@ -456,7 +452,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(526, 321);
+            this.radioButton2.Location = new System.Drawing.Point(492, 318);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
             this.radioButton2.TabIndex = 19;
@@ -468,7 +464,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label6.Location = new System.Drawing.Point(873, 514);
+            this.label6.Location = new System.Drawing.Point(895, 557);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 54);
             this.label6.TabIndex = 20;
@@ -479,7 +475,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(843, 535);
+            this.label7.Location = new System.Drawing.Point(865, 578);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 21;
@@ -489,7 +485,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(42, 397);
+            this.label16.Location = new System.Drawing.Point(9, 399);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(116, 13);
             this.label16.TabIndex = 22;
@@ -508,70 +504,11 @@
             this.IPCentralita,
             this.Mascarared,
             this.PuertaEnlace});
-            this.gridtelefonosaconfigurar.Location = new System.Drawing.Point(39, 413);
+            this.gridtelefonosaconfigurar.Location = new System.Drawing.Point(12, 415);
             this.gridtelefonosaconfigurar.Name = "gridtelefonosaconfigurar";
             this.gridtelefonosaconfigurar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 147);
+            this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 188);
             this.gridtelefonosaconfigurar.TabIndex = 23;
-            // 
-            // btnconfigurar
-            // 
-            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnconfigurar.Enabled = false;
-            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Location = new System.Drawing.Point(520, 514);
-            this.btnconfigurar.Name = "btnconfigurar";
-            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
-            this.btnconfigurar.TabIndex = 24;
-            this.btnconfigurar.Text = "Configurar";
-            this.btnconfigurar.UseVisualStyleBackColor = false;
-            // 
-            // btneliminartlf
-            // 
-            this.btneliminartlf.Location = new System.Drawing.Point(519, 456);
-            this.btneliminartlf.Name = "btneliminartlf";
-            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
-            this.btneliminartlf.TabIndex = 31;
-            this.btneliminartlf.Text = "Eliminar";
-            this.btneliminartlf.UseVisualStyleBackColor = true;
-            // 
-            // btnprobar
-            // 
-            this.btnprobar.Location = new System.Drawing.Point(519, 485);
-            this.btnprobar.Name = "btnprobar";
-            this.btnprobar.Size = new System.Drawing.Size(88, 23);
-            this.btnprobar.TabIndex = 32;
-            this.btnprobar.Text = "Probar";
-            this.btnprobar.UseVisualStyleBackColor = true;
-            // 
-            // checkmulticonfig
-            // 
-            this.checkmulticonfig.AutoSize = true;
-            this.checkmulticonfig.Location = new System.Drawing.Point(526, 344);
-            this.checkmulticonfig.Name = "checkmulticonfig";
-            this.checkmulticonfig.Size = new System.Drawing.Size(80, 17);
-            this.checkmulticonfig.TabIndex = 33;
-            this.checkmulticonfig.Text = "Multi-config";
-            this.checkmulticonfig.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
-            this.checkBox2.Location = new System.Drawing.Point(518, 249);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(97, 34);
-            this.checkBox2.TabIndex = 34;
-            this.checkBox2.Text = "Reconfig. notaria completa";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(518, 45);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 23);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Nuevo";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // Extension
             // 
@@ -618,12 +555,131 @@
             this.PuertaEnlace.HeaderText = "Puerta Enlace";
             this.PuertaEnlace.Name = "PuertaEnlace";
             // 
+            // btnconfigurar
+            // 
+            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnconfigurar.Enabled = false;
+            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfigurar.Location = new System.Drawing.Point(491, 557);
+            this.btnconfigurar.Name = "btnconfigurar";
+            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
+            this.btnconfigurar.TabIndex = 24;
+            this.btnconfigurar.Text = "Configurar";
+            this.btnconfigurar.UseVisualStyleBackColor = false;
+            // 
+            // btneliminartlf
+            // 
+            this.btneliminartlf.Location = new System.Drawing.Point(490, 499);
+            this.btneliminartlf.Name = "btneliminartlf";
+            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
+            this.btneliminartlf.TabIndex = 31;
+            this.btneliminartlf.Text = "Eliminar";
+            this.btneliminartlf.UseVisualStyleBackColor = true;
+            this.btneliminartlf.Click += new System.EventHandler(this.btneliminartlf_Click);
+            // 
+            // btnprobar
+            // 
+            this.btnprobar.Location = new System.Drawing.Point(490, 528);
+            this.btnprobar.Name = "btnprobar";
+            this.btnprobar.Size = new System.Drawing.Size(88, 23);
+            this.btnprobar.TabIndex = 32;
+            this.btnprobar.Text = "Probar";
+            this.btnprobar.UseVisualStyleBackColor = true;
+            // 
+            // checkmulticonfig
+            // 
+            this.checkmulticonfig.AutoSize = true;
+            this.checkmulticonfig.Location = new System.Drawing.Point(492, 341);
+            this.checkmulticonfig.Name = "checkmulticonfig";
+            this.checkmulticonfig.Size = new System.Drawing.Size(80, 17);
+            this.checkmulticonfig.TabIndex = 33;
+            this.checkmulticonfig.Text = "Multi-config";
+            this.checkmulticonfig.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.checkBox2.Location = new System.Drawing.Point(490, 203);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(90, 52);
+            this.checkBox2.TabIndex = 34;
+            this.checkBox2.Text = "Reconfigurar notaría completa";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // ipcentralitanotaria
+            // 
+            this.ipcentralitanotaria.Enabled = false;
+            this.ipcentralitanotaria.Location = new System.Drawing.Point(84, 60);
+            this.ipcentralitanotaria.Name = "ipcentralitanotaria";
+            this.ipcentralitanotaria.Size = new System.Drawing.Size(93, 20);
+            this.ipcentralitanotaria.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "IP centralita:";
+            // 
+            // mascararednotaria
+            // 
+            this.mascararednotaria.Enabled = false;
+            this.mascararednotaria.Location = new System.Drawing.Point(240, 60);
+            this.mascararednotaria.Name = "mascararednotaria";
+            this.mascararednotaria.Size = new System.Drawing.Size(93, 20);
+            this.mascararednotaria.TabIndex = 38;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(183, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Máscara:";
+            // 
+            // puertaenlacenotaria
+            // 
+            this.puertaenlacenotaria.Enabled = false;
+            this.puertaenlacenotaria.Location = new System.Drawing.Point(383, 60);
+            this.puertaenlacenotaria.Name = "puertaenlacenotaria";
+            this.puertaenlacenotaria.Size = new System.Drawing.Size(103, 20);
+            this.puertaenlacenotaria.TabIndex = 40;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(339, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Puerta:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoCheck = false;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.checkBox1.Location = new System.Drawing.Point(492, 55);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(86, 30);
+            this.checkBox1.TabIndex = 41;
+            this.checkBox1.Text = "Notaría manual";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 586);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1181, 622);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.puertaenlacenotaria);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.mascararednotaria);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.ipcentralitanotaria);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkmulticonfig);
             this.Controls.Add(this.btnprobar);
@@ -643,7 +699,6 @@
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.gridnotarias);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.buscadornotaria);
             this.Controls.Add(this.label4);
@@ -654,7 +709,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.gridnotarias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -675,7 +729,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox buscadornotaria;
         private System.Windows.Forms.Button btnbuscar;
-        private System.Windows.Forms.DataGridView gridnotarias;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridextensiones;
         private System.Windows.Forms.Button btnnuevoext;
@@ -713,7 +766,6 @@
         private System.Windows.Forms.Button btnprobar;
         private System.Windows.Forms.CheckBox checkmulticonfig;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Extension;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP;
@@ -723,6 +775,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
+        private System.Windows.Forms.TextBox ipcentralitanotaria;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox mascararednotaria;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox puertaenlacenotaria;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

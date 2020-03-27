@@ -40,64 +40,13 @@ namespace configurador_tlf_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            notariaabuscar = buscadornotaria.Text.ToString();
-            gridnotarias.DataSource = "<<>>";
-
-
-
-            Conexion.Open();
-            MySqlCommand mostrar = new MySqlCommand("SELECT Id ,NomNotaria, IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + notariaabuscar + "%'", Conexion);
-
-            MySqlDataAdapter m_datos = new MySqlDataAdapter(mostrar);
-            ds = new DataSet();
-            m_datos.Fill(ds);
-            Conexion.Close();
-            gridnotarias.DataSource = ds.Tables[0];
-
-            gridnotarias.Columns["Id"].Visible = false;
-            gridnotarias.Columns[1].HeaderText = "Nombre de la notaría";
-            gridnotarias.Columns[2].HeaderText = "IP Centralita";
-            gridnotarias.Columns[3].HeaderText = "Máscara de red";
-            gridnotarias.Columns[4].HeaderText = "Puerta de enlace";
-            gridnotarias.Columns[1].Width = 180;
+            Form frm = new BuscarNotaria();
+            frm.Show();
 
         }
 
 
-        private void gridnotarias_SelectionChanged(object sender, EventArgs e)
-        {
-            Conexion.Open();
-            foreach (DataGridViewRow row in gridnotarias.SelectedRows)
-            {
-                idbuscarext = row.Cells[0].Value.ToString();
 
-                ipcentralitainput.Text = "";
-                mascararedinput.Text = "";
-                puertadeenlaceinput.Text = "";
-                extensioninput.Text = "";
-                ipaonfigurarinput.Text = "";
-                aliasinput.Text = "";
-
-                String ipcentralitanotaria = row.Cells[2].Value.ToString();
-                ipcentralitainput.Text = ipcentralitanotaria;
-
-                String mascararednotaria = row.Cells[3].Value.ToString();
-                mascararedinput.Text = mascararednotaria;
-
-                String puertaenlacenotaria = row.Cells[4].Value.ToString();
-                puertadeenlaceinput.Text = puertaenlacenotaria;
-
-            }
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, NomNotaria FROM telefonos WHERE IDNotaria ='" + idbuscarext + "' ORDER BY Extension", Conexion);
-            MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
-            ds2 = new DataSet();
-            m_datos2.Fill(ds2);
-
-
-            gridextensiones.DataSource = ds2.Tables[0];
-            Conexion.Close();
-
-        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -183,10 +132,8 @@ namespace configurador_tlf_V2
             ultimocachonumero++;
             string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
 
-            foreach (DataGridViewRow row in gridnotarias.SelectedRows)
-            {
-                nombrenotariaext = row.Cells[1].Value.ToString();
-            }
+
+            nombrenotariaext = buscadornotaria.Text.ToString();
             DataTable dt = (DataTable)gridextensiones.DataSource;
             var row2 = dt.NewRow();
             row2["Extension"] = contadorext;
@@ -214,6 +161,9 @@ namespace configurador_tlf_V2
         {
             if(radioButton1.Checked == true)
             {
+
+                gridtelefonosaconfigurar.Rows.Clear();
+
                 String cantidadtlfaconfigurarstring = NTLFinput.Value.ToString();
                 int cantidadtlfaconfigurar = Int32.Parse(cantidadtlfaconfigurarstring);
 
@@ -257,13 +207,12 @@ namespace configurador_tlf_V2
 
                     string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
 
-                    foreach (DataGridViewRow row in gridnotarias.SelectedRows)
-                    {
-                        nombrenotariaext = row.Cells[1].Value.ToString();
-                        ipcentralitaext = row.Cells[2].Value.ToString();
-                        mascaraext = row.Cells[3].Value.ToString();
-                        puertaenlaceext = row.Cells[4].Value.ToString();
-                    }
+
+                        nombrenotariaext = buscadornotaria.Text.ToString();
+                        ipcentralitaext = ipcentralitanotaria.Text.ToString();
+                        mascaraext = mascararednotaria.Text.ToString();
+                        puertaenlaceext = puertaenlacenotaria.Text.ToString();
+                    
 
                     if (nombrenotariaext == "" || ipaasignaraext == "" || ipcentralitaext == "" || mascaraext == "" || puertaenlaceext == "" || ipaconfigurartexto == "")
                     {
@@ -272,7 +221,6 @@ namespace configurador_tlf_V2
                     }
 
                     String modelotlf = listamodelo.SelectedItem.ToString();
-
                     gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, modelotlf, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext);
                     contadorext++;
                     ultimocachonumero++;
@@ -285,12 +233,9 @@ namespace configurador_tlf_V2
 
             if (radioButton2.Checked == true)
             {
-                foreach (DataGridViewRow row in gridnotarias.SelectedRows)
-                {
-                    nombrenotariaext = row.Cells[1].Value.ToString();
-                }
+                nombrenotariaext = buscadornotaria.Text.ToString();
 
-                
+
 
                 String extensiontlf = extensioninput.Text.ToString();
                 String aliastlf = aliasinput.Text.ToString();
@@ -316,6 +261,15 @@ namespace configurador_tlf_V2
 
             }
         }
-        
+
+        private void btneliminartlf_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres eliminar este teléfono?", "Eliminar teléfono", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                gridtelefonosaconfigurar.Rows.RemoveAt(gridtelefonosaconfigurar.CurrentRow.Index);
+            }
+        }
     }
 }
