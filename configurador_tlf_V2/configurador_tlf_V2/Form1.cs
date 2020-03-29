@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace configurador_tlf_V2
@@ -28,7 +29,33 @@ namespace configurador_tlf_V2
             listamodelo.Items.Add("YEALINK T27G");
             listamodelo.Items.Add("YEALINK T23G");
             listamodelo.SelectedIndex = 0;
+
+            DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
+            cmb.HeaderText = "Modelo";
+            cmb.Name = "Modelo";
+            cmb.MaxDropDownItems = 4;
+            cmb.Items.Add("YEALINK T27G");
+            cmb.Items.Add("YEALINK T23G");
+            gridtelefonosaconfigurar.Columns.Add(cmb);
+
+            webBrowser1.ScriptErrorsSuppressed = true;
+            
+
+            using (var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(
+            @"Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION",
+            true))
+            {
+                var app = System.IO.Path.GetFileName(Application.ExecutablePath);
+                key.SetValue(app, 11001, Microsoft.Win32.RegistryValueKind.DWord);
+                key.Close();
+            }
+
+
+
+
         }
+
+
 
         MySqlConnection Conexion = new MySqlConnection("server=remotemysql.com; database=wWWHH1xcMX; Uid=wWWHH1xcMX; pwd=MmxyP2R8ey");
         DataSet ds;
@@ -133,21 +160,28 @@ namespace configurador_tlf_V2
 
         private void gridextensiones_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in gridextensiones.SelectedRows)
+            try
             {
-                extensioninput.Text = "";
-                ipaonfigurarinput.Text = "";
-                aliasinput.Text = "";
+                foreach (DataGridViewRow row in gridextensiones.SelectedRows)
+                {
+                    extensioninput.Text = "";
+                    ipaonfigurarinput.Text = "";
+                    aliasinput.Text = "";
 
-                String extensionlinea = row.Cells[0].Value.ToString();
-                extensioninput.Text = extensionlinea;
+                    String extensionlinea = row.Cells[0].Value.ToString();
+                    extensioninput.Text = extensionlinea;
 
-                String iptelefonolinea = row.Cells[1].Value.ToString();
-                ipaonfigurarinput.Text = iptelefonolinea;
+                    String iptelefonolinea = row.Cells[1].Value.ToString();
+                    ipaonfigurarinput.Text = iptelefonolinea;
 
-                String aliaslinea = row.Cells[2].Value.ToString();
-                aliasinput.Text = aliaslinea;
+                    String aliaslinea = row.Cells[2].Value.ToString();
+                    aliasinput.Text = aliaslinea;
+                }
+            } catch (System.NullReferenceException)
+            {
+
             }
+
         }
 
         private void btnnuevoext_Click(object sender, EventArgs e)
@@ -248,10 +282,17 @@ namespace configurador_tlf_V2
                 String iplibreext = gridextensiones.Rows[0].Cells[1].Value.ToString();
                 string[] ultimocachoip = iplibreext.Split('.');
                 int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
-
                 string ipaconfigurartexto = ipactualinput.Text.ToString();
                 string[] ultimocachoipaconfnigurar = ipactualinput.Text.ToString().Split('.');
-                ultimocachonumeroaconfig = Int32.Parse(ultimocachoipaconfnigurar[3]);
+                try
+                {
+                    ultimocachonumeroaconfig = Int32.Parse(ultimocachoipaconfnigurar[3]);
+                } catch (System.IndexOutOfRangeException)
+                {
+                    MessageBox.Show("Revisa el campo de texto IP Actual Es posible que la IP no esté introducida en el formato correcto");
+                    
+                }
+                
 
                 for (int i = 1; i <= cantidadtlfaconfigurar; i++)
                 {
@@ -277,16 +318,21 @@ namespace configurador_tlf_V2
                         ipcentralitaext = ipcentralitanotaria.Text.ToString();
                         mascaraext = mascararednotaria.Text.ToString();
                         puertaenlaceext = puertaenlacenotaria.Text.ToString();
+
+                    if (ipaconfigurartexto == "")
+                    {
+                        break;
+                    }
                     
 
-                    if (nombrenotariaext == "" || ipaasignaraext == "" || ipcentralitaext == "" || mascaraext == "" || puertaenlaceext == "" || ipaconfigurartexto == "")
+                    if (nombrenotariaext == "" || ipaasignaraext == "" || ipcentralitaext == "" || mascaraext == "" || puertaenlaceext == "")
                     {
                         MessageBox.Show("Hay campos vacíos, revisa los datos introducidos para continuar", "Datos incompletos");
                         break;
                     }
 
                     String modelotlf = listamodelo.SelectedItem.ToString();
-                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, modelotlf, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext);
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext, modelotlf);
                     contadorext++;
                     ultimocachonumero++;
 
@@ -379,5 +425,11 @@ namespace configurador_tlf_V2
 
 
         }
+
+        private void btnprobar_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate("http://" + ipactualinput.Text);
+        }
+
     }
 }

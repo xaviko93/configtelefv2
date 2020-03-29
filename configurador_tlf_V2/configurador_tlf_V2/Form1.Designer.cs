@@ -84,7 +84,6 @@
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(663, 557);
+            this.label1.Location = new System.Drawing.Point(669, 548);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 43;
@@ -116,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1013, 557);
+            this.label2.Location = new System.Drawing.Point(1019, 548);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 44;
@@ -125,7 +124,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(635, 578);
+            this.progressBar1.Location = new System.Drawing.Point(641, 569);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(150, 25);
             this.progressBar1.TabIndex = 30;
@@ -133,7 +132,7 @@
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(974, 578);
+            this.progressBar2.Location = new System.Drawing.Point(980, 569);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(150, 25);
             this.progressBar2.TabIndex = 34;
@@ -221,7 +220,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label3.Location = new System.Drawing.Point(810, 557);
+            this.label3.Location = new System.Drawing.Point(816, 548);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 54);
             this.label3.TabIndex = 31;
@@ -464,7 +463,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label6.Location = new System.Drawing.Point(895, 557);
+            this.label6.Location = new System.Drawing.Point(901, 548);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 54);
             this.label6.TabIndex = 33;
@@ -475,7 +474,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(865, 578);
+            this.label7.Location = new System.Drawing.Point(871, 569);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 32;
@@ -499,7 +498,6 @@
             this.Alias,
             this.IP,
             this.Ipactual,
-            this.Modelo,
             this.NombreNotaria,
             this.IPCentralita,
             this.Mascarared,
@@ -540,6 +538,7 @@
             this.btnprobar.TabIndex = 27;
             this.btnprobar.Text = "Probar";
             this.btnprobar.UseVisualStyleBackColor = true;
+            this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
             // 
             // checkmulticonfig
             // 
@@ -642,11 +641,6 @@
             // 
             this.Ipactual.HeaderText = "IP Actual";
             this.Ipactual.Name = "Ipactual";
-            // 
-            // Modelo
-            // 
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
             // 
             // NombreNotaria
             // 
@@ -777,7 +771,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ipactual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreNotaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
