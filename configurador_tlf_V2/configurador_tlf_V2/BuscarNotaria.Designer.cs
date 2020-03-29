@@ -45,7 +45,7 @@
             this.buscadortextonotaria.Location = new System.Drawing.Point(102, 6);
             this.buscadortextonotaria.Name = "buscadortextonotaria";
             this.buscadortextonotaria.Size = new System.Drawing.Size(311, 20);
-            this.buscadortextonotaria.TabIndex = 10;
+            this.buscadortextonotaria.TabIndex = 1;
             // 
             // label4
             // 
@@ -71,7 +71,7 @@
             this.listabusquedanotarias.Location = new System.Drawing.Point(15, 36);
             this.listabusquedanotarias.Name = "listabusquedanotarias";
             this.listabusquedanotarias.Size = new System.Drawing.Size(398, 459);
-            this.listabusquedanotarias.TabIndex = 12;
+            this.listabusquedanotarias.TabIndex = 3;
             this.listabusquedanotarias.UseCompatibleStateImageBehavior = false;
             this.listabusquedanotarias.View = System.Windows.Forms.View.Details;
             // 
@@ -103,7 +103,7 @@
             this.btnSeleccionarNotaria.Location = new System.Drawing.Point(425, 472);
             this.btnSeleccionarNotaria.Name = "btnSeleccionarNotaria";
             this.btnSeleccionarNotaria.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionarNotaria.TabIndex = 13;
+            this.btnSeleccionarNotaria.TabIndex = 4;
             this.btnSeleccionarNotaria.Text = "Aceptar";
             this.btnSeleccionarNotaria.UseVisualStyleBackColor = true;
             this.btnSeleccionarNotaria.Click += new System.EventHandler(this.btnSeleccionarNotaria_Click);
@@ -114,7 +114,7 @@
             this.btnBuscarNotaria.Location = new System.Drawing.Point(425, 4);
             this.btnBuscarNotaria.Name = "btnBuscarNotaria";
             this.btnBuscarNotaria.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarNotaria.TabIndex = 14;
+            this.btnBuscarNotaria.TabIndex = 2;
             this.btnBuscarNotaria.Text = "Buscar";
             this.btnBuscarNotaria.UseVisualStyleBackColor = true;
             this.btnBuscarNotaria.Click += new System.EventHandler(this.btnBuscarNotaria_Click);

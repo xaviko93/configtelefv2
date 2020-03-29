@@ -41,6 +41,9 @@ namespace configurador_tlf_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            checkNotariaManual.Checked = false;
+            radioAutomatica.Checked = true;
             Form frm = new BuscarNotaria();
             AddOwnedForm(frm);
             frm.Show();
@@ -65,11 +68,10 @@ namespace configurador_tlf_V2
                 puertadeenlaceinput.Text = puertaenlacenotaria.Text.ToString();
 
             
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, NomNotaria FROM telefonos WHERE IDNotaria ='" + idnotariaseleccionada + "' ORDER BY Extension", Conexion);
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Modelo, NomNotaria FROM telefonos WHERE IDNotaria ='" + idnotariaseleccionada + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
-
 
             gridextensiones.DataSource = ds2.Tables[0];
             Conexion.Close();
@@ -78,28 +80,39 @@ namespace configurador_tlf_V2
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked == true)
-            {
-                NTLF.Enabled = true;
-                NTLFinput.Enabled = true;
-                textoipaconfigurar.Enabled = false;
-                ipaonfigurarinput.Enabled = false;
-                textoipcentralita.Enabled = false;
-                ipcentralitainput.Enabled = false;
-                textoextension.Enabled = false;
-                extensioninput.Enabled = false;
-                textopuertadeenlace.Enabled = false;
-                puertadeenlaceinput.Enabled = false;
-                textomascarared.Enabled = false;
-                mascararedinput.Enabled = false;
-                aliasinput.Enabled = false;
-                textoalias.Enabled = false;
+
+
+            
+                if (radioAutomatica.Checked == true)
+                {
+                    if (checkNotariaManual.Checked == true)
+                    {
+                        MessageBox.Show("No puedes seleccionar la configuración automática de teléfonos con el modo notaría manual activado");
+                        radioManual.Checked = true;
+                    }
+                else
+                {
+                    NTLF.Enabled = true;
+                    NTLFinput.Enabled = true;
+                    textoipaconfigurar.Enabled = false;
+                    ipaonfigurarinput.Enabled = false;
+                    textoipcentralita.Enabled = false;
+                    ipcentralitainput.Enabled = false;
+                    textoextension.Enabled = false;
+                    extensioninput.Enabled = false;
+                    textopuertadeenlace.Enabled = false;
+                    puertadeenlaceinput.Enabled = false;
+                    textomascarared.Enabled = false;
+                    mascararedinput.Enabled = false;
+                    aliasinput.Enabled = false;
+                    textoalias.Enabled = false;
+                }
             }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked == true)
+            if (radioManual.Checked == true)
             {
                 NTLF.Enabled = false;
                 NTLFinput.Enabled = false;
@@ -139,39 +152,63 @@ namespace configurador_tlf_V2
 
         private void btnnuevoext_Click(object sender, EventArgs e)
         {
-            int numerototalext = gridextensiones.SelectedRows.Count;
-            String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
-            extensionocupada = Int32.Parse(extensionprimerastring);
-            int contadorext = Int32.Parse(extensionprimerastring);
-            contadorintentos = 1;
-
-            while (contadorext == extensionocupada)
+                
+            if (checkNotariaManual.Checked == true)
             {
-                String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
-                extensionocupada = Int32.Parse(extensionocupadastring);
-                contadorext++;
-                contadorintentos++;
+                gridextensiones.Columns.Add("Column", "Extension");
+                gridextensiones.Columns.Add("Column", "IP Telefono");
+                gridextensiones.Columns.Add("Column", "Alias");
+                gridextensiones.Columns.Add("Column", "Nombre Notaria");
+                gridextensiones.Columns.Add("Column", "IP Centralita");
+                gridextensiones.Columns.Add("Column", "Mascara de red");
+                gridextensiones.Columns.Add("Column", "Puerta de enlace");
+
+                gridextensiones.Rows.Add("", "", "", buscadornotaria.Text.ToString(), ipcentralitanotaria.Text.ToString(), mascararednotaria.Text.ToString(), puertadeenlaceinput.Text.ToString());
+
+                ipcentralitainput.Text = ipcentralitanotaria.Text.ToString();
+                mascararedinput.Text = mascararednotaria.Text.ToString();
+                puertadeenlaceinput.Text = puertadeenlaceinput.Text.ToString();
+
+
+            } else
+            {
+                int numerototalext = gridextensiones.SelectedRows.Count;
+                String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                extensionocupada = Int32.Parse(extensionprimerastring);
+                int contadorext = Int32.Parse(extensionprimerastring);
+                contadorintentos = 1;
+
+                while (contadorext == extensionocupada)
+                {
+                    String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
+                    extensionocupada = Int32.Parse(extensionocupadastring);
+                    contadorext++;
+                    contadorintentos++;
+                }
+
+                int contadorintentosbien = contadorintentos - 2;
+                String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
+                string[] ultimocachoip = iplibreext.Split('.');
+                int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+                ultimocachonumero++;
+                string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
+
+
+                nombrenotariaext = buscadornotaria.Text.ToString();
+                DataTable dt = (DataTable)gridextensiones.DataSource;
+                var row2 = dt.NewRow();
+                row2["Extension"] = contadorext;
+                row2["Iptelefono"] = ipaasignaraext;
+                row2["Alias"] = contadorext;
+                row2["NomNotaria"] = nombrenotariaext;
+                //resto
+                dt.Rows.Add(row2);
+                gridextensiones.DataSource = dt;
+                this.gridextensiones.Sort(this.gridextensiones.Columns["Extension"], System.ComponentModel.ListSortDirection.Ascending);
             }
 
-            int contadorintentosbien = contadorintentos - 2;
-            String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
-            string[] ultimocachoip = iplibreext.Split('.');
-            int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
-            ultimocachonumero++;
-            string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
 
 
-            nombrenotariaext = buscadornotaria.Text.ToString();
-            DataTable dt = (DataTable)gridextensiones.DataSource;
-            var row2 = dt.NewRow();
-            row2["Extension"] = contadorext;
-            row2["Iptelefono"] = ipaasignaraext;
-            row2["Alias"] = contadorext;
-            row2["NomNotaria"] = nombrenotariaext;
-            //resto
-            dt.Rows.Add(row2);
-            gridextensiones.DataSource = dt;
-            this.gridextensiones.Sort(this.gridextensiones.Columns["Extension"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -187,7 +224,7 @@ namespace configurador_tlf_V2
 
         private void btnagregar_Click(object sender, EventArgs e)
         {
-            if(radioButton1.Checked == true)
+            if(radioAutomatica.Checked == true)
             {
 
                 gridtelefonosaconfigurar.Rows.Clear();
@@ -259,7 +296,7 @@ namespace configurador_tlf_V2
                     }
                 }
 
-            if (radioButton2.Checked == true)
+            if (radioManual.Checked == true)
             {
                 nombrenotariaext = buscadornotaria.Text.ToString();
 
@@ -298,6 +335,49 @@ namespace configurador_tlf_V2
             {
                 gridtelefonosaconfigurar.Rows.RemoveAt(gridtelefonosaconfigurar.CurrentRow.Index);
             }
+        }
+
+        private void checkNotariaManual_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkNotariaManual.Checked == true)
+            {
+                buscadornotaria.Text = "";
+                buscadornotaria.Enabled = true;
+                ipcentralitanotaria.Text = "";
+                ipcentralitanotaria.Enabled = true;
+                mascararednotaria.Text = "";
+                mascararednotaria.Enabled = true;
+                puertaenlacenotaria.Text = "";
+                puertaenlacenotaria.Enabled = true;
+
+                radioManual.Checked = true;
+
+                do
+                {
+                    foreach (DataGridViewRow row in gridextensiones.Rows)
+                    {
+                        try
+                        {
+                            gridextensiones.Rows.Remove(row);
+                        }
+                        catch (Exception) { }
+                    }
+                } while (gridextensiones.Rows.Count > 1);
+            }
+
+            if (checkNotariaManual.Checked == false)
+            {
+                buscadornotaria.Enabled = false;
+                ipcentralitanotaria.Enabled = false;
+                mascararednotaria.Enabled = false;
+                puertaenlacenotaria.Enabled = false;
+
+                radioAutomatica.Checked = true;
+            }
+
+
+
         }
     }
 }
