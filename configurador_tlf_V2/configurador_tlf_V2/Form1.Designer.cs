@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.progressBartlf = new System.Windows.Forms.ProgressBar();
+            this.progressBartotal = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
             this.buscadornotaria = new System.Windows.Forms.TextBox();
             this.btnbuscar = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@
             this.btnnuevoext = new System.Windows.Forms.Button();
             this.btnreconfigurartlf = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.numeroactual = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.aliasinput = new System.Windows.Forms.TextBox();
             this.textoalias = new System.Windows.Forms.Label();
@@ -64,10 +64,18 @@
             this.btnagregar = new System.Windows.Forms.Button();
             this.radioAutomatica = new System.Windows.Forms.RadioButton();
             this.radioManual = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
+            this.numerototal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
+            this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnconfigurar = new System.Windows.Forms.Button();
             this.btneliminartlf = new System.Windows.Forms.Button();
             this.btnprobar = new System.Windows.Forms.Button();
@@ -80,14 +88,6 @@
             this.puertaenlacenotaria = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkNotariaManual = new System.Windows.Forms.CheckBox();
-            this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -97,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(669, 548);
+            this.label1.Location = new System.Drawing.Point(757, 553);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 43;
@@ -109,34 +109,35 @@
             this.webBrowser1.Location = new System.Drawing.Point(586, 12);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(583, 530);
+            this.webBrowser1.Size = new System.Drawing.Size(769, 530);
             this.webBrowser1.TabIndex = 29;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1019, 548);
+            this.label2.Location = new System.Drawing.Point(1107, 553);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 44;
             this.label2.Text = "Progreso total:";
             this.label2.Visible = false;
             // 
-            // progressBar1
+            // progressBartlf
             // 
-            this.progressBar1.Location = new System.Drawing.Point(641, 569);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(150, 25);
-            this.progressBar1.TabIndex = 30;
-            this.progressBar1.Visible = false;
+            this.progressBartlf.Location = new System.Drawing.Point(729, 574);
+            this.progressBartlf.Name = "progressBartlf";
+            this.progressBartlf.Size = new System.Drawing.Size(150, 25);
+            this.progressBartlf.TabIndex = 30;
+            this.progressBartlf.Visible = false;
             // 
-            // progressBar2
+            // progressBartotal
             // 
-            this.progressBar2.Location = new System.Drawing.Point(980, 569);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(150, 25);
-            this.progressBar2.TabIndex = 34;
-            this.progressBar2.Visible = false;
+            this.progressBartotal.Location = new System.Drawing.Point(1068, 574);
+            this.progressBartotal.Name = "progressBartotal";
+            this.progressBartotal.Size = new System.Drawing.Size(150, 25);
+            this.progressBartotal.TabIndex = 34;
+            this.progressBartotal.Visible = false;
             // 
             // label4
             // 
@@ -216,16 +217,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label3
+            // numeroactual
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label3.Location = new System.Drawing.Point(816, 548);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 54);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "1";
-            this.label3.Visible = false;
+            this.numeroactual.AutoSize = true;
+            this.numeroactual.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.numeroactual.Location = new System.Drawing.Point(904, 553);
+            this.numeroactual.Name = "numeroactual";
+            this.numeroactual.Size = new System.Drawing.Size(49, 54);
+            this.numeroactual.TabIndex = 31;
+            this.numeroactual.Text = "1";
+            this.numeroactual.Visible = false;
             // 
             // groupBox1
             // 
@@ -459,22 +460,22 @@
             this.radioManual.UseVisualStyleBackColor = true;
             this.radioManual.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // label6
+            // numerototal
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
-            this.label6.Location = new System.Drawing.Point(901, 548);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 54);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "1";
-            this.label6.Visible = false;
+            this.numerototal.AutoSize = true;
+            this.numerototal.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.numerototal.Location = new System.Drawing.Point(989, 553);
+            this.numerototal.Name = "numerototal";
+            this.numerototal.Size = new System.Drawing.Size(49, 54);
+            this.numerototal.TabIndex = 33;
+            this.numerototal.Text = "1";
+            this.numerototal.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(871, 569);
+            this.label7.Location = new System.Drawing.Point(959, 574);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 32;
@@ -508,6 +509,46 @@
             this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 188);
             this.gridtelefonosaconfigurar.TabIndex = 25;
             // 
+            // Extension
+            // 
+            this.Extension.HeaderText = "Extensión";
+            this.Extension.Name = "Extension";
+            // 
+            // Alias
+            // 
+            this.Alias.HeaderText = "Alias";
+            this.Alias.Name = "Alias";
+            // 
+            // IP
+            // 
+            this.IP.HeaderText = "IP";
+            this.IP.Name = "IP";
+            // 
+            // Ipactual
+            // 
+            this.Ipactual.HeaderText = "IP Actual";
+            this.Ipactual.Name = "Ipactual";
+            // 
+            // NombreNotaria
+            // 
+            this.NombreNotaria.HeaderText = "Nombre Notaría";
+            this.NombreNotaria.Name = "NombreNotaria";
+            // 
+            // IPCentralita
+            // 
+            this.IPCentralita.HeaderText = "IP Centralita";
+            this.IPCentralita.Name = "IPCentralita";
+            // 
+            // Mascarared
+            // 
+            this.Mascarared.HeaderText = "Máscara red";
+            this.Mascarared.Name = "Mascarared";
+            // 
+            // PuertaEnlace
+            // 
+            this.PuertaEnlace.HeaderText = "Puerta Enlace";
+            this.PuertaEnlace.Name = "PuertaEnlace";
+            // 
             // btnconfigurar
             // 
             this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
@@ -519,6 +560,7 @@
             this.btnconfigurar.TabIndex = 28;
             this.btnconfigurar.Text = "Configurar";
             this.btnconfigurar.UseVisualStyleBackColor = false;
+            this.btnconfigurar.Click += new System.EventHandler(this.btnconfigurar_Click);
             // 
             // btneliminartlf
             // 
@@ -622,51 +664,11 @@
             this.checkNotariaManual.UseVisualStyleBackColor = true;
             this.checkNotariaManual.CheckedChanged += new System.EventHandler(this.checkNotariaManual_CheckedChanged);
             // 
-            // Extension
-            // 
-            this.Extension.HeaderText = "Extensión";
-            this.Extension.Name = "Extension";
-            // 
-            // Alias
-            // 
-            this.Alias.HeaderText = "Alias";
-            this.Alias.Name = "Alias";
-            // 
-            // IP
-            // 
-            this.IP.HeaderText = "IP";
-            this.IP.Name = "IP";
-            // 
-            // Ipactual
-            // 
-            this.Ipactual.HeaderText = "IP Actual";
-            this.Ipactual.Name = "Ipactual";
-            // 
-            // NombreNotaria
-            // 
-            this.NombreNotaria.HeaderText = "Nombre Notaría";
-            this.NombreNotaria.Name = "NombreNotaria";
-            // 
-            // IPCentralita
-            // 
-            this.IPCentralita.HeaderText = "IP Centralita";
-            this.IPCentralita.Name = "IPCentralita";
-            // 
-            // Mascarared
-            // 
-            this.Mascarared.HeaderText = "Máscara red";
-            this.Mascarared.Name = "Mascarared";
-            // 
-            // PuertaEnlace
-            // 
-            this.PuertaEnlace.HeaderText = "Puerta Enlace";
-            this.PuertaEnlace.Name = "PuertaEnlace";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 622);
+            this.ClientSize = new System.Drawing.Size(1367, 622);
             this.Controls.Add(this.checkNotariaManual);
             this.Controls.Add(this.puertaenlacenotaria);
             this.Controls.Add(this.label10);
@@ -683,11 +685,11 @@
             this.Controls.Add(this.gridtelefonosaconfigurar);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numerototal);
             this.Controls.Add(this.radioManual);
             this.Controls.Add(this.radioAutomatica);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.numeroactual);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnreconfigurartlf);
             this.Controls.Add(this.btnnuevoext);
@@ -696,8 +698,8 @@
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.buscadornotaria);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBartotal);
+            this.Controls.Add(this.progressBartlf);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label1);
@@ -716,10 +718,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar progressBartlf;
+        private System.Windows.Forms.ProgressBar progressBartotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label label5;
@@ -727,11 +728,11 @@
         private System.Windows.Forms.Button btnnuevoext;
         private System.Windows.Forms.Button btnreconfigurartlf;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label numeroactual;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioAutomatica;
         private System.Windows.Forms.RadioButton radioManual;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label numerototal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox listamodelo;
         private System.Windows.Forms.Label textomodelotelefonos;
@@ -775,6 +776,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
+        public System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

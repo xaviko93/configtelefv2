@@ -41,15 +41,23 @@ namespace configurador_tlf_V2
 
         private void btnSeleccionarNotaria_Click(object sender, EventArgs e)
         {
-            Form1 pantallaprincipal = Owner as Form1;
-            pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
-            pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
-            pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-            pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
-            int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
-            pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
-            pantallaprincipal.cargarextensiones();
-            this.Close();
+            try
+            {
+                Form1 pantallaprincipal = Owner as Form1;
+                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
+                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
+                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
+                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
+                int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
+                pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
+                pantallaprincipal.cargarextensiones();
+                this.Close();
+            } catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("No has seleccionado ninguna Notaría", "Advertencia");
+                this.Close();
+            }
+
         }
     }
 }

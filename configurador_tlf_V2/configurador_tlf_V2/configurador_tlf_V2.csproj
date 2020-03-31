@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TELEFONOS\YEALINKT27G.cs" />
     <EmbeddedResource Include="BuscarNotaria.resx">
       <DependentUpon>BuscarNotaria.cs</DependentUpon>
     </EmbeddedResource>

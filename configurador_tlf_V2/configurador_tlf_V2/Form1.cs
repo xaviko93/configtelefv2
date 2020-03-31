@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace configurador_tlf_V2
@@ -21,6 +22,7 @@ namespace configurador_tlf_V2
         public int contadorext;
         public int ultimocachonumeroaconfig;
         public int idnotariaseleccionada;
+        public String extensionprimerastring;
 
         public Form1()
         {
@@ -94,7 +96,20 @@ namespace configurador_tlf_V2
 
                 puertadeenlaceinput.Text = puertaenlacenotaria.Text.ToString();
 
-            
+            try
+            {
+                     
+            gridextensiones.Columns.Remove("Extension");
+            gridextensiones.Columns.Remove("IP Telefono");
+            gridextensiones.Columns.Remove("Alias");
+            gridextensiones.Columns.Remove("Nombre Notaria");
+            gridextensiones.Columns.Remove("IP Centralita");
+            gridextensiones.Columns.Remove("Mascara de red");
+            gridextensiones.Columns.Remove("Puerta de enlace");
+            }
+            catch { }
+
+
             MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Modelo, NomNotaria FROM telefonos WHERE IDNotaria ='" + idnotariaseleccionada + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
@@ -189,28 +204,32 @@ namespace configurador_tlf_V2
                 
             if (checkNotariaManual.Checked == true)
             {
-                gridextensiones.Columns.Add("Column", "Extension");
-                gridextensiones.Columns.Add("Column", "IP Telefono");
-                gridextensiones.Columns.Add("Column", "Alias");
-                gridextensiones.Columns.Add("Column", "Nombre Notaria");
-                gridextensiones.Columns.Add("Column", "IP Centralita");
-                gridextensiones.Columns.Add("Column", "Mascara de red");
-                gridextensiones.Columns.Add("Column", "Puerta de enlace");
+                gridextensiones.Columns.Add("Extension", "Extension");
+                gridextensiones.Columns.Add("IP Telefono", "IP Telefono");
+                gridextensiones.Columns.Add("Alias", "Alias");
+                gridextensiones.Columns.Add("Nombre Notaria", "Nombre Notaria");
+                gridextensiones.Columns.Add("IP Centralita", "IP Centralita");
+                gridextensiones.Columns.Add("Mascara de red", "Mascara de red");
+                gridextensiones.Columns.Add("Puerta de enlace", "Puerta de enlace");
 
-                gridextensiones.Rows.Add("", "", "", buscadornotaria.Text.ToString(), ipcentralitanotaria.Text.ToString(), mascararednotaria.Text.ToString(), puertadeenlaceinput.Text.ToString());
+                gridextensiones.Rows.Add("", "", "", buscadornotaria.Text.ToString(), ipcentralitanotaria.Text.ToString(), mascararednotaria.Text.ToString(), puertaenlacenotaria.Text.ToString());
 
                 ipcentralitainput.Text = ipcentralitanotaria.Text.ToString();
                 mascararedinput.Text = mascararednotaria.Text.ToString();
-                puertadeenlaceinput.Text = puertadeenlaceinput.Text.ToString();
+                puertadeenlaceinput.Text = puertaenlacenotaria.Text.ToString();
 
 
             } else
             {
                 int numerototalext = gridextensiones.SelectedRows.Count;
-                String extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
-                extensionocupada = Int32.Parse(extensionprimerastring);
-                int contadorext = Int32.Parse(extensionprimerastring);
-                contadorintentos = 1;
+                try
+                {
+                    extensionprimerastring = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                    extensionocupada = Int32.Parse(extensionprimerastring);
+                    int contadorext = Int32.Parse(extensionprimerastring);
+
+                
+         
 
                 while (contadorext == extensionocupada)
                 {
@@ -239,6 +258,20 @@ namespace configurador_tlf_V2
                 dt.Rows.Add(row2);
                 gridextensiones.DataSource = dt;
                 this.gridextensiones.Sort(this.gridextensiones.Columns["Extension"], System.ComponentModel.ListSortDirection.Ascending);
+
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    MessageBox.Show("Debes introducir una notaría para poder añadir extensiones. Si no quieres seleccionar ninguna Notaría de la lista marca el check Notaría manual", "Falta notaría");
+                }
+                catch (System.NullReferenceException)
+                {
+                    MessageBox.Show("Debes introducir una notaría para poder añadir extensiones. Si no quieres seleccionar ninguna Notaría de la lista marca el check Notaría manual", "Falta notaría");
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Debes introducir una notaría para poder añadir extensiones. Si no quieres seleccionar ninguna Notaría de la lista marca el check Notaría manual", "Falta notaría");
+                }
             }
 
 
@@ -340,6 +373,8 @@ namespace configurador_tlf_V2
                         ultimocachonumeroaconfig++;
                         ipaconfigurartexto = ultimocachoipaconfnigurar[0] + "." + ultimocachoipaconfnigurar[1] + "." + ultimocachoipaconfnigurar[2] + "." + ultimocachonumeroaconfig;
                     }
+
+                btnconfigurar.Enabled = true;
                 }
 
             if (radioManual.Checked == true)
@@ -369,7 +404,7 @@ namespace configurador_tlf_V2
 
                 gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, iptlf, ipaconfigurartlf, modelotlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf);
 
-
+                btnconfigurar.Enabled = true;
             }
         }
 
@@ -431,5 +466,46 @@ namespace configurador_tlf_V2
             webBrowser1.Navigate("http://" + ipactualinput.Text);
         }
 
+        public void btnconfigurar_Click(object sender, EventArgs e)
+        {
+            label1.Visible = true;
+            label2.Visible = true;
+            progressBartlf.Visible = true;
+            progressBartotal.Visible = true;
+            numeroactual.Visible = true;
+            numerototal.Visible = true;
+
+            configurart27g();
+            MessageBox.Show("Terminado");
+        }
+
+        public void configurart27g()
+        {
+
+            int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
+            for (int i = 0; i < totalfilas; i++)
+            {
+
+
+                String extensiontelefono = gridtelefonosaconfigurar.Rows[i].Cells[0].Value.ToString();
+                String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
+                String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
+                String ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
+                String nombrenotariatelefono = gridtelefonosaconfigurar.Rows[i].Cells[4].Value.ToString();
+                String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[5].Value.ToString();
+                String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
+                String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
+                String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
+
+                TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
+                T27G.configuraciongeneral(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);                
+                MessageBox.Show("Terminado");
+
+            }
+
+            
+
+           
+        }
     }
 }
