@@ -23,6 +23,7 @@ namespace configurador_tlf_V2
         public int ultimocachonumeroaconfig;
         public int idnotariaseleccionada;
         public String extensionprimerastring;
+        public bool IsReady = true;
 
         public Form1()
         {
@@ -62,11 +63,6 @@ namespace configurador_tlf_V2
         MySqlConnection Conexion = new MySqlConnection("server=remotemysql.com; database=wWWHH1xcMX; Uid=wWWHH1xcMX; pwd=MmxyP2R8ey");
         DataSet ds;
         DataSet ds2;
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -475,11 +471,10 @@ namespace configurador_tlf_V2
             numeroactual.Visible = true;
             numerototal.Visible = true;
 
-            configurart27g();
-            MessageBox.Show("Terminado");
+            configurart27gAsync();
         }
 
-        public void configurart27g()
+        public async Task configurart27gAsync()
         {
 
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
@@ -498,14 +493,22 @@ namespace configurador_tlf_V2
                 String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
 
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
-                T27G.configuraciongeneral(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);                
-                MessageBox.Show("Terminado");
+
+                await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
+                await T27G.limpiarextensiones(ipactualtelefono, webBrowser1);
+                MessageBox.Show("Terminado con ext limpias");
+
 
             }
 
             
 
            
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            esperacargadatos.Value = 1;
         }
     }
 }

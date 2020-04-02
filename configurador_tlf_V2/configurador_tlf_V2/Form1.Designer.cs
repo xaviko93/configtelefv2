@@ -88,10 +88,12 @@
             this.puertaenlacenotaria = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkNotariaManual = new System.Windows.Forms.CheckBox();
+            this.esperacargadatos = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridtelefonosaconfigurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.esperacargadatos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -664,11 +666,21 @@
             this.checkNotariaManual.UseVisualStyleBackColor = true;
             this.checkNotariaManual.CheckedChanged += new System.EventHandler(this.checkNotariaManual_CheckedChanged);
             // 
+            // esperacargadatos
+            // 
+            this.esperacargadatos.Enabled = false;
+            this.esperacargadatos.Location = new System.Drawing.Point(1319, 545);
+            this.esperacargadatos.Name = "esperacargadatos";
+            this.esperacargadatos.Size = new System.Drawing.Size(35, 20);
+            this.esperacargadatos.TabIndex = 45;
+            this.esperacargadatos.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
+            this.Controls.Add(this.esperacargadatos);
             this.Controls.Add(this.checkNotariaManual);
             this.Controls.Add(this.puertaenlacenotaria);
             this.Controls.Add(this.label10);
@@ -710,6 +722,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridtelefonosaconfigurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.esperacargadatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -777,6 +790,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
         public System.Windows.Forms.WebBrowser webBrowser1;
+        public System.Windows.Forms.NumericUpDown esperacargadatos;
     }
 }
 
