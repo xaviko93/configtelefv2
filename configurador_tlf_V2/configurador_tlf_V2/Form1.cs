@@ -482,7 +482,7 @@ namespace configurador_tlf_V2
             {
 
 
-                String extensiontelefono = gridtelefonosaconfigurar.Rows[i].Cells[0].Value.ToString();
+                int extensiontelefono = (int)gridtelefonosaconfigurar.Rows[i].Cells[0].Value;
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
                 String ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
@@ -495,8 +495,8 @@ namespace configurador_tlf_V2
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
 
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
-                await T27G.limpiarextensiones(ipactualtelefono, webBrowser1);
-                MessageBox.Show("Terminado con ext limpias");
+                await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+                
 
 
             }
