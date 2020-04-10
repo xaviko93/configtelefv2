@@ -308,7 +308,7 @@ namespace configurador_tlf_V2
                 contadorintentos = 1;
 
                 int contadorintentosbien = contadorext - 2;
-                String iplibreext = gridextensiones.Rows[0].Cells[1].Value.ToString();
+                String iplibreext = gridextensiones.Rows[0].Cells[1].Value.ToString().Trim(' ');
                 string[] ultimocachoip = iplibreext.Split('.');
                 int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
                 string ipaconfigurartexto = ipactualinput.Text.ToString();
@@ -343,10 +343,10 @@ namespace configurador_tlf_V2
                     string ipaasignaraext = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero;
 
 
-                        nombrenotariaext = buscadornotaria.Text.ToString();
-                        ipcentralitaext = ipcentralitanotaria.Text.ToString();
-                        mascaraext = mascararednotaria.Text.ToString();
-                        puertaenlaceext = puertaenlacenotaria.Text.ToString();
+                    nombrenotariaext = buscadornotaria.Text.ToString();
+                    ipcentralitaext = ipcentralitanotaria.Text.ToString().Trim(' ');
+                    mascaraext = mascararednotaria.Text.ToString().Trim(' ');
+                    puertaenlaceext = puertaenlacenotaria.Text.ToString().Trim(' ');
 
                     if (ipaconfigurartexto == "")
                     {
@@ -360,7 +360,7 @@ namespace configurador_tlf_V2
                         break;
                     }
 
-                    String modelotlf = listamodelo.SelectedItem.ToString();
+                    String modelotlf = listamodelo.SelectedItem.ToString().Trim(' ');
                     gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext, modelotlf);
                     contadorext++;
                     ultimocachonumero++;
@@ -379,26 +379,26 @@ namespace configurador_tlf_V2
 
 
 
-                String extensiontlf = extensioninput.Text.ToString();
+                int extensiontlf = Convert.ToInt32(extensioninput.Text);
                 String aliastlf = aliasinput.Text.ToString();
-                String iptlf = ipactualinput.Text.ToString();
-                String ipaconfigurartlf = ipaonfigurarinput.Text.ToString();
+                String iptlf = ipactualinput.Text.ToString().Trim(' ');
+                String ipaconfigurartlf = ipaonfigurarinput.Text.ToString().Trim(' ');
                 String modelotlf = listamodelo.SelectedItem.ToString();
-                String ipcentralitatlf = ipcentralitainput.Text.ToString();
-                String mascaratlf = mascararedinput.Text.ToString();
-                String puertatlf = puertadeenlaceinput.Text.ToString();
+                String ipcentralitatlf = ipcentralitainput.Text.ToString().Trim(' ');
+                String mascaratlf = mascararedinput.Text.ToString().Trim(' ');
+                String puertatlf = puertadeenlaceinput.Text.ToString().Trim(' ');
 
                 if (aliasinput.Text.ToString() == "")
                 {
                     aliastlf = extensioninput.Text.ToString();
                 }
 
-                if (nombrenotariaext == "" || extensiontlf == "" || iptlf == "" || puertaenlaceext == "" || ipaconfigurartlf == "" || modelotlf == "" || ipcentralitatlf == "" || mascaratlf == "" || puertatlf == "")
+                if (nombrenotariaext == "" || extensiontlf.ToString() == "" || iptlf == "" || puertaenlaceext == "" || ipaconfigurartlf == "" || modelotlf == "" || ipcentralitatlf == "" || mascaratlf == "" || puertatlf == "")
                 {
                     MessageBox.Show("Hay campos vacíos, revisa los datos introducidos introducidos en el cuadro de teléfonos", "Datos incompletos");
                 }
 
-                gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, iptlf, ipaconfigurartlf, modelotlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf);
+                gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, ipaconfigurartlf, iptlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf, modelotlf);
 
                 btnconfigurar.Enabled = true;
             }
@@ -472,13 +472,16 @@ namespace configurador_tlf_V2
             numerototal.Visible = true;
 
             configurart27gAsync();
+
+
         }
 
         public async Task configurart27gAsync()
         {
 
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
-            for (int i = 0; i < totalfilas; i++)
+            
+            for (int i = 0; i <= totalfilas; i++)
             {
 
 
@@ -496,19 +499,18 @@ namespace configurador_tlf_V2
 
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
                 await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+                await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+
                 
 
 
             }
 
-            
+            MessageBox.Show("Terminado");
 
-           
-        }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            esperacargadatos.Value = 1;
+
+
         }
     }
 }
