@@ -121,7 +121,6 @@ namespace configurador_tlf_V2.TELEFONOS
             int h;
             int j;
             int k;
-            int numerotlfaconfigurar = gridtelefonos.Rows.Count - 1;
             int numeroextaconfigurar = gridextensiones.Rows.Count - 1;
             columnabuscar = 0;
 
@@ -226,71 +225,196 @@ namespace configurador_tlf_V2.TELEFONOS
                 webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
                 webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
             }
-             
+
+            columnabuscar = contadortelefonos2;
+
             await cargapagina();
             webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
             await cargagrande();
         }
 
 
-
-        /*
-        //CONFIGURA LAS EXTENSIONES DE LOS TELEFONOS QUE ESTÁS CONFIGURANDO JUNTO A ESTE
-            columnabuscar = 0;
-            int progresoblf2 = j + 1;
-            for (k = 1; k <= numerotlfaconfigurar; k++)
-            {
-
-                int extensiontelefono = (int)gridtelefonos.Rows[columnabuscar].Cells[0].Value;
-                String aliastelefono = gridtelefonos.Rows[columnabuscar].Cells[1].Value.ToString();
-
-                await cargapagina();
-
-                if (progresoblf2 == 8)
-                {
-                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                    await cargagrande();
-                    webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
-                    await cargapagina();
-                }
-
-                if (progresoblf2 == 15)
-                {
-                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                    await cargagrande();
-                    webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
-                    await cargapagina();
-                }
-
-                if (extensionaomitir != extensiontelefono)
-                {
-
-                    webBrowser1.Document.GetElementById("type_" + progresoblf2).SetAttribute("value", "16");
-                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-
-                    await cargagrande();
-
-                    webBrowser1.Document.GetElementById("value_" + progresoblf2).SetAttribute("value", extensiontelefono.ToString());
-                    webBrowser1.Document.GetElementById("label_" + progresoblf2).SetAttribute("value", aliastelefono);
-                    webBrowser1.Document.GetElementById("line_" + progresoblf2).SetAttribute("value", "0");
-                    webBrowser1.Document.GetElementById("extern_" + progresoblf2).SetAttribute("value", extensiontelefono.ToString());
-                    progresoblf2++;
-                }
-
+        public async Task configurarextensionestlfaconfigurar(String ipactual, WebBrowser webBrowser1, DataGridView gridextensiones, DataGridView gridtelefonos, int extensionaomitir)
+        {
+            int numerotlfaconfigurar = gridtelefonos.Rows.Count - 1;
+            int numeroextaconfigurar = gridextensiones.Rows.Count - 1;
+            int progresoextensiones = gridextensiones.Rows.Count;
             columnabuscar++;
+            if (numerotlfaconfigurar > 1)
+            {
+                int j;
+                for(j = 1; j < numeroextaconfigurar; j++)
+                {
+                    if (columnabuscar != 8, 16)
+                    {
+                        for (j = 0; j < 7; j++)
+                        {
+                            webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
 
+                        }
+
+                        await cargapagina();
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+
+                        for (j = 0; j < 7; j++)
+                        {
+                            int numfila = j + 1;
+                            String extensiontelefono = gridextensiones.Rows[j].Cells[0].Value.ToString();
+                            String aliastelefono = gridextensiones.Rows[j].Cells[2].Value.ToString();
+                            webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                            webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
+                            webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
+                            webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                            columnabuscar++;
+                        }
+
+                        await cargapagina();
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+
+                    }
+
+                    if (numeroextaconfigurar > 7)
+                    {
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
+                        await cargapagina();
+                    }
+
+
+                    if (numeroextaconfigurar >= 14)
+                    {
+                        for (j = 7; j < 14; j++)
+                        {
+                            int numfila = j + 1;
+                            webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
+
+                        }
+
+                        await cargapagina();
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+
+                        for (j = 7; j < 14; j++)
+                        {
+                            int numfila = j + 1;
+                            String extensiontelefono = gridextensiones.Rows[j].Cells[0].Value.ToString();
+                            String aliastelefono = gridextensiones.Rows[j].Cells[2].Value.ToString();
+                            webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                            webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
+                            webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
+                            webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                            columnabuscar++;
+                        }
+
+                        await cargapagina();
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+                    }
+
+
+                    if (numeroextaconfigurar > 14)
+                    {
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
+                        await cargapagina();
+                    }
+
+                    int contadortelefonos2;
+
+                    for (contadortelefonos2 = columnabuscar; contadortelefonos2 < numeroextaconfigurar; contadortelefonos2++)
+                    {
+                        int numlinea = contadortelefonos2 + 1;
+                        webBrowser1.Document.GetElementById("type_" + numlinea).SetAttribute("value", "16");
+
+                    }
+
+                    await cargapagina();
+                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                    await cargagrande();
+
+
+
+
+                    for (contadortelefonos2 = columnabuscar; contadortelefonos2 < numeroextaconfigurar; contadortelefonos2++)
+                    {
+                        int numfila = contadortelefonos2 + 1;
+                        String extensiontelefono = gridextensiones.Rows[contadortelefonos2].Cells[0].Value.ToString();
+                        String aliastelefono = gridextensiones.Rows[contadortelefonos2].Cells[2].Value.ToString();
+                        webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                        webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
+                        webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
+                        webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                    }
+
+                    columnabuscar = contadortelefonos2;
+
+                    await cargapagina();
+                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                    await cargagrande();
+
+
+                    progresoextensiones++;
+                }
             }
 
-        await cargagrande();
-        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+        }
+            /*
+            //CONFIGURA LAS EXTENSIONES DE LOS TELEFONOS QUE ESTÁS CONFIGURANDO JUNTO A ESTE
+                columnabuscar = 0;
+                int progresoblf2 = j + 1;
+                for (k = 1; k <= numerotlfaconfigurar; k++)
+                {
 
-*/
+                    int extensiontelefono = (int)gridtelefonos.Rows[columnabuscar].Cells[0].Value;
+                    String aliastelefono = gridtelefonos.Rows[columnabuscar].Cells[1].Value.ToString();
+
+                    await cargapagina();
+
+                    if (progresoblf2 == 8)
+                    {
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
+                        await cargapagina();
+                    }
+
+                    if (progresoblf2 == 15)
+                    {
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+                        await cargagrande();
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
+                        await cargapagina();
+                    }
+
+                    if (extensionaomitir != extensiontelefono)
+                    {
+
+                        webBrowser1.Document.GetElementById("type_" + progresoblf2).SetAttribute("value", "16");
+                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+
+                        await cargagrande();
+
+                        webBrowser1.Document.GetElementById("value_" + progresoblf2).SetAttribute("value", extensiontelefono.ToString());
+                        webBrowser1.Document.GetElementById("label_" + progresoblf2).SetAttribute("value", aliastelefono);
+                        webBrowser1.Document.GetElementById("line_" + progresoblf2).SetAttribute("value", "0");
+                        webBrowser1.Document.GetElementById("extern_" + progresoblf2).SetAttribute("value", extensiontelefono.ToString());
+                        progresoblf2++;
+                    }
+
+                columnabuscar++;
+
+                }
+
+            await cargagrande();
+            webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+
+    */
 
 
 
 
 
-        public async Task configurarred(String ipactual, WebBrowser webBrowser, String ipaconfigurar2, String mascaraaconfigurar2, String puertaaconfigurar2)
+            public async Task configurarred(String ipactual, WebBrowser webBrowser, String ipaconfigurar2, String mascaraaconfigurar2, String puertaaconfigurar2)
         {
             await cargagrande();
             webBrowser.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=network&q=load");
