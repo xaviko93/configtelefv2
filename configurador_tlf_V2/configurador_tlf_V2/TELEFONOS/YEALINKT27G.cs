@@ -88,7 +88,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
             await cargapagina();
 
-            for (int l = 1; l <= 21; l++)
+            for (int l = 1; l < 22; l++)
             {
 
                 webBrowser1.Document.GetElementById("value_" + l).SetAttribute("value", "1");
@@ -114,7 +114,8 @@ namespace configurador_tlf_V2.TELEFONOS
                 }
             }
 
-
+            webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
+            await cargagrande();
 
             //CONFIGURANDO EXTENSIONES
 
@@ -307,7 +308,20 @@ namespace configurador_tlf_V2.TELEFONOS
                 {
                     if ( limitepaginactual == 8)
                     {
-                        limitepaginactual = 15;
+                        int numerotlfextaconfigurar = gridtelefonos.Rows.Count - 1;
+                        if (numerotlfextaconfigurar - recuentotelefonos < 7)
+                        {
+                            limitepaginactual = 8 + numerotlfextaconfigurar - recuentotelefonos;
+                        }
+                        else
+                        {
+                            limitepaginactual = 15;
+                        }
+
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
+                        await cargapagina();
+
+                        MessageBox.Show(limitepaginactual.ToString());
 
                         recuentotelefonos2 = recuentotelefonos;
                         int columnaseleccionadaparte2 = 8;
@@ -346,7 +360,7 @@ namespace configurador_tlf_V2.TELEFONOS
                             columnaseleccionada4--;
                             recuentotelefonos++;
                         }
-
+                        columnaseleccionada4++;
                         await cargapagina();
                         webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
                         await cargagrande();
@@ -359,8 +373,17 @@ namespace configurador_tlf_V2.TELEFONOS
                 {
                     if (limitepaginactual == 15)
                     {
-                        limitepaginactual = 21;
-
+                        int numerotlfextaconfigurar = gridtelefonos.Rows.Count - 1;
+                        if (numerotlfextaconfigurar - recuentotelefonos < 7)
+                        {
+                            limitepaginactual = 15 + numerotlfextaconfigurar - recuentotelefonos;
+                        } else
+                        {
+                            limitepaginactual = 21;
+                        }
+                        
+                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
+                        await cargapagina();
                         recuentotelefonos2 = recuentotelefonos;
                         int columnaseleccionadaparte2 = 15;
                         for (columnaseleccionada = 15; columnaseleccionada < limitepaginactual; columnaseleccionada++)
