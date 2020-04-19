@@ -321,7 +321,6 @@ namespace configurador_tlf_V2
                     MessageBox.Show("Revisa el campo de texto IP Actual Es posible que la IP no esté introducida en el formato correcto");
                     
                 }
-                
 
                 for (int i = 1; i <= cantidadtlfaconfigurar; i++)
                 {
@@ -499,6 +498,7 @@ namespace configurador_tlf_V2
 
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
                 await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+                await T27G.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
                 await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
 
                 
