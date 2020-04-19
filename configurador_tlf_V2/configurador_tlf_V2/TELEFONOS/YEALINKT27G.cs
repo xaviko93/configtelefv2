@@ -11,6 +11,8 @@ namespace configurador_tlf_V2.TELEFONOS
         public int columnabuscar;
         public int limitepaginactual;
         public int recuentotelefonos = 0;
+        public int recuentotelefonos2;
+        public int columnaseleccionada;
         public async Task configuraciongeneralAsync(String ipactual, int extension, String alias, String ipcentralita, WebBrowser webBrowser1)
         {
 
@@ -254,15 +256,21 @@ namespace configurador_tlf_V2.TELEFONOS
                 if (columnabuscar > 7 && columnabuscar < 15)
                 {
                     limitepaginactual = 15;
+                    webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
+                    await cargapagina();
                 }
 
                 if (columnabuscar > 14)
                 {
                     limitepaginactual = 22;
+                    webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
+                    await cargapagina();
                 }
 
-                int columnaseleccionada;
-                int recuentotelefonos2 = recuentotelefonos;
+                int columnaaomitir = columnabuscar;
+                if (columnaaomitir != 8 && columnaaomitir != 15) { 
+
+                recuentotelefonos2 = recuentotelefonos;
                 int columnaseleccionadaparte = columnabuscar;
                 for (columnaseleccionada = columnabuscar; columnaseleccionada <= limitepaginactual; columnaseleccionada++)
                 {
@@ -304,9 +312,13 @@ namespace configurador_tlf_V2.TELEFONOS
                 webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
                 await cargagrande();
 
+                    limitepaginactual = limitepaginactual + 7;
+
+                }
+
                 if (recuentotelefonos < numerotlfaconfigurar)
                 {
-                    if ( limitepaginactual == 8)
+                    if ( limitepaginactual == 15)
                     {
                         int numerotlfextaconfigurar = gridtelefonos.Rows.Count - 1;
                         if (numerotlfextaconfigurar - recuentotelefonos < 7)
@@ -371,7 +383,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
                 if (recuentotelefonos < numerotlfaconfigurar)
                 {
-                    if (limitepaginactual == 15)
+                    if (limitepaginactual == 22)
                     {
                         int numerotlfextaconfigurar = gridtelefonos.Rows.Count - 1;
                         if (numerotlfextaconfigurar - recuentotelefonos < 7)
@@ -407,6 +419,7 @@ namespace configurador_tlf_V2.TELEFONOS
                         await cargagrande();
 
                         int columnaseleccionada4;
+                        int columnaseleccionada5 = 15;
                         for (columnaseleccionada4 = 15; columnaseleccionada4 < limitepaginactual; columnaseleccionada4++)
                         {
                             String extensiontelefono = gridtelefonos.Rows[recuentotelefonos].Cells[0].Value.ToString();
@@ -415,13 +428,12 @@ namespace configurador_tlf_V2.TELEFONOS
 
                             if (extensiontelefononumero != extensionaomitir)
                             {
-                                webBrowser1.Document.GetElementById("value_" + columnaseleccionada4).SetAttribute("value", extensiontelefono.ToString());
-                                webBrowser1.Document.GetElementById("label_" + columnaseleccionada4).SetAttribute("value", aliastelefono);
-                                webBrowser1.Document.GetElementById("line_" + columnaseleccionada4).SetAttribute("value", "0");
-                                webBrowser1.Document.GetElementById("extern_" + columnaseleccionada4).SetAttribute("value", extensiontelefono.ToString());
-                                columnaseleccionada4++;
+                                webBrowser1.Document.GetElementById("value_" + columnaseleccionada5).SetAttribute("value", extensiontelefono.ToString());
+                                webBrowser1.Document.GetElementById("label_" + columnaseleccionada5).SetAttribute("value", aliastelefono);
+                                webBrowser1.Document.GetElementById("line_" + columnaseleccionada5).SetAttribute("value", "0");
+                                webBrowser1.Document.GetElementById("extern_" + columnaseleccionada5).SetAttribute("value", extensiontelefono.ToString());
+                                columnaseleccionada5++;
                             }
-                            columnaseleccionada4--;
                             recuentotelefonos++;
                         }
 
