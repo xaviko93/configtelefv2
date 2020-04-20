@@ -480,7 +480,7 @@ namespace configurador_tlf_V2
 
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
             
-            for (int i = 0; i <= totalfilas; i++)
+            for (int i = 0; i < totalfilas; i++)
             {
 
 
