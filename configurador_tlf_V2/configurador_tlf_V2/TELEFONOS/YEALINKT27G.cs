@@ -222,8 +222,8 @@ namespace configurador_tlf_V2.TELEFONOS
             for (contadorextaparte2 = contadorextensiones; contadorextaparte2 < numextensiones; contadorextaparte2++)
             {
                 numfila = contadorextaparte2 + 1;
-                String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
-                String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
+                String extensiontelefono = gridextensiones.Rows[contadorextaparte2].Cells[0].Value.ToString();
+                String aliastelefono = gridextensiones.Rows[contadorextaparte2].Cells[2].Value.ToString();
                 webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
                 webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
                 webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
@@ -246,7 +246,7 @@ namespace configurador_tlf_V2.TELEFONOS
             numextensionesdetlf = gridtelefonos.Rows.Count - 1;
             numtotalaconfig = numextensionesdetlf + numextensiones;
 
-            if (contadorextensiones < 7)
+            if (contadorextensiones > 7)
             {
                 int contadorextactual;
                 contadorextactual = contadorextensiones;
@@ -311,7 +311,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
             
 
-                if (contadorextensiones < 14)
+                if (contadorextensiones > 14)
                 {
                     int contadorextactual = contadorextensiones;
                     numfila = contadorextactual + 1;

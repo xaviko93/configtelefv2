@@ -463,6 +463,7 @@ namespace configurador_tlf_V2
 
         public void btnconfigurar_Click(object sender, EventArgs e)
         {
+            label7.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
             progressBartlf.Visible = true;
@@ -470,47 +471,46 @@ namespace configurador_tlf_V2
             numeroactual.Visible = true;
             numerototal.Visible = true;
 
-            configurart27gAsync();
-
-
+            configuradordetelefonos();
         }
 
-        public async Task configurart27gAsync()
+        public async Task configuradordetelefonos()
         {
-
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
-            
+
             for (int i = 0; i < totalfilas; i++)
             {
-
-
                 int extensiontelefono = (int)gridtelefonosaconfigurar.Rows[i].Cells[0].Value;
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
                 String ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
-                String nombrenotariatelefono = gridtelefonosaconfigurar.Rows[i].Cells[4].Value.ToString();
                 String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[5].Value.ToString();
                 String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
                 String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
                 String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
 
+                switch (modelotelefonoaconfigurar)
+                {
+                    case "YEALINK T27G":
+                        await configurart27gAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+                        break;
+
+                    case "YEALINK T23G":
+                        break;
+                }
+            }
+            MessageBox.Show("Configuración terminada");
+        }
+
+
+        public async Task configurart27gAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
+        {
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
 
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
                 await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
                 await T27G.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
                 await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
-
-                
-
-
-            }
-
-            MessageBox.Show("Terminado");
-
-
-
-
         }
     }
 }
