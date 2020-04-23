@@ -246,13 +246,13 @@ namespace configurador_tlf_V2.TELEFONOS
             numextensionesdetlf = gridtelefonos.Rows.Count - 1;
             numtotalaconfig = numextensionesdetlf + numextensiones;
 
-            if (contadorextensiones > 7)
+            if (contadorextensiones < 7)
             {
                 int contadorextactual;
                 contadorextactual = contadorextensiones;
                 numfila = contadorextactual + 1;
                 int numlineatemp = numlineatlf;
-                    for (contadorextactual = contadorextensiones; contadorextactual < 7; contadorextactual++)
+                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
                     {
                         String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
                     numlineatemp++;
@@ -275,7 +275,7 @@ namespace configurador_tlf_V2.TELEFONOS
                 contadorextactual = contadorextensiones;
                 numlineatemp = numlineatlf;
                 numfila = contadorextactual + 1;
-                    for (contadorextactual = contadorextensiones; contadorextactual < 7; contadorextactual++)
+                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
                     {
 
 
@@ -311,12 +311,12 @@ namespace configurador_tlf_V2.TELEFONOS
 
             
 
-                if (contadorextensiones > 14)
+                if (contadorextensiones < 14)
                 {
                     int contadorextactual = contadorextensiones;
                     numfila = contadorextactual + 1;
                     int numlineatemp = numlineatlf;
-                    for (contadorextactual = contadorextensiones; contadorextactual < 14; contadorextactual++)
+                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
                         {
                             String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
                             numlineatemp++;
@@ -339,7 +339,7 @@ namespace configurador_tlf_V2.TELEFONOS
                 contadorextactual = contadorextensiones;
                 numlineatemp = numlineatlf;
                         numfila = contadorextactual + 1;
-                        for (contadorextactual = contadorextensiones; contadorextactual < 14; contadorextactual++)
+                        for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
                         {
 
 

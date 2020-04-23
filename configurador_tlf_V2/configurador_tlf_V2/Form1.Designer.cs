@@ -88,6 +88,10 @@
             this.puertaenlacenotaria = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkNotariaManual = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.aliasprogreso = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textoproceso = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -97,11 +101,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(757, 553);
+            this.label1.Location = new System.Drawing.Point(739, 553);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 43;
-            this.label1.Text = "Progreso teléfono:";
+            this.label1.Text = "PROGRESO TELÉFONO:";
             this.label1.Visible = false;
             // 
             // webBrowser1
@@ -115,11 +119,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1107, 553);
+            this.label2.Location = new System.Drawing.Point(1092, 553);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 44;
-            this.label2.Text = "Progreso total:";
+            this.label2.Text = "PROGRESO TOTAL:";
             this.label2.Visible = false;
             // 
             // progressBartlf
@@ -663,11 +667,59 @@
             this.checkNotariaManual.UseVisualStyleBackColor = true;
             this.checkNotariaManual.CheckedChanged += new System.EventHandler(this.checkNotariaManual_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(598, 553);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "TELÉFONO:";
+            this.label3.Visible = false;
+            // 
+            // aliasprogreso
+            // 
+            this.aliasprogreso.AutoSize = true;
+            this.aliasprogreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aliasprogreso.Location = new System.Drawing.Point(598, 574);
+            this.aliasprogreso.Name = "aliasprogreso";
+            this.aliasprogreso.Size = new System.Drawing.Size(42, 13);
+            this.aliasprogreso.TabIndex = 46;
+            this.aliasprogreso.Text = "ALIAS";
+            this.aliasprogreso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.aliasprogreso.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1258, 553);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(97, 13);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "CONFIGURANDO:";
+            this.label11.Visible = false;
+            // 
+            // textoproceso
+            // 
+            this.textoproceso.AutoSize = true;
+            this.textoproceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoproceso.Location = new System.Drawing.Point(1258, 574);
+            this.textoproceso.Name = "textoproceso";
+            this.textoproceso.Size = new System.Drawing.Size(66, 13);
+            this.textoproceso.TabIndex = 48;
+            this.textoproceso.Text = "PROCESO";
+            this.textoproceso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textoproceso.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
+            this.Controls.Add(this.textoproceso);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.aliasprogreso);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.checkNotariaManual);
             this.Controls.Add(this.puertaenlacenotaria);
             this.Controls.Add(this.label10);
@@ -776,6 +828,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
         public System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label aliasprogreso;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label textoproceso;
     }
 }
 

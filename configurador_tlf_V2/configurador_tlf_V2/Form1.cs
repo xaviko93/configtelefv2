@@ -463,6 +463,10 @@ namespace configurador_tlf_V2
 
         public void btnconfigurar_Click(object sender, EventArgs e)
         {
+            label11.Visible = true;
+            label3.Visible = true;
+            aliasprogreso.Visible = true;
+            textoproceso.Visible = true;
             label7.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
@@ -478,8 +482,14 @@ namespace configurador_tlf_V2
         {
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
 
+            progressBartotal.Maximum = totalfilas;
+            progressBartotal.Value = 0;
+            numerototal.Text = totalfilas.ToString();
+
             for (int i = 0; i < totalfilas; i++)
             {
+                int numerotelefonoactual = progressBartotal.Value + 1;
+                numeroactual.Text = numerotelefonoactual.ToString();
                 int extensiontelefono = (int)gridtelefonosaconfigurar.Rows[i].Cells[0].Value;
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
@@ -488,7 +498,7 @@ namespace configurador_tlf_V2
                 String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
                 String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
                 String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
-
+                aliasprogreso.Text = aliastelefono;
                 switch (modelotelefonoaconfigurar)
                 {
                     case "YEALINK T27G":
@@ -498,6 +508,7 @@ namespace configurador_tlf_V2
                     case "YEALINK T23G":
                         break;
                 }
+                progressBartotal.Value += 1;
             }
             MessageBox.Show("Configuración terminada");
         }
@@ -506,11 +517,20 @@ namespace configurador_tlf_V2
         public async Task configurart27gAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
         {
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
-
+                progressBartlf.Maximum = 4;
+                progressBartlf.Value = 0;
+                textoproceso.Text = "GENERAL";
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
+                progressBartlf.Value += 1;
+                textoproceso.Text = "EXTENSIONES";
                 await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+                progressBartlf.Value += 1;
                 await T27G.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+                progressBartlf.Value += 1;
+                textoproceso.Text = "RED";
                 await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+                progressBartlf.Value += 1;
+                textoproceso.Text = "TERMINADO";
         }
     }
 }
