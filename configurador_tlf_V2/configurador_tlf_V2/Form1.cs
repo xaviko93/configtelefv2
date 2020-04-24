@@ -24,6 +24,7 @@ namespace configurador_tlf_V2
         public int idnotariaseleccionada;
         public String extensionprimerastring;
         public bool IsReady = true;
+        public String ipactualtelefono;
 
         public Form1()
         {
@@ -458,7 +459,22 @@ namespace configurador_tlf_V2
 
         private void btnprobar_Click(object sender, EventArgs e)
         {
-            webBrowser1.Navigate("http://" + ipactualinput.Text);
+            try
+            {
+                foreach (DataGridViewRow row in gridtelefonosaconfigurar.SelectedRows)
+                {
+                   String iptelefonolinea = row.Cells[3].Value.ToString();
+                    ipaonfigurarinput.Text = iptelefonolinea;
+
+                    webBrowser1.Navigate("http://" + iptelefonolinea);
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+                webBrowser1.Navigate("http://" + ipactualinput.Text);
+            }
+
+            
         }
 
         public void btnconfigurar_Click(object sender, EventArgs e)
@@ -493,7 +509,7 @@ namespace configurador_tlf_V2
                 int extensiontelefono = (int)gridtelefonosaconfigurar.Rows[i].Cells[0].Value;
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
-                String ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
+                ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
                 String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[5].Value.ToString();
                 String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
                 String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
@@ -502,6 +518,10 @@ namespace configurador_tlf_V2
                 switch (modelotelefonoaconfigurar)
                 {
                     case "YEALINK T27G":
+                        if (checkmulticonfig.Checked == false)
+                        {
+                            await mensajerecordatorio();
+                        }
                         await configurart27gAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
                         break;
 
@@ -513,10 +533,15 @@ namespace configurador_tlf_V2
             MessageBox.Show("Configuración terminada");
         }
 
+        public async Task mensajerecordatorio()
+        {
+            MessageBox.Show("Asegúrate de tener el teléfono configurado en Español y conectado con la IP: " + ipactualtelefono, "Comprobación");
+        }
 
         public async Task configurart27gAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
         {
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
+                
                 progressBartlf.Maximum = 4;
                 progressBartlf.Value = 0;
                 textoproceso.Text = "GENERAL";
