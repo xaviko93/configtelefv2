@@ -55,7 +55,13 @@ namespace configurador_tlf_V2
             }
 
 
-
+            gridextensiones.Columns.Add("Extension", "Extension");
+            gridextensiones.Columns.Add("IP Telefono", "IP Telefono");
+            gridextensiones.Columns.Add("Alias", "Alias");
+            gridextensiones.Columns.Add("Nombre Notaria", "Nombre Notaria");
+            gridextensiones.Columns.Add("IP Centralita", "IP Centralita");
+            gridextensiones.Columns.Add("Mascara de red", "Mascara de red");
+            gridextensiones.Columns.Add("Puerta de enlace", "Puerta de enlace");
 
         }
 
@@ -201,13 +207,7 @@ namespace configurador_tlf_V2
                 
             if (checkNotariaManual.Checked == true)
             {
-                gridextensiones.Columns.Add("Extension", "Extension");
-                gridextensiones.Columns.Add("IP Telefono", "IP Telefono");
-                gridextensiones.Columns.Add("Alias", "Alias");
-                gridextensiones.Columns.Add("Nombre Notaria", "Nombre Notaria");
-                gridextensiones.Columns.Add("IP Centralita", "IP Centralita");
-                gridextensiones.Columns.Add("Mascara de red", "Mascara de red");
-                gridextensiones.Columns.Add("Puerta de enlace", "Puerta de enlace");
+
 
                 gridextensiones.Rows.Add("", "", "", buscadornotaria.Text.ToString(), ipcentralitanotaria.Text.ToString(), mascararednotaria.Text.ToString(), puertaenlacenotaria.Text.ToString());
 
