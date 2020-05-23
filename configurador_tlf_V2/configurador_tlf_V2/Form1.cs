@@ -67,7 +67,7 @@ namespace configurador_tlf_V2
 
 
 
-        MySqlConnection Conexion = new MySqlConnection("server=remotemysql.com; database=wWWHH1xcMX; Uid=wWWHH1xcMX; pwd=MmxyP2R8ey");
+        MySqlConnection Conexion = new MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");
         DataSet ds;
         DataSet ds2;
 
@@ -556,6 +556,11 @@ namespace configurador_tlf_V2
                 await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
                 progressBartlf.Value += 1;
                 textoproceso.Text = "TERMINADO";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

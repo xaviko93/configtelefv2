@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarNotaria));
             this.buscadortextonotaria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listabusquedanotarias = new System.Windows.Forms.ListView();
@@ -74,6 +75,7 @@
             this.listabusquedanotarias.TabIndex = 3;
             this.listabusquedanotarias.UseCompatibleStateImageBehavior = false;
             this.listabusquedanotarias.View = System.Windows.Forms.View.Details;
+            this.listabusquedanotarias.DoubleClick += new System.EventHandler(this.listabusquedanotarias_DoubleClick);
             // 
             // ID
             // 
@@ -129,6 +131,7 @@
             this.Controls.Add(this.listabusquedanotarias);
             this.Controls.Add(this.buscadortextonotaria);
             this.Controls.Add(this.label4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BuscarNotaria";
             this.Text = "Buscar Notaría";
             this.ResumeLayout(false);

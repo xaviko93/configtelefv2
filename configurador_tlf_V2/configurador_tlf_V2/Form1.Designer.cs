@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label2 = new System.Windows.Forms.Label();
@@ -203,12 +204,14 @@
             // 
             // btnreconfigurartlf
             // 
+            this.btnreconfigurartlf.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnreconfigurartlf.Location = new System.Drawing.Point(491, 174);
             this.btnreconfigurartlf.Name = "btnreconfigurartlf";
             this.btnreconfigurartlf.Size = new System.Drawing.Size(88, 23);
             this.btnreconfigurartlf.TabIndex = 10;
             this.btnreconfigurartlf.Text = "Reconfigurar";
             this.btnreconfigurartlf.UseVisualStyleBackColor = true;
+            this.btnreconfigurartlf.Visible = false;
             // 
             // button1
             // 
@@ -598,12 +601,14 @@
             // checkBox2
             // 
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBox2.Location = new System.Drawing.Point(490, 203);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(90, 52);
             this.checkBox2.TabIndex = 11;
             this.checkBox2.Text = "Reconfigurar notaría completa";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
             // 
             // ipcentralitanotaria
             // 
@@ -754,8 +759,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Configurador de teléfonos Notin";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -14,7 +14,7 @@ namespace configurador_tlf_V2
             InitializeComponent();
         }
 
-        MySqlConnection Conexion = new MySqlConnection("server=remotemysql.com; database=wWWHH1xcMX; Uid=wWWHH1xcMX; pwd=MmxyP2R8ey");
+        MySqlConnection Conexion = new MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");
 
         private void btnBuscarNotaria_Click(object sender, EventArgs e)
         {
@@ -58,6 +58,27 @@ namespace configurador_tlf_V2
                 this.Close();
             }
 
+        }
+
+        private void listabusquedanotarias_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Form1 pantallaprincipal = Owner as Form1;
+                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
+                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
+                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
+                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
+                int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
+                pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
+                pantallaprincipal.cargarextensiones();
+                this.Close();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("No has seleccionado ninguna Notaría", "Advertencia");
+                this.Close();
+            }
         }
     }
 }
