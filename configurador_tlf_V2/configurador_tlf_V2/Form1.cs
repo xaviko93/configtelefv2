@@ -21,7 +21,6 @@ namespace configurador_tlf_V2
         public String puertaenlaceext;
         public int contadorext;
         public int ultimocachonumeroaconfig;
-        public int idnotariaseleccionada;
         public String extensionprimerastring;
         public bool IsReady = true;
         public String ipactualtelefono;
@@ -113,7 +112,7 @@ namespace configurador_tlf_V2
             catch { }
 
 
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Modelo, NomNotaria FROM telefonos WHERE IDNotaria ='" + idnotariaseleccionada + "' ORDER BY Extension", Conexion);
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Modelo, NomNotaria FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
@@ -230,14 +229,14 @@ namespace configurador_tlf_V2
 
                 while (contadorext == extensionocupada)
                 {
-                    String extensionocupadastring = gridextensiones.Rows[contadorintentos].Cells[0].Value.ToString();
+                    String extensionocupadastring = gridextensiones.Rows[contadorintentos + 1].Cells[0].Value.ToString();
                     extensionocupada = Int32.Parse(extensionocupadastring);
                     contadorext++;
                     contadorintentos++;
                 }
 
                 int contadorintentosbien = contadorintentos - 2;
-                String iplibreext = gridextensiones.Rows[contadorintentosbien].Cells[1].Value.ToString();
+                String iplibreext = gridextensiones.Rows[contadorintentos].Cells[1].Value.ToString();
                 string[] ultimocachoip = iplibreext.Split('.');
                 int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
                 ultimocachonumero++;

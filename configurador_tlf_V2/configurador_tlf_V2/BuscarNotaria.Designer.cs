@@ -32,7 +32,6 @@
             this.buscadortextonotaria = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listabusquedanotarias = new System.Windows.Forms.ListView();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NombreNotaria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IPCentralita = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mascarared = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,7 +60,6 @@
             // 
             this.listabusquedanotarias.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.listabusquedanotarias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
             this.NombreNotaria,
             this.IPCentralita,
             this.Mascarared,
@@ -76,11 +74,6 @@
             this.listabusquedanotarias.UseCompatibleStateImageBehavior = false;
             this.listabusquedanotarias.View = System.Windows.Forms.View.Details;
             this.listabusquedanotarias.DoubleClick += new System.EventHandler(this.listabusquedanotarias_DoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            this.ID.Width = 40;
             // 
             // NombreNotaria
             // 
@@ -146,7 +139,6 @@
         private System.Windows.Forms.ListView listabusquedanotarias;
         private System.Windows.Forms.Button btnSeleccionarNotaria;
         private System.Windows.Forms.Button btnBuscarNotaria;
-        private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader NombreNotaria;
         private System.Windows.Forms.ColumnHeader IPCentralita;
         private System.Windows.Forms.ColumnHeader Mascarared;

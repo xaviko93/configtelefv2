@@ -21,15 +21,14 @@ namespace configurador_tlf_V2
             notariaabuscar2 = buscadortextonotaria.Text.ToString();
             this.listabusquedanotarias.Items.Clear();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT Id ,NomNotaria, IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + notariaabuscar2 + "%'", Conexion);
+            MySqlCommand cmd = new MySqlCommand("SELECT NomNotaria, IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + notariaabuscar2 + "%'", Conexion);
             MySqlDataReader dr;
             ListViewItem notarias = new ListViewItem();
             cmd.Connection.Open();
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                notarias = new ListViewItem(dr["Id"].ToString());
-                notarias.SubItems.Add(dr["NomNotaria"].ToString());
+                notarias = new ListViewItem(dr["NomNotaria"].ToString());
                 notarias.SubItems.Add(dr["IPCentralita"].ToString());
                 notarias.SubItems.Add(dr["MascaraRed"].ToString());
                 notarias.SubItems.Add(dr["PuertaEnlace"].ToString());
@@ -44,12 +43,10 @@ namespace configurador_tlf_V2
             try
             {
                 Form1 pantallaprincipal = Owner as Form1;
-                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
-                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
-                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
-                int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
-                pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
+                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
+                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
+                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
+                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
                 pantallaprincipal.cargarextensiones();
                 this.Close();
             } catch (System.ArgumentOutOfRangeException)
@@ -65,12 +62,10 @@ namespace configurador_tlf_V2
             try
             {
                 Form1 pantallaprincipal = Owner as Form1;
-                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
-                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
-                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
-                int idnotariaseleccionada = Int32.Parse(listabusquedanotarias.SelectedItems[0].SubItems[0].Text);
-                pantallaprincipal.idnotariaseleccionada = idnotariaseleccionada;
+                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
+                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
+                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
+                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
                 pantallaprincipal.cargarextensiones();
                 this.Close();
             }
