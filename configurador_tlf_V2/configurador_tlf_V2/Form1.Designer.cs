@@ -93,6 +93,7 @@
             this.aliasprogreso = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textoproceso = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -716,11 +717,22 @@
             this.textoproceso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.textoproceso.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.Image = global::configurador_tlf_V2.Properties.Resources.guia__1_;
+            this.button2.Location = new System.Drawing.Point(493, 415);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 60);
+            this.button2.TabIndex = 49;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textoproceso);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.aliasprogreso);
@@ -839,6 +851,7 @@
         private System.Windows.Forms.Label aliasprogreso;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label textoproceso;
+        private System.Windows.Forms.Button button2;
     }
 }
 

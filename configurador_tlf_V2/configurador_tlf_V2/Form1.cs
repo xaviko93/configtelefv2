@@ -561,5 +561,10 @@ namespace configurador_tlf_V2
         {
 
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://drive.google.com/file/d/1t1fMTHvldBwYPpQiQvSexFL0HAI1Qqv4/view?usp=sharing");
+        }
     }
 }
