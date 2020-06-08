@@ -24,14 +24,14 @@ namespace configurador_tlf_V2.TELEFONOS
 
             await cargapagina();
 
-            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("idUsername")[0].SetAttribute("value", "admin");
-            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("idPassword")[0].SetAttribute("value", "admin");
+            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("username")[0].SetAttribute("value", "admin");
+            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("pwd")[0].SetAttribute("value", "admin");
 
             webBrowser1.Document.GetElementById("idConfirm").InvokeMember("Click");
 
             await cargapagina();
 
-            webBrowser1.Navigate("http://" + ipactual + "servlet?p=account-register&q=load&acc=0");
+            webBrowser1.Navigate("http://" + ipactual + "/servlet?p=account-register&q=load&acc=0");
 
             await cargapagina();
 
@@ -52,7 +52,7 @@ namespace configurador_tlf_V2.TELEFONOS
             await cargapagina();
 
             webBrowser1.Document.GetElementsByTagName("select").GetElementsByName("LocalTimeDhcpTimeSwitch")[0].SetAttribute("value", "1");
-            webBrowser1.Document.GetElementsByTagName("select").GetElementsByName("TimeZonaAndName")[0].SetAttribute("value", "+1");
+            webBrowser1.Document.GetElementsByTagName("select").GetElementsByName("TimeZoneAndName")[0].SetAttribute("value", "+1 Spain(Madrid)");
 
             webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
 
@@ -132,29 +132,31 @@ namespace configurador_tlf_V2.TELEFONOS
         {
             numextensionesdetlf = gridtelefonos.Rows.Count - 1;
 
-            for (int n = 0; n < numextensionesdetlf; n++)
-            {
-                String extensionaomitir2 = gridtelefonos.Rows[n].Cells[0].Value.ToString();
-                int numextensionaomitir = Int32.Parse(extensionaomitir2);
 
 
+                for (int o = 0; o < numextensionesdetlf; o++) { 
+                        
+                    String extensiontelefono = gridtelefonos.Rows[o].Cells[0].Value.ToString();
+                    String aliastelefono = gridtelefonos.Rows[o].Cells[1].Value.ToString();
+                    int numextensiontelefono = Int32.Parse(extensiontelefono);
 
-                if (numextensionaomitir != extensionaomitir)
+                    if (numextensiontelefono != extensionaomitir)
                 {
                     numfila++;
-                    webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                    webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                    webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                    webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString())
+                    webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                    webBrowser1.Document.GetElementById("Label_" + numfila).SetAttribute("value", aliastelefono);
+                    webBrowser1.Document.GetElementById("Line_" + numfila).SetAttribute("value", "0");
+                    webBrowser1.Document.GetElementById("Extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
 
                 }
 
-                
+                }
 
+                await cargapagina();
+                webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+                await cargapagina();
 
-
-            }
-
+            
 
 
 

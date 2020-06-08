@@ -30,7 +30,7 @@ namespace configurador_tlf_V2
             InitializeComponent();
 
             listamodelo.Items.Add("YEALINK T27G");
-            listamodelo.Items.Add("YEALINK T23G");
+            listamodelo.Items.Add("YEALINK T26P");
             listamodelo.SelectedIndex = 0;
 
             DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
@@ -38,7 +38,7 @@ namespace configurador_tlf_V2
             cmb.Name = "Modelo";
             cmb.MaxDropDownItems = 4;
             cmb.Items.Add("YEALINK T27G");
-            cmb.Items.Add("YEALINK T23G");
+            cmb.Items.Add("YEALINK T26P");
             gridtelefonosaconfigurar.Columns.Add(cmb);
 
             webBrowser1.ScriptErrorsSuppressed = true;
@@ -524,7 +524,12 @@ namespace configurador_tlf_V2
                         await configurart27gAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
                         break;
 
-                    case "YEALINK T23G":
+                    case "YEALINK T26P":
+                        if (checkmulticonfig.Checked == false)
+                        {
+                            await mensajerecordatorio();
+                        }
+                        await configurart26pAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
                         break;
                 }
                 progressBartotal.Value += 1;
@@ -556,6 +561,27 @@ namespace configurador_tlf_V2
                 progressBartlf.Value += 1;
                 textoproceso.Text = "TERMINADO";
         }
+
+        public async Task configurart26pAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
+        {
+            TELEFONOS.YEALINKT26P T26P = new TELEFONOS.YEALINKT26P();
+
+            progressBartlf.Maximum = 4;
+            progressBartlf.Value = 0;
+            textoproceso.Text = "GENERAL";
+            await T26P.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
+            progressBartlf.Value += 1;
+            textoproceso.Text = "EXTENSIONES";
+            await T26P.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+            progressBartlf.Value += 1;
+            await T26P.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
+            progressBartlf.Value += 1;
+            textoproceso.Text = "RED";
+
+
+
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
