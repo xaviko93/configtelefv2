@@ -85,16 +85,15 @@ namespace configurador_tlf_V2.TELEFONOS
 
             //LIMPIANDO EXTENSIONES
 
-            webBrowser1.Navigate("http://" + ipactual + "/servlet?p=dsskey&model=1&q=load");
+            webBrowser1.Navigate("http://" + ipactual + "/servlet?p=dsskey&model=0&q=load");
 
             await cargapagina();
 
-            for (int l = 1; l < 4; l++)
+            for (int l = 1; l < 11; l++)
             {
 
                 webBrowser1.Document.GetElementById("selType_" + l).SetAttribute("value", "0");
                 webBrowser1.Document.GetElementById("Value_" + l).SetAttribute("value", "1");
-                webBrowser1.Document.GetElementById("Label_" + l).SetAttribute("value", "1");
                 webBrowser1.Document.GetElementById("Line_" + l).SetAttribute("value", "1");
                 webBrowser1.Document.GetElementById("Ext_" + l).SetAttribute("value", "1");
             }
@@ -105,16 +104,32 @@ namespace configurador_tlf_V2.TELEFONOS
 
             //CONFIGURANDO EXTENSIONES
 
-            numextensiones = gridextensiones.Rows.Count - 1;
+            numextensiones = gridextensiones.Rows.Count;
 
-            for (int m = 0; m < numextensiones; m++)
+            if (numextensiones > 10)
+            {
+                numextensiones = 10;
+            }
+
+            for (int p = 1; p < numextensiones; p++)
             {
 
-                numfila = contadorextensiones + 1;
+                webBrowser1.Document.GetElementById("selType_" + p).SetAttribute("value", "16");
+                webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", "1");
+            }
+
+            await cargapagina();
+            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+            await cargapagina();
+
+            for (int m = 1; m < numextensiones; m++)
+            {
+
+                numfila = m - 1 ;
                 String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
                 String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
-                webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                webBrowser1.Document.GetElementById("Label_" + numfila).SetAttribute("value", aliastelefono);
+                webBrowser1.Document.GetElementById("selType_" + numfila).SetAttribute("value", "16");
+                webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", aliastelefono);
                 webBrowser1.Document.GetElementById("Line_" + numfila).SetAttribute("value", "0");
                 webBrowser1.Document.GetElementById("Extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
 
@@ -134,7 +149,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
 
 
-                for (int o = 0; o < numextensionesdetlf; o++) { 
+                for (int o = 1; o <= numextensionesdetlf; o++) { 
                         
                     String extensiontelefono = gridtelefonos.Rows[o].Cells[0].Value.ToString();
                     String aliastelefono = gridtelefonos.Rows[o].Cells[1].Value.ToString();
