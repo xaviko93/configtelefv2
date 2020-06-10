@@ -74,9 +74,9 @@ namespace configurador_tlf_V2.TELEFONOS
             await Task.Delay(2000);
         }
 
-        async Task cargagrande()
+        async Task cargapequeña()
         {
-            await Task.Delay(5000);
+            await Task.Delay(100);
         }
 
 
@@ -100,7 +100,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
             webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
 
-            await cargagrande();
+            await cargapagina();
 
             //CONFIGURANDO EXTENSIONES
 
@@ -114,13 +114,17 @@ namespace configurador_tlf_V2.TELEFONOS
             for (int p = 1; p < numextensiones; p++)
             {
 
-                webBrowser1.Document.GetElementById("selType_" + p).SetAttribute("value", "16");
-                webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", "1");
-            }
+                webBrowser1.Document.GetElementById("selType_" + p).Focus();
+                await cargapequeña();
+                SendKeys.Send("{DOWN}");
+                await cargapequeña();
+                SendKeys.Send("{DOWN}");
+                await cargapequeña();
+                SendKeys.Send("{DOWN}");
+                await cargapequeña();
 
-            await cargapagina();
-            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
-            await cargapagina();
+
+            }
 
             for (int m = 1; m < numextensiones; m++)
             {
@@ -128,7 +132,6 @@ namespace configurador_tlf_V2.TELEFONOS
                 numfila = m - 1 ;
                 String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
                 String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
-                webBrowser1.Document.GetElementById("selType_" + numfila).SetAttribute("value", "16");
                 webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", aliastelefono);
                 webBrowser1.Document.GetElementById("Line_" + numfila).SetAttribute("value", "0");
                 webBrowser1.Document.GetElementById("Extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
