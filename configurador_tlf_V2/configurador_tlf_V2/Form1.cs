@@ -505,7 +505,9 @@ namespace configurador_tlf_V2
             {
                 int numerotelefonoactual = progressBartotal.Value + 1;
                 numeroactual.Text = numerotelefonoactual.ToString();
-                int extensiontelefono = (int)gridtelefonosaconfigurar.Rows[i].Cells[0].Value;
+                String stringextensiontelefono = gridtelefonosaconfigurar.Rows[i].Cells[0].Value.ToString();
+                int extensiontelefono = Int32.Parse(stringextensiontelefono);
+
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
                 ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();

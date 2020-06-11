@@ -111,7 +111,7 @@ namespace configurador_tlf_V2.TELEFONOS
                 numextensiones = 10;
             }
 
-            for (int p = 1; p < numextensiones; p++)
+            for (int p = 1; p <= numextensiones; p++)
             {
 
                 webBrowser1.Document.GetElementById("selType_" + p).Focus();
@@ -126,15 +126,15 @@ namespace configurador_tlf_V2.TELEFONOS
 
             }
 
-            for (int m = 1; m < numextensiones; m++)
+            for (int m = 1; m <= numextensiones; m++)
             {
 
-                numfila = m - 1 ;
+                contadorextensiones = m - 1 ;
                 String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
                 String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
-                webBrowser1.Document.GetElementById("Value_" + numfila).SetAttribute("value", aliastelefono);
-                webBrowser1.Document.GetElementById("Line_" + numfila).SetAttribute("value", "0");
-                webBrowser1.Document.GetElementById("Extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
+                webBrowser1.Document.GetElementById("Value_" + m).SetAttribute("value", aliastelefono);
+                webBrowser1.Document.GetElementById("Line_" + m).SetAttribute("value", "0");
+                webBrowser1.Document.GetElementById("Extern_" + m).SetAttribute("value", extensiontelefono.ToString());
 
             }
 
