@@ -40,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
             this.btnnuevoext = new System.Windows.Forms.Button();
-            this.btnreconfigurartlf = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.numeroactual = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -81,7 +80,6 @@
             this.btneliminartlf = new System.Windows.Forms.Button();
             this.btnprobar = new System.Windows.Forms.Button();
             this.checkmulticonfig = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.ipcentralitanotaria = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mascararednotaria = new System.Windows.Forms.TextBox();
@@ -94,6 +92,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textoproceso = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -202,17 +202,6 @@
             this.btnnuevoext.Text = "Nuevo";
             this.btnnuevoext.UseVisualStyleBackColor = true;
             this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
-            // 
-            // btnreconfigurartlf
-            // 
-            this.btnreconfigurartlf.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnreconfigurartlf.Location = new System.Drawing.Point(491, 174);
-            this.btnreconfigurartlf.Name = "btnreconfigurartlf";
-            this.btnreconfigurartlf.Size = new System.Drawing.Size(88, 23);
-            this.btnreconfigurartlf.TabIndex = 10;
-            this.btnreconfigurartlf.Text = "Reconfigurar";
-            this.btnreconfigurartlf.UseVisualStyleBackColor = true;
-            this.btnreconfigurartlf.Visible = false;
             // 
             // button1
             // 
@@ -599,18 +588,6 @@
             this.checkmulticonfig.Text = "Multi-config";
             this.checkmulticonfig.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
-            // 
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox2.Location = new System.Drawing.Point(490, 203);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(90, 52);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Reconfigurar notaría completa";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.Visible = false;
-            // 
             // ipcentralitanotaria
             // 
             this.ipcentralitanotaria.Enabled = false;
@@ -727,11 +704,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(491, 203);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 63);
+            this.button3.TabIndex = 50;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(491, 175);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(87, 23);
+            this.button4.TabIndex = 51;
+            this.button4.Text = "Sustitución";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textoproceso);
             this.Controls.Add(this.label11);
@@ -744,7 +743,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ipcentralitanotaria);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkmulticonfig);
             this.Controls.Add(this.btnprobar);
             this.Controls.Add(this.btneliminartlf);
@@ -759,7 +757,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.numeroactual);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnreconfigurartlf);
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label5);
@@ -796,7 +793,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridextensiones;
         private System.Windows.Forms.Button btnnuevoext;
-        private System.Windows.Forms.Button btnreconfigurartlf;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label numeroactual;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -829,7 +825,6 @@
         private System.Windows.Forms.Button btneliminartlf;
         private System.Windows.Forms.Button btnprobar;
         private System.Windows.Forms.CheckBox checkmulticonfig;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -852,6 +847,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label textoproceso;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -318,7 +318,7 @@ namespace configurador_tlf_V2
                     ultimocachonumeroaconfig = Int32.Parse(ultimocachoipaconfnigurar[3]);
                 } catch (System.IndexOutOfRangeException)
                 {
-                    MessageBox.Show("Revisa el campo de texto IP Actual Es posible que la IP no esté introducida en el formato correcto");
+                    MessageBox.Show("Revisa el campo de texto IP Actual. (Es posible que la IP no esté introducida en el formato correcto)");
                     
                 }
 
@@ -593,6 +593,32 @@ namespace configurador_tlf_V2
         private void Button2_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://drive.google.com/file/d/1t1fMTHvldBwYPpQiQvSexFL0HAI1Qqv4/view?usp=sharing");
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            String extensiontelefono = gridextensiones.CurrentRow.Cells[0].Value.ToString();
+            DialogResult result = MessageBox.Show("¿El teléfono que vas a configurar es en sustitución del teléfono con extensión: " + extensiontelefono + " ?", "Sustituir teléfono", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                
+                String iptelefono = gridextensiones.CurrentRow.Cells[1].Value.ToString();
+                String aliastelefono = gridextensiones.CurrentRow.Cells[2].Value.ToString();
+                String ipactualtelefono = ipactualinput.Text.ToString();
+                String nombrenotaria = gridextensiones.CurrentRow.Cells[4].Value.ToString();
+                String ipcentralita = ipcentralitanotaria.Text.ToString();
+                String mascaradered = mascararednotaria.Text.ToString();
+                String puertaenlace = puertaenlacenotaria.Text.ToString();
+                String modelotlf = listamodelo.SelectedItem.ToString().Trim(' ');
+
+                gridextensiones.Rows.RemoveAt(gridextensiones.CurrentRow.Index);
+
+                string[] row1 = new string[] {extensiontelefono, aliastelefono, iptelefono, ipactualtelefono, nombrenotaria, ipcentralita, mascaradered, puertaenlace, modelotlf };
+                gridtelefonosaconfigurar.Rows.Add(row1);
+
+
+            }
         }
     }
 }
