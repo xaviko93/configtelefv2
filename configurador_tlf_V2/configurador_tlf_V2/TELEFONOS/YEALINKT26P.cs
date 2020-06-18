@@ -134,7 +134,7 @@ namespace configurador_tlf_V2.TELEFONOS
                 String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
                 webBrowser1.Document.GetElementById("Value_" + m).SetAttribute("value", aliastelefono);
                 webBrowser1.Document.GetElementById("Line_" + m).SetAttribute("value", "0");
-                webBrowser1.Document.GetElementById("Extern_" + m).SetAttribute("value", extensiontelefono.ToString());
+                webBrowser1.Document.GetElementById("Ext_" + m).SetAttribute("value", extensiontelefono.ToString());
 
             }
 
@@ -152,11 +152,17 @@ namespace configurador_tlf_V2.TELEFONOS
 
 
 
-                for (int o = 1; o <= numextensionesdetlf; o++) { 
-                        
-                    String extensiontelefono = gridtelefonos.Rows[o].Cells[0].Value.ToString();
-                    String aliastelefono = gridtelefonos.Rows[o].Cells[1].Value.ToString();
+                for (int o = 1; o <= numextensionesdetlf; o++) {
+
+                int m = o - 1;
+                    String extensiontelefono = gridtelefonos.Rows[m].Cells[0].Value.ToString();
+                    String aliastelefono = gridtelefonos.Rows[m].Cells[1].Value.ToString();
                     int numextensiontelefono = Int32.Parse(extensiontelefono);
+
+                if (numextensiones >= 10)
+                {
+                    break;
+                }
 
                     if (numextensiontelefono != extensionaomitir)
                 {
@@ -174,14 +180,39 @@ namespace configurador_tlf_V2.TELEFONOS
                 webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
                 await cargapagina();
 
+        }
+
+
+        public async Task configurarred(String ipactual, WebBrowser webBrowser, String ipaconfigurar2, String mascaraaconfigurar2, String puertaaconfigurar2)
+        {
+            await cargapagina();
+            webBrowser.Navigate("http://" + ipactual + "/servlet?p=network&q=load");
+            await cargapagina();
+
+            webBrowser.Document.GetElementsByTagName("select").GetElementsByName("NetworkIPAddressMode")[0].SetAttribute("value", "0");
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanType")[0].SetAttribute("value", "2");
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+            await cargapagina();
+
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticIp")[0].SetAttribute("value", ipaconfigurar2);
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticMask")[0].SetAttribute("value", mascaraaconfigurar2);
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticGateWay")[0].SetAttribute("value", puertaaconfigurar2);
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticPriDns")[0].SetAttribute("value", "8.8.8.8");
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticSecDns")[0].SetAttribute("value", "8.8.4.4");
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+
+            pulsarintroen5seg();
             
-
-
-
-
+            await cargapagina();
 
         }
 
+        public async Task pulsarintroen5seg()
+        {
+            await cargapagina();
+            SendKeys.Send("{ENTER}");
+
+        }
 
 
     }

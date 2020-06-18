@@ -579,6 +579,9 @@ namespace configurador_tlf_V2
             await T26P.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
             progressBartlf.Value += 1;
             textoproceso.Text = "RED";
+            await T26P.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+            progressBartlf.Value += 1;
+            textoproceso.Text = "TERMINADO";
 
 
 
