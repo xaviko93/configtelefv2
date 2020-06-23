@@ -104,7 +104,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
             //CONFIGURANDO EXTENSIONES
 
-            numextensiones = gridextensiones.Rows.Count;
+            numextensiones = gridextensiones.Rows.Count - 1;
 
             if (numextensiones > 10)
             {
@@ -113,23 +113,22 @@ namespace configurador_tlf_V2.TELEFONOS
 
             for (int p = 1; p <= numextensiones; p++)
             {
-
-                webBrowser1.Document.GetElementById("selType_" + p).Focus();
+                webBrowser1.Document.GetElementById("selType_" + p).SetAttribute("value", "16");
+                contadorextensiones = p - 1;
+                webBrowser1.Document.GetElementById("Value_" + p).SetAttribute("value", "1");
+                webBrowser1.Document.GetElementById("Line_" + p).SetAttribute("value", "0");
+                webBrowser1.Document.GetElementById("Ext_" + p).SetAttribute("value", "1");
                 await cargapequeña();
-                SendKeys.Send("{DOWN}");
-                await cargapequeña();
-                SendKeys.Send("{DOWN}");
-                await cargapequeña();
-                SendKeys.Send("{DOWN}");
-                await cargapequeña();
-
-
             }
+
+            await cargapagina();
+            webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+            await cargapagina();
+            await cargapagina();
 
             for (int m = 1; m <= numextensiones; m++)
             {
-
-                contadorextensiones = m - 1 ;
+                contadorextensiones = m - 1;
                 String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
                 String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
                 webBrowser1.Document.GetElementById("Value_" + m).SetAttribute("value", aliastelefono);
@@ -190,8 +189,13 @@ namespace configurador_tlf_V2.TELEFONOS
             await cargapagina();
 
             webBrowser.Document.GetElementsByTagName("select").GetElementsByName("NetworkIPAddressMode")[0].SetAttribute("value", "0");
-            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanType")[0].SetAttribute("value", "2");
+
+            webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanType")[1].InvokeMember("Click");
+
+
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
+
+
             await cargapagina();
 
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticIp")[0].SetAttribute("value", ipaconfigurar2);
@@ -199,6 +203,8 @@ namespace configurador_tlf_V2.TELEFONOS
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticGateWay")[0].SetAttribute("value", puertaaconfigurar2);
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticPriDns")[0].SetAttribute("value", "8.8.8.8");
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticSecDns")[0].SetAttribute("value", "8.8.4.4");
+
+
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("btnSubmit")[0].InvokeMember("Click");
 
             pulsarintroen5seg();
