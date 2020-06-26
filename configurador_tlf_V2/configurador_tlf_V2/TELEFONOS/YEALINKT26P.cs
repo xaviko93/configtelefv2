@@ -36,10 +36,10 @@ namespace configurador_tlf_V2.TELEFONOS
             await cargapagina();
 
             webBrowser1.Document.GetElementById("Enable").SetAttribute("value", "1");
-            webBrowser1.Document.GetElementById("Label").SetAttribute("value", alias);
+            webBrowser1.Document.GetElementById("Label").SetAttribute("value", extension.ToString());
             webBrowser1.Document.GetElementById("DisplayName").SetAttribute("value", alias);
             webBrowser1.Document.GetElementById("AuthName").SetAttribute("value", extension.ToString());
-            webBrowser1.Document.GetElementById("UserName").SetAttribute("value", alias);
+            webBrowser1.Document.GetElementById("UserName").SetAttribute("value", extension.ToString());
             webBrowser1.Document.GetElementById("editPassword").SetAttribute("value", "p@ssword+" + extension);
             webBrowser1.Document.GetElementById("server1").SetAttribute("value", ipcentralita);
 
