@@ -91,9 +91,9 @@
             this.aliasprogreso = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textoproceso = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -694,26 +694,6 @@
             this.textoproceso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.textoproceso.Visible = false;
             // 
-            // button2
-            // 
-            this.button2.Image = global::configurador_tlf_V2.Properties.Resources.guia__1_;
-            this.button2.Location = new System.Drawing.Point(493, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 60);
-            this.button2.TabIndex = 49;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(491, 203);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 63);
-            this.button3.TabIndex = 50;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(491, 175);
@@ -723,6 +703,26 @@
             this.button4.Text = "Sustitución";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(491, 203);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 63);
+            this.button3.TabIndex = 50;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::configurador_tlf_V2.Properties.Resources.guia__1_;
+            this.button2.Location = new System.Drawing.Point(493, 415);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 60);
+            this.button2.TabIndex = 49;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Form1
             // 

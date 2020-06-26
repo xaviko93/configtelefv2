@@ -623,5 +623,12 @@ namespace configurador_tlf_V2
 
             }
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Form frm = new Herramientas();
+            AddOwnedForm(frm);
+            frm.Show();
+        }
     }
 }
