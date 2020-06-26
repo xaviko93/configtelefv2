@@ -37,7 +37,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.nombrenotaria = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.usuario = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.contra = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textoip
@@ -85,7 +88,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(101, 127);
+            this.button2.Location = new System.Drawing.Point(94, 208);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 23);
             this.button2.TabIndex = 5;
@@ -95,7 +98,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(203, 127);
+            this.button3.Location = new System.Drawing.Point(196, 208);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 23);
             this.button3.TabIndex = 6;
@@ -119,20 +122,49 @@
             this.nombrenotaria.Size = new System.Drawing.Size(158, 20);
             this.nombrenotaria.TabIndex = 8;
             // 
-            // richTextBox1
+            // label4
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 169);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(352, 263);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(68, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Usuario:";
+            // 
+            // usuario
+            // 
+            this.usuario.Location = new System.Drawing.Point(120, 121);
+            this.usuario.Name = "usuario";
+            this.usuario.Size = new System.Drawing.Size(158, 20);
+            this.usuario.TabIndex = 10;
+            this.usuario.Text = "root";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(50, 161);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Contraseña:";
+            // 
+            // contra
+            // 
+            this.contra.Location = new System.Drawing.Point(120, 158);
+            this.contra.Name = "contra";
+            this.contra.Size = new System.Drawing.Size(158, 20);
+            this.contra.TabIndex = 12;
+            this.contra.Text = "4a9P1dK9xrn1l";
             // 
             // Actualizardatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 444);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(379, 254);
+            this.Controls.Add(this.contra);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.usuario);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
@@ -160,6 +192,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox nombrenotaria;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox usuario;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox contra;
     }
 }

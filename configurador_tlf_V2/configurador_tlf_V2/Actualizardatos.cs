@@ -52,7 +52,7 @@ namespace configurador_tlf_V2
             try
             {
 
-                using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), "root", "4a9P1dK9xrn1l"))
+                using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), usuario.Text.ToString(), contra.Text.ToString()))
                 {
                     client.Connect();
                     client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scriptsprograma/Scriptdeinstalacion.sh");
