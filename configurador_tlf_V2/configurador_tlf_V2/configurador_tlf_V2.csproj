@@ -27,7 +27,7 @@
     <MinimumRequiredVersion>1.0.0.13</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -157,6 +157,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TELEFONOS\YEALINKT26P.cs" />
     <Compile Include="TELEFONOS\YEALINKT27G.cs" />
+    <Compile Include="TELEFONOS\YEALINKW52P.cs" />
     <EmbeddedResource Include="Actualizardatos.resx">
       <DependentUpon>Actualizardatos.cs</DependentUpon>
     </EmbeddedResource>

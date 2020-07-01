@@ -31,6 +31,7 @@ namespace configurador_tlf_V2
 
             listamodelo.Items.Add("YEALINK T27G");
             listamodelo.Items.Add("YEALINK T26P");
+            listamodelo.Items.Add("YEALINK W52P");
             listamodelo.SelectedIndex = 0;
 
             DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
@@ -39,6 +40,8 @@ namespace configurador_tlf_V2
             cmb.MaxDropDownItems = 4;
             cmb.Items.Add("YEALINK T27G");
             cmb.Items.Add("YEALINK T26P");
+            cmb.Items.Add("YEALINK W52P");
+
             gridtelefonosaconfigurar.Columns.Add(cmb);
 
             webBrowser1.ScriptErrorsSuppressed = true;
@@ -533,6 +536,14 @@ namespace configurador_tlf_V2
                         }
                         await configurart26pAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
                         break;
+
+                    case "YEALINK W52P":
+                        if (checkmulticonfig.Checked == false)
+                        {
+                            await mensajerecordatorio();
+                        }
+                        await configurarw52pAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+                        break;
                 }
                 progressBartotal.Value += 1;
             }
@@ -587,15 +598,32 @@ namespace configurador_tlf_V2
 
         }
 
+        public async Task configurarw52pAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
+        {
+            TELEFONOS.YEALINKW52P W52P = new TELEFONOS.YEALINKW52P();
 
-        private void Form1_Load(object sender, EventArgs e)
+            progressBartlf.Maximum = 2;
+            progressBartlf.Value = 0;
+            textoproceso.Text = "GENERAL";
+            await W52P.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
+            progressBartlf.Value += 1;
+            textoproceso.Text = "RED";
+            await W52P.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
+            progressBartlf.Value += 1;
+            textoproceso.Text = "TERMINADO";
+
+        }
+
+
+
+            private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://drive.google.com/file/d/1t1fMTHvldBwYPpQiQvSexFL0HAI1Qqv4/view?usp=sharing");
+            System.Diagnostics.Process.Start("https://drive.google.com/file/d/1WUBY5rI54wvNLcoWWIgv9h5PRXuQsEzA/view?usp=sharing");
         }
 
         private void Button4_Click(object sender, EventArgs e)
