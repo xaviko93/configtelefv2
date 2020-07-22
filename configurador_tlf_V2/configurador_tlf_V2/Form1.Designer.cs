@@ -504,6 +504,7 @@
             this.gridtelefonosaconfigurar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridtelefonosaconfigurar.Size = new System.Drawing.Size(474, 188);
             this.gridtelefonosaconfigurar.TabIndex = 25;
+            this.gridtelefonosaconfigurar.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.gridtelefonosaconfigurar_RowsAdded);
             // 
             // Extension
             // 

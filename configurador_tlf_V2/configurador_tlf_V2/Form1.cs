@@ -664,5 +664,12 @@ namespace configurador_tlf_V2
 
         }
 
+        private void gridtelefonosaconfigurar_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if(gridtelefonosaconfigurar.Rows.Count > 0)
+            {
+                btnconfigurar.Enabled = true;
+            }
+        }
     }
 }
