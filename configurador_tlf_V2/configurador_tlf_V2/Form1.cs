@@ -605,7 +605,7 @@ namespace configurador_tlf_V2
             progressBartlf.Maximum = 2;
             progressBartlf.Value = 0;
             textoproceso.Text = "GENERAL";
-            await W52P.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
+            await W52P.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1, gridextensiones);
             progressBartlf.Value += 1;
             textoproceso.Text = "RED";
             await W52P.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
