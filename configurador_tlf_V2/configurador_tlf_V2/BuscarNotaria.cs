@@ -12,6 +12,21 @@ namespace configurador_tlf_V2
         public BuscarNotaria()
         {
             InitializeComponent();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT NomNotaria, IPCentralita, MascaraRed, PuertaEnlace FROM centralita", Conexion);
+            MySqlDataReader dr;
+            ListViewItem notarias = new ListViewItem();
+            cmd.Connection.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                notarias = new ListViewItem(dr["NomNotaria"].ToString());
+                notarias.SubItems.Add(dr["IPCentralita"].ToString());
+                notarias.SubItems.Add(dr["MascaraRed"].ToString());
+                notarias.SubItems.Add(dr["PuertaEnlace"].ToString());
+                listabusquedanotarias.Items.Add(notarias);
+            }
+            cmd.Connection.Close();
         }
 
         MySqlConnection Conexion = new MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");

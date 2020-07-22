@@ -296,8 +296,6 @@ namespace configurador_tlf_V2
             if(radioAutomatica.Checked == true)
             {
 
-                gridtelefonosaconfigurar.Rows.Clear();
-
                 String cantidadtlfaconfigurarstring = NTLFinput.Value.ToString();
                 int cantidadtlfaconfigurar = Int32.Parse(cantidadtlfaconfigurarstring);
 
