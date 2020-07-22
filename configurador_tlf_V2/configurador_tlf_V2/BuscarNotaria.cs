@@ -75,5 +75,10 @@ namespace configurador_tlf_V2
                 this.Close();
             }
         }
+
+        private void BuscarNotaria_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }

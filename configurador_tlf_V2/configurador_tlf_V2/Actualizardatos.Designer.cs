@@ -176,6 +176,7 @@
             this.Controls.Add(this.textoip);
             this.Name = "Actualizardatos";
             this.Text = "Actualizardatos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Actualizardatos_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -68,5 +68,10 @@ namespace configurador_tlf_V2
                 MessageBox.Show("No se puede conectar a la centralita por SSH");
             }
         }
+
+        private void Actualizardatos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }

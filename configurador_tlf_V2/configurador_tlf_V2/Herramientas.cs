@@ -19,9 +19,16 @@ namespace configurador_tlf_V2
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Form frm = new Actualizardatos();
-            AddOwnedForm(frm);
-            frm.Show();
+            this.Hide();
+            Form f2 = new Actualizardatos();
+            f2.StartPosition = FormStartPosition.Manual;
+            f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
+            f2.Show(this);
+        }
+
+        private void Herramientas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
         }
     }
 }

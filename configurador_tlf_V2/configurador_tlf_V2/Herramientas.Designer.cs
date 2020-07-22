@@ -65,6 +65,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Herramientas";
             this.Text = "Herramientas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Herramientas_FormClosing);
             this.ResumeLayout(false);
 
         }

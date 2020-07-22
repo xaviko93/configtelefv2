@@ -78,9 +78,12 @@ namespace configurador_tlf_V2
             
             checkNotariaManual.Checked = false;
             radioAutomatica.Checked = true;
+
+            this.Hide();
             Form frm = new BuscarNotaria();
-            AddOwnedForm(frm);
-            frm.Show();
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Location = new Point(this.Location.X + (this.Width - frm.Width) / 2, this.Location.Y + (this.Height - frm.Height) / 2);
+            frm.Show(this);
 
         }
 
@@ -654,9 +657,14 @@ namespace configurador_tlf_V2
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Form frm = new Herramientas();
-            AddOwnedForm(frm);
-            frm.Show();
+            this.Hide();
+            Form f2 = new Herramientas();
+            f2.StartPosition = FormStartPosition.Manual;
+            f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
+            f2.Show(this);
+
+
         }
+
     }
 }

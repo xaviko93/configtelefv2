@@ -127,6 +127,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BuscarNotaria";
             this.Text = "Buscar Notaría";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BuscarNotaria_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
