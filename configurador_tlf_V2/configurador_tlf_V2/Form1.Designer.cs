@@ -338,9 +338,9 @@
             this.textoipcentralita.Enabled = false;
             this.textoipcentralita.Location = new System.Drawing.Point(206, 48);
             this.textoipcentralita.Name = "textoipcentralita";
-            this.textoipcentralita.Size = new System.Drawing.Size(55, 13);
+            this.textoipcentralita.Size = new System.Drawing.Size(54, 13);
             this.textoipcentralita.TabIndex = 22;
-            this.textoipcentralita.Text = "IP central:";
+            this.textoipcentralita.Text = "Centralita:";
             // 
             // ipaonfigurarinput
             // 
@@ -707,11 +707,14 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.Location = new System.Drawing.Point(491, 203);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 63);
             this.button3.TabIndex = 50;
+            this.button3.Text = "TOOLS";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -722,6 +725,8 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 60);
             this.button2.TabIndex = 49;
+            this.button2.Text = "MANUAL";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
