@@ -55,9 +55,11 @@ namespace configurador_tlf_V2
                 using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), usuario.Text.ToString(), contra.Text.ToString()))
                 {
                     client.Connect();
-                    client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scriptsprograma/Scriptdeinstalacion.sh");
-                    client.RunCommand("sudo chmod 777 Scriptdeinstalacion.sh");
-                    client.RunCommand("./Scriptdeinstalacion.sh '" + nombrenotaria.Text.ToString() + "'");
+                    client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scripts2020/scriptinstalacion.sh");
+                    client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
+                    client.RunCommand("apt-get install dos2unix");
+                    client.RunCommand("dos2unix scriptinstalacion.sh");
+                    client.RunCommand("./scriptinstalacion.sh '" + nombrenotaria.Text.ToString() + "'");
                     client.Disconnect();
                     MessageBox.Show("Datos actualizados correctamente");
 
