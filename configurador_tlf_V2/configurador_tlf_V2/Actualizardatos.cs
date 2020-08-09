@@ -57,7 +57,7 @@ namespace configurador_tlf_V2
                     client.Connect();
                     client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scripts2020/scriptinstalacion.sh");
                     client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
-                    client.RunCommand("apt-get install dos2unix");
+                    client.RunCommand("apt-get install dos2unix -y");
                     client.RunCommand("dos2unix scriptinstalacion.sh");
                     client.RunCommand("./scriptinstalacion.sh '" + nombrenotaria.Text.ToString() + "'");
                     client.Disconnect();
