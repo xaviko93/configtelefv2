@@ -60,6 +60,7 @@ namespace configurador_tlf_V2
             gridextensiones.Columns.Add("Extension", "Extension");
             gridextensiones.Columns.Add("IP Telefono", "IP Telefono");
             gridextensiones.Columns.Add("Alias", "Alias");
+            gridextensiones.Columns.Add("Nserie", "Nserie");
             gridextensiones.Columns.Add("Nombre Notaria", "Nombre Notaria");
             gridextensiones.Columns.Add("IP Centralita", "IP Centralita");
             gridextensiones.Columns.Add("Mascara de red", "Mascara de red");
@@ -110,6 +111,7 @@ namespace configurador_tlf_V2
             gridextensiones.Columns.Remove("Extension");
             gridextensiones.Columns.Remove("IP Telefono");
             gridextensiones.Columns.Remove("Alias");
+            gridextensiones.Columns.Remove("Nserie");
             gridextensiones.Columns.Remove("Nombre Notaria");
             gridextensiones.Columns.Remove("IP Centralita");
             gridextensiones.Columns.Remove("Mascara de red");
@@ -118,7 +120,7 @@ namespace configurador_tlf_V2
             catch { }
 
 
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Modelo, NomNotaria FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
@@ -364,7 +366,7 @@ namespace configurador_tlf_V2
                     }
 
                     String modelotlf = listamodelo.SelectedItem.ToString().Trim(' ');
-                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, ipaconfigurartexto, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext, modelotlf);
+                    gridtelefonosaconfigurar.Rows.Add(contadorext, contadorext, ipaasignaraext, "", ipaconfigurartexto, nombrenotariaext, ipcentralitaext, mascaraext, puertaenlaceext, modelotlf);
                     contadorext++;
                     ultimocachonumero++;
 
@@ -401,7 +403,7 @@ namespace configurador_tlf_V2
                     MessageBox.Show("Hay campos vacíos, revisa los datos introducidos introducidos en el cuadro de teléfonos", "Datos incompletos");
                 }
 
-                gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, ipaconfigurartlf, iptlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf, modelotlf);
+                gridtelefonosaconfigurar.Rows.Add(extensiontlf, aliastlf, ipaconfigurartlf, "", iptlf, nombrenotariaext, ipcentralitatlf, mascaratlf, puertatlf, modelotlf);
 
                 btnconfigurar.Enabled = true;
             }
@@ -419,6 +421,11 @@ namespace configurador_tlf_V2
 
         private void checkNotariaManual_CheckedChanged(object sender, EventArgs e)
         {
+
+            try
+            {
+                Conexion.Close();
+            } catch{ }
 
             if (checkNotariaManual.Checked == true)
             {
@@ -494,7 +501,8 @@ namespace configurador_tlf_V2
             numeroactual.Visible = true;
             numerototal.Visible = true;
 
-            configuradordetelefonos();
+            comprobarnserie();
+            
         }
 
         public async Task configuradordetelefonos()
@@ -514,11 +522,12 @@ namespace configurador_tlf_V2
 
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
-                ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
-                String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[5].Value.ToString();
-                String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
-                String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
-                String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
+
+                ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[4].Value.ToString();
+                String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
+                String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
+                String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
+                String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[9].Value.ToString();
                 aliasprogreso.Text = aliastelefono;
                 switch (modelotelefonoaconfigurar)
                 {
@@ -638,7 +647,7 @@ namespace configurador_tlf_V2
                 String iptelefono = gridextensiones.CurrentRow.Cells[1].Value.ToString();
                 String aliastelefono = gridextensiones.CurrentRow.Cells[2].Value.ToString();
                 String ipactualtelefono = ipactualinput.Text.ToString();
-                String nombrenotaria = gridextensiones.CurrentRow.Cells[4].Value.ToString();
+                String nombrenotaria = gridextensiones.CurrentRow.Cells[5].Value.ToString();
                 String ipcentralita = ipcentralitanotaria.Text.ToString();
                 String mascaradered = mascararednotaria.Text.ToString();
                 String puertaenlace = puertaenlacenotaria.Text.ToString();
@@ -646,7 +655,7 @@ namespace configurador_tlf_V2
 
                 gridextensiones.Rows.RemoveAt(gridextensiones.CurrentRow.Index);
 
-                string[] row1 = new string[] {extensiontelefono, aliastelefono, iptelefono, ipactualtelefono, nombrenotaria, ipcentralita, mascaradered, puertaenlace, modelotlf };
+                string[] row1 = new string[] {extensiontelefono, aliastelefono, iptelefono, "", ipactualtelefono, nombrenotaria, ipcentralita, mascaradered, puertaenlace, modelotlf };
                 gridtelefonosaconfigurar.Rows.Add(row1);
 
 
@@ -670,6 +679,80 @@ namespace configurador_tlf_V2
             {
                 btnconfigurar.Enabled = true;
             }
+        }
+
+        public void comprobarnserie()
+        {
+            int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
+
+            for (int i = 0; i < numerotelefonos; i++)
+            {
+
+
+                if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
+                {
+                    String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
+                    DialogResult result;
+                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        configuradordetelefonos();
+                        break;
+                    }
+                } else
+                {
+                    MySqlCommand mostrar2 = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension ='" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "'", Conexion);
+                    int lastId = Convert.ToInt32(mostrar2.ExecuteScalar());
+                    MessageBox.Show(lastId.ToString());
+                }
+            }
+        }
+
+        
+        private void Button2_Click_1(object sender, EventArgs e)
+        {
+            int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
+            Conexion.Open();
+
+            for (int i = 0; i < numerotelefonos; i++)
+            {
+
+
+                if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
+                {
+                    String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
+                    DialogResult result;
+                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        configuradordetelefonos();
+                        break;
+                    }
+                }
+                else
+                {
+                    
+                    MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value, Conexion);
+                    int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
+                    if (object.Equals(lastId, 0))
+                    {
+                        MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo) VALUES (" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[8].Value, Conexion);
+                        registronuevotlf.Connection = Conexion;
+                        registronuevotlf.ExecuteNonQuery();
+                    }
+                }
+            }
+            Conexion.Close();
+
+
         }
     }
 }

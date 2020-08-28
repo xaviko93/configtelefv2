@@ -214,6 +214,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\icon %281%29.ico" />
+    <Content Include="Resources\manual.png" />
     <None Include="Resources\guia %281%29.png" />
     <None Include="Resources\guia.png" />
   </ItemGroup>
