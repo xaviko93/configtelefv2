@@ -747,7 +747,7 @@ namespace configurador_tlf_V2
                         MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo) VALUES (" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[8].Value, Conexion);
                         registronuevotlf.Connection = Conexion;
                         registronuevotlf.ExecuteNonQuery();
-                        MessageBox.Show("Dado de alta");
+                        MessageBox.Show("Dado de alta jeje");
                     }
                 }
             }
