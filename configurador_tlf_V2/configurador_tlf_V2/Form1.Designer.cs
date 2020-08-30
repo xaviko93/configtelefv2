@@ -68,6 +68,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gridtelefonosaconfigurar = new System.Windows.Forms.DataGridView();
+            this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nserie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnconfigurar = new System.Windows.Forms.Button();
             this.btneliminartlf = new System.Windows.Forms.Button();
             this.btnprobar = new System.Windows.Forms.Button();
@@ -85,16 +94,6 @@
             this.textoproceso = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.Extension = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nserie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ipactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreNotaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -508,6 +507,51 @@
             this.gridtelefonosaconfigurar.TabIndex = 25;
             this.gridtelefonosaconfigurar.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.gridtelefonosaconfigurar_RowsAdded);
             // 
+            // Extension
+            // 
+            this.Extension.HeaderText = "Extensión";
+            this.Extension.Name = "Extension";
+            // 
+            // Alias
+            // 
+            this.Alias.HeaderText = "Alias";
+            this.Alias.Name = "Alias";
+            // 
+            // IP
+            // 
+            this.IP.HeaderText = "IP";
+            this.IP.Name = "IP";
+            // 
+            // Nserie
+            // 
+            this.Nserie.HeaderText = "Nserie";
+            this.Nserie.Name = "Nserie";
+            // 
+            // Ipactual
+            // 
+            this.Ipactual.HeaderText = "IP Actual";
+            this.Ipactual.Name = "Ipactual";
+            // 
+            // NombreNotaria
+            // 
+            this.NombreNotaria.HeaderText = "Nombre Notaría";
+            this.NombreNotaria.Name = "NombreNotaria";
+            // 
+            // IPCentralita
+            // 
+            this.IPCentralita.HeaderText = "IP Centralita";
+            this.IPCentralita.Name = "IPCentralita";
+            // 
+            // Mascarared
+            // 
+            this.Mascarared.HeaderText = "Máscara red";
+            this.Mascarared.Name = "Mascarared";
+            // 
+            // PuertaEnlace
+            // 
+            this.PuertaEnlace.HeaderText = "Puerta Enlace";
+            this.PuertaEnlace.Name = "PuertaEnlace";
+            // 
             // btnconfigurar
             // 
             this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
@@ -680,67 +724,11 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // Extension
-            // 
-            this.Extension.HeaderText = "Extensión";
-            this.Extension.Name = "Extension";
-            // 
-            // Alias
-            // 
-            this.Alias.HeaderText = "Alias";
-            this.Alias.Name = "Alias";
-            // 
-            // IP
-            // 
-            this.IP.HeaderText = "IP";
-            this.IP.Name = "IP";
-            // 
-            // Nserie
-            // 
-            this.Nserie.HeaderText = "Nserie";
-            this.Nserie.Name = "Nserie";
-            // 
-            // Ipactual
-            // 
-            this.Ipactual.HeaderText = "IP Actual";
-            this.Ipactual.Name = "Ipactual";
-            // 
-            // NombreNotaria
-            // 
-            this.NombreNotaria.HeaderText = "Nombre Notaría";
-            this.NombreNotaria.Name = "NombreNotaria";
-            // 
-            // IPCentralita
-            // 
-            this.IPCentralita.HeaderText = "IP Centralita";
-            this.IPCentralita.Name = "IPCentralita";
-            // 
-            // Mascarared
-            // 
-            this.Mascarared.HeaderText = "Máscara red";
-            this.Mascarared.Name = "Mascarared";
-            // 
-            // PuertaEnlace
-            // 
-            this.PuertaEnlace.HeaderText = "Puerta Enlace";
-            this.PuertaEnlace.Name = "PuertaEnlace";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(492, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 23);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "Nserie";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textoproceso);
@@ -860,7 +848,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
-        private System.Windows.Forms.Button button2;
     }
 }
 

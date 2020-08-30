@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -473,7 +474,7 @@ namespace configurador_tlf_V2
             {
                 foreach (DataGridViewRow row in gridtelefonosaconfigurar.SelectedRows)
                 {
-                   String iptelefonolinea = row.Cells[3].Value.ToString();
+                   String iptelefonolinea = row.Cells[4].Value.ToString();
                     ipaonfigurarinput.Text = iptelefonolinea;
 
                     webBrowser1.Navigate("http://" + iptelefonolinea);
@@ -652,10 +653,11 @@ namespace configurador_tlf_V2
                 String mascaradered = mascararednotaria.Text.ToString();
                 String puertaenlace = puertaenlacenotaria.Text.ToString();
                 String modelotlf = listamodelo.SelectedItem.ToString().Trim(' ');
+                String nserietexto = gridextensiones.CurrentRow.Cells[3].Value.ToString();
 
                 gridextensiones.Rows.RemoveAt(gridextensiones.CurrentRow.Index);
 
-                string[] row1 = new string[] {extensiontelefono, aliastelefono, iptelefono, "", ipactualtelefono, nombrenotaria, ipcentralita, mascaradered, puertaenlace, modelotlf };
+                string[] row1 = new string[] {extensiontelefono, aliastelefono, iptelefono, nserietexto, ipactualtelefono, nombrenotaria, ipcentralita, mascaradered, puertaenlace, modelotlf };
                 gridtelefonosaconfigurar.Rows.Add(row1);
 
 
@@ -684,75 +686,48 @@ namespace configurador_tlf_V2
         public void comprobarnserie()
         {
             int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
-
-            for (int i = 0; i < numerotelefonos; i++)
-            {
-
-
-                if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
-                {
-                    String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
-                    DialogResult result;
-                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == System.Windows.Forms.DialogResult.No)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        configuradordetelefonos();
-                        break;
-                    }
-                } else
-                {
-                    MySqlCommand mostrar2 = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension ='" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "'", Conexion);
-                    int lastId = Convert.ToInt32(mostrar2.ExecuteScalar());
-                    MessageBox.Show(lastId.ToString());
-                }
-            }
-        }
-
-        
-        private void Button2_Click_1(object sender, EventArgs e)
-        {
-            int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
             Conexion.Open();
 
             for (int i = 0; i < numerotelefonos; i++)
             {
-
-
                 if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
                 {
                     String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                     DialogResult result;
-                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie y continuar?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == System.Windows.Forms.DialogResult.No)
                     {
-                        break;
+                        Conexion.Close();
+                        return;
                     }
-                    else
-                    {
-                        configuradordetelefonos();
-                        break;
-                    }
+                    break;
+                }
+            }
+
+
+            for (int i = 0; i < numerotelefonos; i++)
+            {
+                String solomodelo = gridtelefonosaconfigurar.Rows[i].Cells[9].Value.ToString();
+                string[] ultimocachomodelo = solomodelo.Split(' ');
+
+                MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value, Conexion);
+                int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
+                if (object.Equals(lastId, 0))
+                {
+                    MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "')", Conexion);
+                    registronuevotlf.Connection = Conexion;
+                    registronuevotlf.ExecuteNonQuery();
                 }
                 else
                 {
-                    
-                    MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value, Conexion);
-                    int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
-                    if (object.Equals(lastId, 0))
-                    {
-                        MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo) VALUES (" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + ", " + gridtelefonosaconfigurar.Rows[i].Cells[8].Value, Conexion);
-                        registronuevotlf.Connection = Conexion;
-                        registronuevotlf.ExecuteNonQuery();
-                    }
+                    MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (ID, NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + lastId + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "') ON DUPLICATE KEY UPDATE NomNotaria = '" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', Extension = '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', Iptelefono = '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', Alias = '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', Modelo = ' Yealink SIP-" + ultimocachomodelo[1] + "', Nserie = '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "'", Conexion);
+                    registronuevotlf.Connection = Conexion;
+                    registronuevotlf.ExecuteNonQuery();
                 }
+
             }
             Conexion.Close();
-
-
+            configuradordetelefonos();
         }
     }
 }
