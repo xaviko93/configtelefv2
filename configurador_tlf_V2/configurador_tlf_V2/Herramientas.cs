@@ -35,5 +35,14 @@ namespace configurador_tlf_V2
         {
             System.Diagnostics.Process.Start("https://drive.google.com/file/d/1WUBY5rI54wvNLcoWWIgv9h5PRXuQsEzA/view?usp=sharing");
         }
+
+        private void BtnHistCambios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f2 = new Historicocambios();
+            f2.StartPosition = FormStartPosition.Manual;
+            f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
+            f2.Show(this);
+        }
     }
 }

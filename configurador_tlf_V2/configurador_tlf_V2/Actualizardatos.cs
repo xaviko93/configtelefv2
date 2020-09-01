@@ -55,6 +55,7 @@ namespace configurador_tlf_V2
                 using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), usuario.Text.ToString(), contra.Text.ToString()))
                 {
                     client.Connect();
+                    client.RunCommand("cd /datostelefonos");
                     client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scripts2020/scriptinstalacion.sh");
                     client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
                     client.RunCommand("sudo apt-get install dos2unix -y");

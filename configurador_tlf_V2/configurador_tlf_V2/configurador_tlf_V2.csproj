@@ -139,6 +139,12 @@
     <Compile Include="Actualizardatos.Designer.cs">
       <DependentUpon>Actualizardatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buscadornotariahistorico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buscadornotariahistorico.Designer.cs">
+      <DependentUpon>Buscadornotariahistorico.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuscarNotaria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,12 @@
     <Compile Include="Herramientas.Designer.cs">
       <DependentUpon>Herramientas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historicocambios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historicocambios.Designer.cs">
+      <DependentUpon>Historicocambios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TELEFONOS\YEALINKT26P.cs" />
@@ -164,6 +176,9 @@
     <Compile Include="TELEFONOS\YEALINKW52P.cs" />
     <EmbeddedResource Include="Actualizardatos.resx">
       <DependentUpon>Actualizardatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buscadornotariahistorico.resx">
+      <DependentUpon>Buscadornotariahistorico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BuscarNotaria.resx">
       <DependentUpon>BuscarNotaria.cs</DependentUpon>
@@ -173,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Herramientas.resx">
       <DependentUpon>Herramientas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historicocambios.resx">
+      <DependentUpon>Historicocambios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
