@@ -125,6 +125,7 @@
             this.Controls.Add(this.label4);
             this.Name = "Buscadornotariahistorico";
             this.Text = "Buscadornotariahistorico";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Buscadornotariahistorico_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

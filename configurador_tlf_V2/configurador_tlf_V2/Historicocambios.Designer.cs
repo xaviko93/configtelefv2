@@ -199,8 +199,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox nombrenotariafiltro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView gridhistorico;
@@ -215,5 +213,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox modelofiltro;
         private System.Windows.Forms.Button btnFiltrar;
+        public System.Windows.Forms.TextBox nombrenotariafiltro;
     }
 }

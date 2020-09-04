@@ -60,12 +60,8 @@ namespace configurador_tlf_V2
         {
             try
             {
-                Form1 pantallaprincipal = Owner as Form1;
-                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
-                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
-                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
-                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal.cargarextensiones();
+                Historicocambios pantallaprincipal = Owner as Historicocambios;
+                pantallaprincipal.nombrenotariafiltro.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
                 this.Close();
             }
             catch (System.ArgumentOutOfRangeException)
@@ -79,12 +75,8 @@ namespace configurador_tlf_V2
         {
             try
             {
-                Form1 pantallaprincipal = Owner as Form1;
-                pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
-                pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
-                pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
-                pantallaprincipal.puertaenlacenotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal.cargarextensiones();
+                Historicocambios pantallaprincipal = Owner as Historicocambios;
+                pantallaprincipal.nombrenotariafiltro.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
                 this.Close();
             }
             catch (System.ArgumentOutOfRangeException)
@@ -92,6 +84,11 @@ namespace configurador_tlf_V2
                 MessageBox.Show("No has seleccionado ninguna Notaría", "Advertencia");
                 this.Close();
             }
+        }
+
+        private void Buscadornotariahistorico_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
         }
     }
 }

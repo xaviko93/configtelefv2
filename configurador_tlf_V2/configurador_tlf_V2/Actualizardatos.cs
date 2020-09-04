@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -56,7 +57,7 @@ namespace configurador_tlf_V2
                 {
                     client.Connect();
                     client.RunCommand("cd /datostelefonos");
-                    client.RunCommand("wget -c ftp://jlozano:raper0_legendari0@telefonos.notin.net/Scripts2020/scriptinstalacion.sh");
+                    client.RunCommand("wget -c wget --user=jlozano --password=raper0_legendari0 'ftp://telefonos.notin.net/Scripts2020/scriptinstalacion.sh'");
                     client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
                     client.RunCommand("sudo apt-get install dos2unix -y");
                     client.RunCommand("dos2unix scriptinstalacion.sh");

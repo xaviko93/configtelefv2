@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Threading;
@@ -25,6 +26,12 @@ namespace configurador_tlf_V2
         public String extensionprimerastring;
         public bool IsReady = true;
         public String ipactualtelefono;
+        public String resultadomysql;
+        DataTable dt = new DataTable();
+        public String aliasviejo;
+        public String iptelefonovieja;
+        public String modeloviejo;
+        public String nserieviejo;
 
         public Form1()
         {
@@ -502,12 +509,32 @@ namespace configurador_tlf_V2
             numeroactual.Visible = true;
             numerototal.Visible = true;
 
-            comprobarnserie();
-            
+            configuradordetelefonos();
+
         }
 
         public async Task configuradordetelefonos()
         {
+            int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
+            Conexion.Open();
+
+            for (int i = 0; i < numerotelefonos; i++)
+            {
+                if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
+                {
+                    String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
+                    DialogResult result;
+                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie y continuar?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        Conexion.Close();
+                        return;
+                    }
+                    break;
+                }
+            }
+            Conexion.Close();
+
             int totalfilas = gridtelefonosaconfigurar.Rows.Count - 1;
 
             progressBartotal.Maximum = totalfilas;
@@ -523,13 +550,43 @@ namespace configurador_tlf_V2
 
                 String aliastelefono = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
                 String iptelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[2].Value.ToString();
-
+                String nserie = gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString();
                 ipactualtelefono = gridtelefonosaconfigurar.Rows[i].Cells[4].Value.ToString();
                 String ipcentralitatelefono = gridtelefonosaconfigurar.Rows[i].Cells[6].Value.ToString();
                 String mascaraderedtelefono = gridtelefonosaconfigurar.Rows[i].Cells[7].Value.ToString();
                 String puertadeenlacetelefono = gridtelefonosaconfigurar.Rows[i].Cells[8].Value.ToString();
                 String modelotelefonoaconfigurar = gridtelefonosaconfigurar.Rows[i].Cells[9].Value.ToString();
                 aliasprogreso.Text = aliastelefono;
+
+                consultahistoricocambios(extensiontelefono.ToString(), aliastelefono, iptelefonoaconfigurar, nserie, modelotelefonoaconfigurar);
+
+
+                int numerotelefonos2 = gridtelefonosaconfigurar.Rows.Count - 1;
+
+                for (int j = 0; j < numerotelefonos2; j++)
+                {
+                    String solomodelo = gridtelefonosaconfigurar.Rows[j].Cells[9].Value.ToString();
+                    string[] ultimocachomodelo = solomodelo.Split(' ');
+
+                    MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value, Conexion);
+                    int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
+                    if (object.Equals(lastId, 0))
+                    {
+                        MySqlCommand registronuevotlf2 = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[3].Value + "')", Conexion);
+                        registronuevotlf2.Connection = Conexion;
+                        registronuevotlf2.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MySqlCommand registronuevotlf2 = new MySqlCommand("INSERT INTO telefonos (ID, NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + lastId + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[j].Cells[3].Value + "') ON DUPLICATE KEY UPDATE NomNotaria = '" + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "', Extension = '" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value + "', Iptelefono = '" + gridtelefonosaconfigurar.Rows[j].Cells[2].Value + "', Alias = '" + gridtelefonosaconfigurar.Rows[j].Cells[1].Value + "', Modelo = ' Yealink SIP-" + ultimocachomodelo[1] + "', Nserie = '" + gridtelefonosaconfigurar.Rows[j].Cells[3].Value + "'", Conexion);
+                        registronuevotlf2.Connection = Conexion;
+                        registronuevotlf2.ExecuteNonQuery();
+                    }
+
+                }
+
+
+
                 switch (modelotelefonoaconfigurar)
                 {
                     case "YEALINK T27G":
@@ -683,51 +740,29 @@ namespace configurador_tlf_V2
             }
         }
 
-        public void comprobarnserie()
+        public void consultahistoricocambios(String extensiontelefono, String AliasInstalado, String IpInstalado, String NserieInstalado, String ModeloInstalado)
         {
-            int numerotelefonos = gridtelefonosaconfigurar.Rows.Count - 1;
             Conexion.Open();
-
-            for (int i = 0; i < numerotelefonos; i++)
+            MySqlCommand extractordatosantiguos = new MySqlCommand("SELECT Alias, Iptelefono, Modelo, Nserie FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' AND Extension =" + extensiontelefono, Conexion);
+            MySqlDataAdapter da = new MySqlDataAdapter(extractordatosantiguos);
+            da.Fill(dt);
+            int numerofilas = dt.Rows.Count;
+            if (numerofilas > 0)
             {
-                if (gridtelefonosaconfigurar.Rows[i].Cells[3].Value == null || gridtelefonosaconfigurar.Rows[i].Cells[3].Value == DBNull.Value || String.IsNullOrWhiteSpace(gridtelefonosaconfigurar.Rows[i].Cells[3].Value.ToString()))
-                {
-                    String aliastlf = gridtelefonosaconfigurar.Rows[i].Cells[1].Value.ToString();
-                    DialogResult result;
-                    result = MessageBox.Show("Hay números de serie que no se han introducido. Revísalos e introdúcelos ahora, si no lo haces ahora no se actualizarán en la base de datos. ¿Quieres omitir los números de serie y continuar?", "Números de serie sin introducir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == System.Windows.Forms.DialogResult.No)
-                    {
-                        Conexion.Close();
-                        return;
-                    }
-                    break;
-                }
+                aliasviejo = dt.Rows[0]["Alias"].ToString();
+                iptelefonovieja = dt.Rows[0]["Iptelefono"].ToString();
+                modeloviejo = dt.Rows[0]["Modelo"].ToString();
+                nserieviejo = dt.Rows[0]["Nserie"].ToString();
             }
+            DateTime fechaactual = DateTime.Today;
+            var horaactual = DateTime.Now.ToString("hh:mm:ss");
 
-
-            for (int i = 0; i < numerotelefonos; i++)
-            {
-                String solomodelo = gridtelefonosaconfigurar.Rows[i].Cells[9].Value.ToString();
-                string[] ultimocachomodelo = solomodelo.Split(' ');
-
-                MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value, Conexion);
-                int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
-                if (object.Equals(lastId, 0))
-                {
-                    MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "')", Conexion);
-                    registronuevotlf.Connection = Conexion;
-                    registronuevotlf.ExecuteNonQuery();
-                }
-                else
-                {
-                    MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO telefonos (ID, NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie) VALUES ('" + lastId + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', ' Yealink SIP-" + ultimocachomodelo[1] + "', '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "') ON DUPLICATE KEY UPDATE NomNotaria = '" + gridtelefonosaconfigurar.Rows[i].Cells[5].Value + "', Extension = '" + gridtelefonosaconfigurar.Rows[i].Cells[0].Value + "', Iptelefono = '" + gridtelefonosaconfigurar.Rows[i].Cells[2].Value + "', Alias = '" + gridtelefonosaconfigurar.Rows[i].Cells[1].Value + "', Modelo = ' Yealink SIP-" + ultimocachomodelo[1] + "', Nserie = '" + gridtelefonosaconfigurar.Rows[i].Cells[3].Value + "'", Conexion);
-                    registronuevotlf.Connection = Conexion;
-                    registronuevotlf.ExecuteNonQuery();
-                }
-
-            }
+            MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO histcambios (Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado) VALUES ('" + buscadornotaria.Text.ToString() + "', '" + fechaactual + "', '" + horaactual + "', '" + extensiontelefono + "', '" + AliasInstalado + "', '" + IpInstalado + "', '" + NserieInstalado + "', ' Yealink SIP-" + ModeloInstalado + "', '" + aliasviejo + "', '" + iptelefonovieja + "', '" + nserieviejo + "', '" + modeloviejo + "')", Conexion);
+            registronuevotlf.Connection = Conexion;
+            registronuevotlf.ExecuteNonQuery();
             Conexion.Close();
-            configuradordetelefonos();
         }
+
+
     }
 }
