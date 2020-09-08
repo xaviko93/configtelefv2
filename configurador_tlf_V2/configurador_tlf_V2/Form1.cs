@@ -568,7 +568,7 @@ namespace configurador_tlf_V2
                     String solomodelo = gridtelefonosaconfigurar.Rows[j].Cells[9].Value.ToString();
                     string[] ultimocachomodelo = solomodelo.Split(' ');
 
-                    MySqlCommand idtelefono = new MySqlCommand("SELECT ID FROM telefonos WHERE NomNotaria ='" + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "' AND Extension =" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value, Conexion);
+                    MySqlCommand idtelefono = new MySqlCommand('SELECT ID FROM telefonos WHERE NomNotaria =' + gridtelefonosaconfigurar.Rows[j].Cells[5].Value + "' AND Extension ='" + gridtelefonosaconfigurar.Rows[j].Cells[0].Value + "'", Conexion);
                     int lastId = Convert.ToInt32(idtelefono.ExecuteScalar());
                     if (object.Equals(lastId, 0))
                     {
