@@ -760,9 +760,12 @@ namespace configurador_tlf_V2
             }
             dt.Clear();
             DateTime fechaactual = DateTime.Today;
+            string[] fechaseparadadehora = fechaactual.ToString().Split(' ');
+            String fecha = fechaseparadadehora[0];
+
             var horaactual = DateTime.Now.ToString("hh:mm:ss");
 
-            MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO histcambios (Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado) VALUES ('" + buscadornotaria.Text.ToString() + "', '" + fechaactual + "', '" + horaactual + "', '" + extensiontelefono + "', '" + AliasInstalado + "', '" + IpInstalado + "', '" + NserieInstalado + "', ' Yealink SIP-" + ModeloInstalado + "', '" + aliasviejo + "', '" + iptelefonovieja + "', '" + nserieviejo + "', '" + modeloviejo + "')", Conexion);
+            MySqlCommand registronuevotlf = new MySqlCommand("INSERT INTO histcambios (Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado) VALUES ('" + buscadornotaria.Text.ToString() + "', '" + fecha + "', '" + horaactual + "', '" + extensiontelefono + "', '" + AliasInstalado + "', '" + IpInstalado + "', '" + NserieInstalado + "', ' Yealink SIP-" + ModeloInstalado + "', '" + aliasviejo + "', '" + iptelefonovieja + "', '" + nserieviejo + "', '" + modeloviejo + "')", Conexion);
             registronuevotlf.Connection = Conexion;
             registronuevotlf.ExecuteNonQuery();
             Conexion.Close();

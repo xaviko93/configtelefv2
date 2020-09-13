@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Historicocambios));
             this.nombrenotariafiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -169,6 +170,7 @@
             this.btnFiltrar.TabIndex = 14;
             this.btnFiltrar.Text = "FILTRAR";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // Historicocambios
             // 
@@ -190,8 +192,9 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nombrenotariafiltro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Historicocambios";
-            this.Text = "Historicocambios";
+            this.Text = "Histórico de cambios";
             ((System.ComponentModel.ISupportInitialize)(this.gridhistorico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

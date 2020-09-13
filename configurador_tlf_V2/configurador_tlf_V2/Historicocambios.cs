@@ -17,7 +17,7 @@ namespace configurador_tlf_V2
         {
             InitializeComponent();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT NomNotaria, IPCentralita, MascaraRed, PuertaEnlace FROM centralita", Conexion);
+            MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
@@ -34,6 +34,29 @@ namespace configurador_tlf_V2
             f2.StartPosition = FormStartPosition.Manual;
             f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
             f2.Show(this);
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            String notariabuscada = "%" + nombrenotariafiltro.Text.ToString() + "%";
+            String nserie = "%" + nseriefiltro.Text.ToString() + "%";
+            String extensionbuscada = "%" + extensionfiltro.Text.ToString() + "%";
+            String aliasbuscado = "%" + aliasfiltro.Text.ToString() + "%";
+            String ipbuscada = "%" + IPfiltro.Text.ToString() + "%";
+            String modelobuscado = "%" + modelofiltro.Text.ToString() + "%";
+            ds2.Clear();
+            if (nombrenotariafiltro.Text.ToString().Equals("")) { notariabuscada = "%"; }
+            if (nseriefiltro.Text.ToString().Equals("")) { nserie = "%"; }
+            if (extensionfiltro.Text.ToString().Equals("")) { extensionbuscada = "%"; }
+            if (aliasfiltro.Text.ToString().Equals("")) { aliasbuscado = "%"; }
+            if (IPfiltro.Text.ToString().Equals("")) { ipbuscada = "%"; }
+            if (modelofiltro.Text.ToString().Equals("")) { modelobuscado = "%"; }
+            MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios WHERE Notaria LIKE '" + notariabuscada + "' AND (NserieInstalado LIKE '" + nserie + "' OR NserieRetirado LIKE '" + nserie + "') AND (AliasInstalado LIKE '" + aliasbuscado + "' OR AliasRetirado LIKE '" + aliasbuscado + "') AND Extension LIKE '" + extensionbuscada + "' AND (IPInstalado LIKE '" + ipbuscada + "' OR IPRetirado LIKE '" + ipbuscada + "') AND (ModeloInstalado LIKE '" + modelobuscado + "' OR ModeloRetirado LIKE '" + modelobuscado + "')", Conexion);
+            MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
+            ds2 = new DataSet();
+            m_datos2.Fill(ds2);
+            gridhistorico.DataSource = ds2.Tables[0];
+            Conexion.Close();
         }
     }
 }
