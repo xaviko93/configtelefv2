@@ -771,6 +771,76 @@ namespace configurador_tlf_V2
             Conexion.Close();
         }
 
+        private async Task btnputty_ClickAsync()
+        {
+            webBrowser1.Navigate("https://ssl.voztele.com/areadeclientes_nae/jsp/distri/oigaaUserManagement.jsp");
 
+            await cargapagina();
+
+            webBrowser1.Document.GetElementById("j_username").SetAttribute("value", "integrador@notin.net");
+            webBrowser1.Document.GetElementById("j_password").SetAttribute("value", "voztelenotin");
+
+            foreach (HtmlElement btn in webBrowser1.Document.GetElementsByTagName("td"))
+            {
+                if (btn.GetAttribute("className") == "submitBtn")
+                {
+                    btn.InvokeMember("Click");
+                    break;
+                }
+            }
+
+            await cargapagina();
+
+            webBrowser1.Document.GetElementById("j_username").SetAttribute("value", "integrador@notin.net");
+            webBrowser1.Document.GetElementById("j_password").SetAttribute("value", "voztelenotin");
+
+            foreach (HtmlElement btn in webBrowser1.Document.GetElementsByTagName("td"))
+            {
+                if (btn.GetAttribute("className") == "submitBtn")
+                {
+                    btn.InvokeMember("Click");
+                    break;
+                }
+            }
+
+            await cargapagina();
+
+            webBrowser1.Navigate("https://ssl.voztele.com/areadeclientes_nae/jsp/distri/oigaaUserManagement.jsp");
+
+            await cargapagina();
+
+            string downloadString = webBrowser1.DocumentText;
+            int separatorIndex = downloadString.IndexOf(buscadornotaria.Text.ToString());
+            if (separatorIndex >= 0)
+            {
+                string notariaencontrada = downloadString.Substring(separatorIndex + buscadornotaria.Text.ToString().Length);
+                int separatorIndex2 = downloadString.IndexOf("ssl");
+                string enlacecasiencontrado = notariaencontrada.Substring(separatorIndex2 + "ssl".Length);
+                string[] enlacepulido = enlacecasiencontrado.Split('<');
+                string[] enlacefinal = enlacepulido[5].Split('"');
+                webBrowser1.Navigate(enlacefinal[1]);
+
+
+                MessageBox.Show(enlacefinal[1]);
+            } else
+            {
+                MessageBox.Show("Notaría no encontrada, revisa que el nombre sea igual que en la página de ssl.voztelecom.com");
+            }
+        }
+
+        async Task cargapagina()
+        {
+            await Task.Delay(2000);
+        }
+
+        async Task cargagrande()
+        {
+            await Task.Delay(5000);
+        }
+
+        private void btnputty_Click(object sender, EventArgs e)
+        {
+            btnputty_ClickAsync();
+        }
     }
 }

@@ -234,6 +234,8 @@
     <Content Include="Resources\herramientas-y-utensilios.png" />
     <Content Include="Resources\icon %281%29.ico" />
     <Content Include="Resources\manual.png" />
+    <Content Include="Resources\PuTTY_icon_128px.png" />
+    <None Include="Resources\PuTTY_icon_128px1.png" />
     <None Include="Resources\guia %281%29.png" />
     <None Include="Resources\guia.png" />
   </ItemGroup>
