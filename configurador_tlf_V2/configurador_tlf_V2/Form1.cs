@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -810,22 +812,23 @@ namespace configurador_tlf_V2
             await cargapagina();
 
             string downloadString = webBrowser1.DocumentText;
-            int separatorIndex = downloadString.IndexOf(buscadornotaria.Text.ToString());
-            if (separatorIndex >= 0)
-            {
-                string notariaencontrada = downloadString.Substring(separatorIndex + buscadornotaria.Text.ToString().Length);
-                int separatorIndex2 = downloadString.IndexOf("ssl");
-                string enlacecasiencontrado = notariaencontrada.Substring(separatorIndex2 + "ssl".Length);
-                string[] enlacepulido = enlacecasiencontrado.Split('<');
-                string[] enlacefinal = enlacepulido[5].Split('"');
-                webBrowser1.Navigate(enlacefinal[1]);
+            string cadenarecortada1 = recortarcadena(downloadString, buscadornotaria.Text.ToString(), ">Gestionar");
+            string cadenarecortada2 = cadenarecortada1.Split('<')[4].Split('\"')[1];
 
+            webBrowser1.Navigate(cadenarecortada2);
+        }
 
-                MessageBox.Show(enlacefinal[1]);
-            } else
+        public static string recortarcadena(string strSource, string strStart, string strEnd)
+        {
+            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
             {
-                MessageBox.Show("Notaría no encontrada, revisa que el nombre sea igual que en la página de ssl.voztelecom.com");
+                int Start, End;
+                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+                End = strSource.IndexOf(strEnd, Start);
+                return strSource.Substring(Start, End - Start);
             }
+
+            return "";
         }
 
         async Task cargapagina()
