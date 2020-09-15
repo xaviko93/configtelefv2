@@ -775,10 +775,14 @@ namespace configurador_tlf_V2
 
         private async Task btnputty_ClickAsync()
         {
+
             webBrowser1.Navigate("https://ssl.voztele.com/areadeclientes_nae/jsp/distri/oigaaUserManagement.jsp");
 
             await cargapagina();
+            try
+            {
 
+            
             webBrowser1.Document.GetElementById("j_username").SetAttribute("value", "integrador@notin.net");
             webBrowser1.Document.GetElementById("j_password").SetAttribute("value", "voztelenotin");
 
@@ -804,18 +808,49 @@ namespace configurador_tlf_V2
                     break;
                 }
             }
-
+            }
+            catch { }
             await cargapagina();
 
             webBrowser1.Navigate("https://ssl.voztele.com/areadeclientes_nae/jsp/distri/oigaaUserManagement.jsp");
 
             await cargapagina();
-
+            await cargapagina();
+            await cargapagina();
             string downloadString = webBrowser1.DocumentText;
             string cadenarecortada1 = recortarcadena(downloadString, buscadornotaria.Text.ToString(), ">Gestionar");
             string cadenarecortada2 = cadenarecortada1.Split('<')[4].Split('\"')[1];
 
             webBrowser1.Navigate(cadenarecortada2);
+
+            await cargagrande();
+
+            downloadString = webBrowser1.DocumentText;
+            cadenarecortada1 = recortarcadena(downloadString, "nacional e internacional", " class");
+            cadenarecortada2 = cadenarecortada1.Split('=')[1].Split('\"')[1];
+
+            webBrowser1.Navigate("https://ssl.voztele.com" + cadenarecortada2);
+
+            await cargapagina();
+            await cargapagina();
+            await cargapagina();
+
+            downloadString = webBrowser1.DocumentText;
+            cadenarecortada1 = recortarcadena(downloadString, "DSL:", "/tr");
+            cadenarecortada2 = cadenarecortada1.Split('>')[2].Split('<')[0].Split('\"')[0];
+
+            //Para mas informacion consulte la ayuda de la consola con cmd.exe /? 
+            System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "start cmd /K \"plink.exe -ssh " + cadenarecortada2 + " -P 6598 -l root -pw 4a9P1dK9xrn1l\"");
+            // Indicamos que la salida del proceso se redireccione en un Stream
+            procStartInfo.RedirectStandardOutput = false;
+            procStartInfo.UseShellExecute = true;
+            //Indica que el proceso no despliegue una pantalla negra (El proceso se ejecuta en background)
+            procStartInfo.CreateNoWindow = false;
+            //Inicializa el proceso
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo = procStartInfo;
+            proc.Start();
+
         }
 
         public static string recortarcadena(string strSource, string strStart, string strEnd)
@@ -833,12 +868,12 @@ namespace configurador_tlf_V2
 
         async Task cargapagina()
         {
-            await Task.Delay(2000);
+            await Task.Delay(1000);
         }
 
         async Task cargagrande()
         {
-            await Task.Delay(5000);
+            await Task.Delay(15000);
         }
 
         private void btnputty_Click(object sender, EventArgs e)
