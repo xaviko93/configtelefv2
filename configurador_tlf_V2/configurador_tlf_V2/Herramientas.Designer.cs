@@ -66,7 +66,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 90);
             this.button2.TabIndex = 1;
-            this.button2.Text = "RECONFIGURAR NOTARIA";
+            this.button2.Text = "EDITAR NOTARIA";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
             // 

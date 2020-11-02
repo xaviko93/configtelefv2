@@ -83,9 +83,59 @@ namespace configurador_tlf_V2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PuTTY_icon_128px {
+        internal static System.Drawing.Bitmap putty {
             get {
-                object obj = ResourceManager.GetObject("PuTTY_icon_128px", resourceCulture);
+                object obj = ResourceManager.GetObject("putty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reanudar {
+            get {
+                object obj = ResourceManager.GetObject("reanudar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reanudar__1_ {
+            get {
+                object obj = ResourceManager.GetObject("reanudar (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap terminal {
+            get {
+                object obj = ResourceManager.GetObject("terminal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap terminal__1_ {
+            get {
+                object obj = ResourceManager.GetObject("terminal (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap terminal__2_ {
+            get {
+                object obj = ResourceManager.GetObject("terminal (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

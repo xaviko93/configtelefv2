@@ -93,7 +93,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textoproceso = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.btnputty = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -712,18 +711,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // btnputty
-            // 
-            this.btnputty.Image = global::configurador_tlf_V2.Properties.Resources.PuTTY_icon_128px;
-            this.btnputty.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnputty.Location = new System.Drawing.Point(492, 455);
-            this.btnputty.Name = "btnputty";
-            this.btnputty.Size = new System.Drawing.Size(80, 38);
-            this.btnputty.TabIndex = 52;
-            this.btnputty.Text = "Putty";
-            this.btnputty.UseVisualStyleBackColor = true;
-            this.btnputty.Click += new System.EventHandler(this.btnputty_Click);
-            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -742,7 +729,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 622);
-            this.Controls.Add(this.btnputty);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textoproceso);
@@ -862,7 +848,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
-        private System.Windows.Forms.Button btnputty;
     }
 }
 
