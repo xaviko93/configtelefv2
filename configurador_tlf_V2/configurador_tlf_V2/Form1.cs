@@ -117,7 +117,6 @@ namespace configurador_tlf_V2
 
             try
             {
-
                 gridextensiones.Columns.Clear();
             }
             catch { }
