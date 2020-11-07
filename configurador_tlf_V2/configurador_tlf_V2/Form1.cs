@@ -117,20 +117,13 @@ namespace configurador_tlf_V2
 
             try
             {
-                     
-            gridextensiones.Columns.Remove("Extension");
-            gridextensiones.Columns.Remove("IP Telefono");
-            gridextensiones.Columns.Remove("Alias");
-            gridextensiones.Columns.Remove("Nserie");
-            gridextensiones.Columns.Remove("Nombre Notaria");
-            gridextensiones.Columns.Remove("IP Centralita");
-            gridextensiones.Columns.Remove("Mascara de red");
-            gridextensiones.Columns.Remove("Puerta de enlace");
+
+                gridextensiones.Columns.Clear();
             }
             catch { }
 
 
-            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
+            MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria, UltActualiz FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);

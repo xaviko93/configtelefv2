@@ -790,7 +790,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView gridextensiones;
         private System.Windows.Forms.Button btnnuevoext;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label numeroactual;
@@ -848,6 +847,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IPCentralita;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mascarared;
         private System.Windows.Forms.DataGridViewTextBoxColumn PuertaEnlace;
+        public System.Windows.Forms.DataGridView gridextensiones;
     }
 }
 

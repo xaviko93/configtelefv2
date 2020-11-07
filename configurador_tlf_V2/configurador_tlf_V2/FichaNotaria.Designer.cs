@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FichaNotaria));
-            this.btnbuscar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.mascararedinput = new System.Windows.Forms.TextBox();
@@ -38,7 +37,6 @@
             this.textopuertadeenlace = new System.Windows.Forms.Label();
             this.ipcentralitainput = new System.Windows.Forms.TextBox();
             this.textoipcentralita = new System.Windows.Forms.Label();
-            this.nombrenotaria = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnnuevoext = new System.Windows.Forms.Button();
@@ -47,21 +45,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnbuscar = new System.Windows.Forms.Button();
+            this.Putty = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.Putty = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Location = new System.Drawing.Point(495, 2);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(88, 38);
-            this.btnbuscar.TabIndex = 37;
-            this.btnbuscar.Text = "Buscar";
-            this.btnbuscar.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -134,15 +124,6 @@
             this.textoipcentralita.Size = new System.Drawing.Size(67, 13);
             this.textoipcentralita.TabIndex = 45;
             this.textoipcentralita.Text = "IP Centralita:";
-            // 
-            // nombrenotaria
-            // 
-            this.nombrenotaria.AutoSize = true;
-            this.nombrenotaria.Location = new System.Drawing.Point(132, 15);
-            this.nombrenotaria.Name = "nombrenotaria";
-            this.nombrenotaria.Size = new System.Drawing.Size(47, 13);
-            this.nombrenotaria.TabIndex = 46;
-            this.nombrenotaria.Text = "Ninguna";
             // 
             // label2
             // 
@@ -218,6 +199,38 @@
             this.label5.TabIndex = 53;
             this.label5.Text = "IP pública:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(131, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 58;
+            this.label6.Text = "Ninguna";
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Location = new System.Drawing.Point(497, 2);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(88, 38);
+            this.btnbuscar.TabIndex = 59;
+            this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
+            // 
+            // Putty
+            // 
+            this.Putty.Image = ((System.Drawing.Image)(resources.GetObject("Putty.Image")));
+            this.Putty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Putty.Location = new System.Drawing.Point(19, 453);
+            this.Putty.Name = "Putty";
+            this.Putty.Size = new System.Drawing.Size(82, 43);
+            this.Putty.TabIndex = 57;
+            this.Putty.Text = "Putty";
+            this.Putty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Putty.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -245,23 +258,13 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // Putty
-            // 
-            this.Putty.Image = ((System.Drawing.Image)(resources.GetObject("Putty.Image")));
-            this.Putty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Putty.Location = new System.Drawing.Point(19, 453);
-            this.Putty.Name = "Putty";
-            this.Putty.Size = new System.Drawing.Size(82, 43);
-            this.Putty.TabIndex = 57;
-            this.Putty.Text = "Putty";
-            this.Putty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Putty.UseVisualStyleBackColor = true;
-            // 
             // FichaNotaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 508);
+            this.Controls.Add(this.btnbuscar);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.Putty);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -273,7 +276,6 @@
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.ipcentralitainput);
             this.Controls.Add(this.textoipcentralita);
             this.Controls.Add(this.mascararedinput);
@@ -281,7 +283,6 @@
             this.Controls.Add(this.puertadeenlaceinput);
             this.Controls.Add(this.textopuertadeenlace);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.label4);
             this.Name = "FichaNotaria";
             this.Text = "FichaNotaria";
@@ -292,8 +293,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox mascararedinput;
@@ -302,7 +301,6 @@
         private System.Windows.Forms.Label textopuertadeenlace;
         private System.Windows.Forms.TextBox ipcentralitainput;
         private System.Windows.Forms.Label textoipcentralita;
-        private System.Windows.Forms.Label nombrenotaria;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnnuevoext;
@@ -314,5 +312,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button Putty;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnbuscar;
     }
 }

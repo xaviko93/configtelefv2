@@ -57,7 +57,8 @@ namespace configurador_tlf_V2
                 {
                     client.Connect();
                     client.RunCommand("sudo rm scriptinstalacion.sh");
-                    client.RunCommand("cd /datostelefonos");
+                    client.RunCommand("sudo rm -rf /datostelefonos");
+                    client.RunCommand("sudo mkdir /datostelefonos");
                     client.RunCommand("wget -c wget --user=jlozano --password=raper0_legendari0 'ftp://telefonos.notin.net/Scripts2020/scriptinstalacion.sh'");
                     client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
                     client.RunCommand("sudo apt-get install dos2unix -y");
