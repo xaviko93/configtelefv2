@@ -59,7 +59,7 @@
             this.btnSeleccionarNotaria.TabIndex = 18;
             this.btnSeleccionarNotaria.Text = "Aceptar";
             this.btnSeleccionarNotaria.UseVisualStyleBackColor = true;
-            this.btnSeleccionarNotaria.Click += new System.EventHandler(this.btnSeleccionarNotaria_Click_1);
+            this.btnSeleccionarNotaria.Click += new System.EventHandler(this.BtnSeleccionarNotaria_Click);
             // 
             // listabusquedanotarias
             // 
@@ -78,6 +78,7 @@
             this.listabusquedanotarias.TabIndex = 17;
             this.listabusquedanotarias.UseCompatibleStateImageBehavior = false;
             this.listabusquedanotarias.View = System.Windows.Forms.View.Details;
+            this.listabusquedanotarias.DoubleClick += new System.EventHandler(this.listabusquedanotarias_DoubleClick);
             // 
             // NombreNotaria
             // 
@@ -124,6 +125,7 @@
             this.Controls.Add(this.label4);
             this.Name = "Buscadornotariaficha";
             this.Text = "Buscadornotariaficha";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Buscadornotariaficha_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

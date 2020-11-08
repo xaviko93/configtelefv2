@@ -41,11 +41,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnnuevoext = new System.Windows.Forms.Button();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.puertotexto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.ippublicatexto = new System.Windows.Forms.TextBox();
+            this.ippublicapretexto = new System.Windows.Forms.Label();
+            this.nombrenotaria = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
             this.Putty = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -56,18 +56,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(13, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 13);
+            this.label4.Size = new System.Drawing.Size(133, 13);
             this.label4.TabIndex = 38;
             this.label4.Text = "Notaría seleccionada:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 39;
             this.label1.Text = "Datos Centralita:";
             // 
@@ -128,15 +130,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(16, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 47;
             this.label2.Text = "Datos Teléfonos:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(203, 129);
+            this.button1.Location = new System.Drawing.Point(220, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
             this.button1.TabIndex = 50;
@@ -145,7 +148,7 @@
             // 
             // btnnuevoext
             // 
-            this.btnnuevoext.Location = new System.Drawing.Point(109, 129);
+            this.btnnuevoext.Location = new System.Drawing.Point(126, 130);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
             this.btnnuevoext.TabIndex = 49;
@@ -163,50 +166,49 @@
             this.gridextensiones.Size = new System.Drawing.Size(564, 288);
             this.gridextensiones.TabIndex = 48;
             // 
-            // textBox1
+            // puertotexto
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(474, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 20);
-            this.textBox1.TabIndex = 52;
+            this.puertotexto.Location = new System.Drawing.Point(474, 51);
+            this.puertotexto.Name = "puertotexto";
+            this.puertotexto.Size = new System.Drawing.Size(109, 20);
+            this.puertotexto.TabIndex = 52;
+            this.puertotexto.Text = "6598";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(427, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 54;
             this.label3.Text = "Puerto:";
             // 
-            // textBox2
+            // ippublicatexto
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(300, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 20);
-            this.textBox2.TabIndex = 51;
+            this.ippublicatexto.Enabled = false;
+            this.ippublicatexto.Location = new System.Drawing.Point(300, 51);
+            this.ippublicatexto.Name = "ippublicatexto";
+            this.ippublicatexto.Size = new System.Drawing.Size(111, 20);
+            this.ippublicatexto.TabIndex = 51;
             // 
-            // label5
+            // ippublicapretexto
             // 
-            this.label5.AutoSize = true;
-            this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(234, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "IP pública:";
+            this.ippublicapretexto.AutoSize = true;
+            this.ippublicapretexto.Enabled = false;
+            this.ippublicapretexto.Location = new System.Drawing.Point(234, 54);
+            this.ippublicapretexto.Name = "ippublicapretexto";
+            this.ippublicapretexto.Size = new System.Drawing.Size(57, 13);
+            this.ippublicapretexto.TabIndex = 53;
+            this.ippublicapretexto.Text = "IP pública:";
             // 
-            // label6
+            // nombrenotaria
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(131, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 58;
-            this.label6.Text = "Ninguna";
+            this.nombrenotaria.AutoSize = true;
+            this.nombrenotaria.Location = new System.Drawing.Point(150, 15);
+            this.nombrenotaria.Name = "nombrenotaria";
+            this.nombrenotaria.Size = new System.Drawing.Size(47, 13);
+            this.nombrenotaria.TabIndex = 58;
+            this.nombrenotaria.Text = "Ninguna";
             // 
             // btnbuscar
             // 
@@ -264,14 +266,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 508);
             this.Controls.Add(this.btnbuscar);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.Putty);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.puertotexto);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.ippublicatexto);
+            this.Controls.Add(this.ippublicapretexto);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
@@ -286,6 +288,7 @@
             this.Controls.Add(this.label4);
             this.Name = "FichaNotaria";
             this.Text = "FichaNotaria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FichaNotaria_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,24 +298,24 @@
         #endregion
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox mascararedinput;
-        private System.Windows.Forms.Label textomascarared;
-        private System.Windows.Forms.TextBox puertadeenlaceinput;
-        private System.Windows.Forms.Label textopuertadeenlace;
-        private System.Windows.Forms.TextBox ipcentralitainput;
-        private System.Windows.Forms.Label textoipcentralita;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnnuevoext;
-        private System.Windows.Forms.DataGridView gridextensiones;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button Putty;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnbuscar;
+        public System.Windows.Forms.TextBox mascararedinput;
+        public System.Windows.Forms.TextBox puertadeenlaceinput;
+        public System.Windows.Forms.TextBox ipcentralitainput;
+        public System.Windows.Forms.TextBox puertotexto;
+        public System.Windows.Forms.TextBox ippublicatexto;
+        public System.Windows.Forms.Label nombrenotaria;
+        public System.Windows.Forms.DataGridView gridextensiones;
+        public System.Windows.Forms.Label textomascarared;
+        public System.Windows.Forms.Label textopuertadeenlace;
+        public System.Windows.Forms.Label textoipcentralita;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label ippublicapretexto;
     }
 }
