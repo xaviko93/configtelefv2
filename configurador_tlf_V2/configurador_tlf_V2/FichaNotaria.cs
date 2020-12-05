@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +14,14 @@ using System.Windows.Forms;
 
 namespace configurador_tlf_V2
 {
-	public partial class FichaNotaria : Form
-	{
-		public FichaNotaria()
-		{
-			InitializeComponent();
+    public partial class FichaNotaria : Form
+    {
+        public FichaNotaria()
+        {
+            InitializeComponent();
 
 
-		}
+        }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
@@ -56,6 +58,48 @@ namespace configurador_tlf_V2
         {
             Herramientas pantallaprincipal2 = Owner as Herramientas;
             pantallaprincipal2.Show();
+        }
+
+        private void Putty_Click(object sender, EventArgs e)
+        {
+            puttyejecutar();
+        }
+
+        private async Task puttyejecutar()
+        {
+            if (File.Exists("C:\\Program Files\\PuTTY\\putty.exe"))
+            {
+                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
+                ejecutarcomandocmd(comando);
+            }
+            else
+            {
+                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/putty.msi >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
+                ejecutarcomandocmd(comandoinstchoco);
+                await Task.Delay(6000);
+                ejecutarcomandocmd("start putty.msi /passive");
+                await Task.Delay(2000);
+                ejecutarcomandocmd("DEL /F /A putty.msi");
+                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
+                ejecutarcomandocmd(comando);
+            }
+        }
+
+        public void ejecutarcomandocmd(String comandoimportado)
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = false;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+            cmd.StandardInput.WriteLine(comandoimportado);
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+            cmd.WaitForExit();
+            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+            Console.Read();
         }
     }
 }

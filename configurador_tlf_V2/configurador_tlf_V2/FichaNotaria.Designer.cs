@@ -50,6 +50,10 @@
             this.Putty = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.usuarioputty = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.contraputty = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,6 +236,7 @@
             this.Putty.Text = "Putty";
             this.Putty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Putty.UseVisualStyleBackColor = true;
+            this.Putty.Click += new System.EventHandler(this.Putty_Click);
             // 
             // button2
             // 
@@ -260,11 +265,50 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // usuarioputty
+            // 
+            this.usuarioputty.Location = new System.Drawing.Point(171, 450);
+            this.usuarioputty.Name = "usuarioputty";
+            this.usuarioputty.Size = new System.Drawing.Size(109, 20);
+            this.usuarioputty.TabIndex = 62;
+            this.usuarioputty.Text = "root";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(124, 453);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Usuario:";
+            // 
+            // contraputty
+            // 
+            this.contraputty.Location = new System.Drawing.Point(171, 476);
+            this.contraputty.Name = "contraputty";
+            this.contraputty.PasswordChar = '*';
+            this.contraputty.Size = new System.Drawing.Size(109, 20);
+            this.contraputty.TabIndex = 60;
+            this.contraputty.Text = "4a9P1dK9xrn1l";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(106, 479);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 61;
+            this.label6.Text = "Contraseña:";
+            // 
             // FichaNotaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 508);
+            this.Controls.Add(this.usuarioputty);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.contraputty);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.Putty);
@@ -317,5 +361,9 @@
         public System.Windows.Forms.Label textoipcentralita;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label ippublicapretexto;
+        public System.Windows.Forms.TextBox usuarioputty;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox contraputty;
+        public System.Windows.Forms.Label label6;
     }
 }
