@@ -101,5 +101,30 @@ namespace configurador_tlf_V2
             Console.WriteLine(cmd.StandardOutput.ReadToEnd());
             Console.Read();
         }
+
+        private void winscp_Click(object sender, EventArgs e)
+        {
+            winscpejecutar();
+        }
+
+        private async Task winscpejecutar()
+        {
+            if (File.Exists("C:\\Program Files\\PuTTY\\putty.exe"))
+            {
+                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
+                ejecutarcomandocmd(comando);
+            }
+            else
+            {
+                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/putty.msi >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
+                ejecutarcomandocmd(comandoinstchoco);
+                await Task.Delay(6000);
+                ejecutarcomandocmd("start putty.msi /passive");
+                await Task.Delay(2000);
+                ejecutarcomandocmd("DEL /F /A putty.msi");
+                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
+                ejecutarcomandocmd(comando);
+            }
+        }
     }
 }

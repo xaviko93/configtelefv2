@@ -54,6 +54,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.contraputty = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.winscp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,13 +229,13 @@
             // Putty
             // 
             this.Putty.Image = ((System.Drawing.Image)(resources.GetObject("Putty.Image")));
-            this.Putty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Putty.Location = new System.Drawing.Point(19, 453);
+            this.Putty.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Putty.Location = new System.Drawing.Point(107, 453);
             this.Putty.Name = "Putty";
-            this.Putty.Size = new System.Drawing.Size(82, 43);
+            this.Putty.Size = new System.Drawing.Size(82, 54);
             this.Putty.TabIndex = 57;
             this.Putty.Text = "Putty";
-            this.Putty.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Putty.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Putty.UseVisualStyleBackColor = true;
             this.Putty.Click += new System.EventHandler(this.Putty_Click);
             // 
@@ -244,9 +245,9 @@
             this.button2.ForeColor = System.Drawing.Color.DarkRed;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(474, 453);
+            this.button2.Location = new System.Drawing.Point(472, 453);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 43);
+            this.button2.Size = new System.Drawing.Size(111, 54);
             this.button2.TabIndex = 56;
             this.button2.Text = "Cancelar cambios";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -257,9 +258,9 @@
             this.button3.ForeColor = System.Drawing.Color.DarkGreen;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(356, 453);
+            this.button3.Location = new System.Drawing.Point(354, 453);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 43);
+            this.button3.Size = new System.Drawing.Size(112, 54);
             this.button3.TabIndex = 55;
             this.button3.Text = "Guardar cambios";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -267,16 +268,16 @@
             // 
             // usuarioputty
             // 
-            this.usuarioputty.Location = new System.Drawing.Point(171, 450);
+            this.usuarioputty.Location = new System.Drawing.Point(260, 457);
             this.usuarioputty.Name = "usuarioputty";
-            this.usuarioputty.Size = new System.Drawing.Size(109, 20);
+            this.usuarioputty.Size = new System.Drawing.Size(61, 20);
             this.usuarioputty.TabIndex = 62;
             this.usuarioputty.Text = "root";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(124, 453);
+            this.label5.Location = new System.Drawing.Point(213, 460);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 63;
@@ -284,27 +285,41 @@
             // 
             // contraputty
             // 
-            this.contraputty.Location = new System.Drawing.Point(171, 476);
+            this.contraputty.Location = new System.Drawing.Point(260, 483);
             this.contraputty.Name = "contraputty";
             this.contraputty.PasswordChar = '*';
-            this.contraputty.Size = new System.Drawing.Size(109, 20);
+            this.contraputty.Size = new System.Drawing.Size(61, 20);
             this.contraputty.TabIndex = 60;
             this.contraputty.Text = "4a9P1dK9xrn1l";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(106, 479);
+            this.label6.Location = new System.Drawing.Point(195, 486);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 61;
             this.label6.Text = "Contraseña:";
+            // 
+            // winscp
+            // 
+            this.winscp.Image = ((System.Drawing.Image)(resources.GetObject("winscp.Image")));
+            this.winscp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.winscp.Location = new System.Drawing.Point(19, 453);
+            this.winscp.Name = "winscp";
+            this.winscp.Size = new System.Drawing.Size(82, 54);
+            this.winscp.TabIndex = 64;
+            this.winscp.Text = "WinSCP";
+            this.winscp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.winscp.UseVisualStyleBackColor = true;
+            this.winscp.Click += new System.EventHandler(this.winscp_Click);
             // 
             // FichaNotaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 508);
+            this.Controls.Add(this.winscp);
             this.Controls.Add(this.usuarioputty);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.contraputty);
@@ -365,5 +380,6 @@
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox contraputty;
         public System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button winscp;
     }
 }
