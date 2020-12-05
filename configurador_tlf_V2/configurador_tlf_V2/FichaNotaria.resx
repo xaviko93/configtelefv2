@@ -118,6 +118,53 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAHAAAABwAc54YpMAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAA0klEQVQ4T2P4//8/CrYSFTXI01ft7LLQXzfLwewKCIPYIDGQHLp6BIOBgTFWXbFmo6fdy/sxfv+x
+        YZAcSA1ILYoBIIFCPfUNNyJ9sGpExiA1ILUwQ8AGgEwlRjMMg9SC9IANAPkLn7NxYZAekF4GUOBgU0AM
+        BullAIUwNkliMEgvAyiaYAJXwr3+r64s+b+xqw0r3lRWgGIASC/lBlDsBYoDkeJopDghgQlKkzLMEJCp
+        +LwDkgOpgWlGMQCGQf4CBQ4ohEHRBMIgNkgMJIeq/j8DANY0TDPfFtmCAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnnuevoext.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAG8AAABvAfGi3EMAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAB2ElEQVQ4T2P4//8/ChYWFtYwstCb5Rvqsj02O+BmbLbvHd8IxyPlHSkVMpoyqujqEQwGBkZdY63G
+        0uacR3e/n/5//+dZML7z/fj/C+/W/z/9etn/uokZr/VN1GYC1bKjGADSbG5nvGPX+VW/YBpR8Zn/lz5u
+        BRuy7dK0P3ZuxseBepjhBugaazbh1ozAF95DXLLp3KQ/+maa08EGCEsKa5a35DzBpuHGx+NgDOPf/nYM
+        bAAIV3Ynv5HTlVNiMAYGGLKfkfHy3bPAGFns4vtNYAOOPln439bNeAmDd6jrVmQFyBibAVc/7YK7IiTe
+        9TBDXGbYBWQFICfDNNb2FIMxjA+Su/n1INyAhHz/+0ADwsk2ID4PaIBvmPsWZAOQMUwjshiyFwJinI8y
+        mFkbzrj5CRHSyBibAbBAPPly6X8rF+NlDIqKivK13cWPkBXBMMjJIAzj3/6OiMaCpti3EioS2uCEpKaj
+        0nPszjYiEtJGsOZVR3v+WNjr98JTIihZ2jibb8FlyD1gUr78cRtcs72H6TFQ8ocbADWERUVTqa+sJecR
+        srPBmen9BrCfQc4G2QzTjGIADIvLiSsFRLjXNvSVzErIDbwRm+N3xy/G+bClk8FSkJ9R1f9nAACdkuUc
+        QqyD+gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnbuscar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAALEAAACxAcYtSY0AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAADe0lEQVRIS7WVW0wTWRzGazQb2cSw8U3waY0mitcY1rZCW2IVOjbiarrGgMZIcRUNRkHjgxc0xsRo
+        JOoDUaIQNxqvazTwoCsSg4nuWlF2ubmltIWWErEi9IKt0M//GU8njlPv+iVfZjLnnN/3P2f+nao+VQaD
+        YYxaEH5Tm0znyR3k8DyTqZ+u/9Hzo3Sv5lM/X+qcHAOBWsnIK9qEQxWVqL50FSfOXsDeI0exOC8fbIx8
+        XWM2p/JlnyaqzkoLowVbS/FP8/94MQTRg8EIBkLD4v3zcAx/3rgN4U2QN91oNPLlH5ZGEHJowfC+8mPw
+        B9/ABkNRDHe1AQ6b6EivWwp19PhRsKUE07TakTS9Pp1jEmuu0ZhM8Gebd5eJFcYhUa9Dgscd9j8Tx3r7
+        I+jsCWBJ/mpMz8jwcVRi0dGU6XJzYe9+KsGZY84mRUDE5xLhTl9QtK2lE1M1GszKylrLcUpR9U92Hy6X
+        wZlfdbcrAgI+jwSPm+1ipk7XyHFyUctNpADU1t9VBAQGg4h1PpLgr9wtcNOxvBtQdfEa0jIyhjhSLtbT
+        LKCx1aEI8IeH0Oy/hXbvZfzVUY1aR40CznyzwYapWm2MI+XSCoKOBfxr75LB7QOPUe36FRWdmdjRtBwr
+        G4pEFz/YiMZuuyyg/n4TCwBHyjXPbJ7MAurvN0pwd8CJStciBTzu9X9vgN3XJwVcqq1D2vz5UY6Uy2Kx
+        jKaAvvLKKimgpmfne+Fxn2w7LgX8vm0HZuh0To5Uit7DKXP+KjwdiFBADCedxg/CmUttxSL8idsvtulM
+        g+EQxyn1iyBMoV1Ej1f9gb5Q8KNw5iI6JhcFlOzZzzroJX0gx3JcYmlMpn30wlF37yGavK6PutXjEduT
+        VT/bYNjIMUph3c/JKJg43u4NlK0o3BCbkZmJmrp70vkmdM8gDhyrwDQG1+tPc5RSsKaWwJoSJY/0HbTG
+        bM2eevpF3mFV5a5ag6s37qDF0YsOzwDsnn48autC5bkrSDcuZG05Mkuv38VRSqEwdSeBwTy0ZBxeaFR4
+        uTR5EhujqhbSTtrZl5KFvW1qxwgVcXtudvYEEZRICrhaRQGjEDYnyf5A0iyWH+ZkZS1gZ0xdYqXrbD70
+        fiWEk0M5P17nU75cKEjZnggeXpRUx6d8nVCYsve7weOKLPvpjATPTrrFH39bhbLHNnx7uEr1GrholjTs
+        xHkHAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="Putty.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

@@ -16,13 +16,26 @@ namespace configurador_tlf_V2
         public Historicocambios()
         {
             InitializeComponent();
+            if (nombrenotariafiltro.Text == "" && Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null)
+            {
+                nombrenotariafiltro.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica;
+                MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios WHERE Notaria LIKE '" + Form1.VariablesGlobales.nombrenotariaseleccionadapublica + "'", Conexion);
+                MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
+                ds2 = new DataSet();
+                m_datos2.Fill(ds2);
+                gridhistorico.DataSource = ds2.Tables[0];
+                Conexion.Close();
+            }
+            else
+            {
+                MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios", Conexion);
+                MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
+                ds2 = new DataSet();
+                m_datos2.Fill(ds2);
+                gridhistorico.DataSource = ds2.Tables[0];
+                Conexion.Close();
+            }
 
-            MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios", Conexion);
-            MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
-            ds2 = new DataSet();
-            m_datos2.Fill(ds2);
-            gridhistorico.DataSource = ds2.Tables[0];
-            Conexion.Close();
         }
 
         MySqlConnection Conexion = new MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");
@@ -57,6 +70,28 @@ namespace configurador_tlf_V2
             m_datos2.Fill(ds2);
             gridhistorico.DataSource = ds2.Tables[0];
             Conexion.Close();
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            nombrenotariafiltro.Text = "";
+            nseriefiltro.Text = "";
+            extensionfiltro.Text = "";
+            aliasfiltro.Text = "";
+            IPfiltro.Text = "";
+            modelofiltro.Text = "";
+
+            MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios", Conexion);
+            MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
+            ds2 = new DataSet();
+            m_datos2.Fill(ds2);
+            gridhistorico.DataSource = ds2.Tables[0];
+            Conexion.Close();
+        }
+
+        private void Historicocambios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
         }
     }
 }

@@ -164,11 +164,14 @@
             // btnbuscar
             // 
             this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
+            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnbuscar.Location = new System.Drawing.Point(492, 12);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(88, 38);
             this.btnbuscar.TabIndex = 2;
             this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnbuscar.UseVisualStyleBackColor = true;
             this.btnbuscar.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -195,6 +198,8 @@
             // 
             // btnnuevoext
             // 
+            this.btnnuevoext.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevoext.Image")));
+            this.btnnuevoext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnnuevoext.Location = new System.Drawing.Point(491, 116);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
@@ -205,6 +210,8 @@
             // 
             // button1
             // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(491, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
@@ -424,11 +431,14 @@
             // 
             this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
             this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Location = new System.Drawing.Point(492, 364);
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
+            this.btnagregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnagregar.Location = new System.Drawing.Point(492, 352);
             this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(75, 23);
+            this.btnagregar.Size = new System.Drawing.Size(86, 48);
             this.btnagregar.TabIndex = 24;
             this.btnagregar.Text = "Agregar";
+            this.btnagregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnagregar.UseVisualStyleBackColor = false;
             this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
@@ -436,7 +446,7 @@
             // 
             this.radioAutomatica.AutoSize = true;
             this.radioAutomatica.Checked = true;
-            this.radioAutomatica.Location = new System.Drawing.Point(492, 296);
+            this.radioAutomatica.Location = new System.Drawing.Point(492, 284);
             this.radioAutomatica.Name = "radioAutomatica";
             this.radioAutomatica.Size = new System.Drawing.Size(78, 17);
             this.radioAutomatica.TabIndex = 12;
@@ -448,7 +458,7 @@
             // radioManual
             // 
             this.radioManual.AutoSize = true;
-            this.radioManual.Location = new System.Drawing.Point(492, 318);
+            this.radioManual.Location = new System.Drawing.Point(492, 306);
             this.radioManual.Name = "radioManual";
             this.radioManual.Size = new System.Drawing.Size(60, 17);
             this.radioManual.TabIndex = 13;
@@ -557,17 +567,22 @@
             this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
             this.btnconfigurar.Enabled = false;
             this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Location = new System.Drawing.Point(491, 557);
+            this.btnconfigurar.Image = ((System.Drawing.Image)(resources.GetObject("btnconfigurar.Image")));
+            this.btnconfigurar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnconfigurar.Location = new System.Drawing.Point(491, 553);
             this.btnconfigurar.Name = "btnconfigurar";
-            this.btnconfigurar.Size = new System.Drawing.Size(87, 46);
+            this.btnconfigurar.Size = new System.Drawing.Size(87, 50);
             this.btnconfigurar.TabIndex = 28;
             this.btnconfigurar.Text = "Configurar";
+            this.btnconfigurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnconfigurar.UseVisualStyleBackColor = false;
             this.btnconfigurar.Click += new System.EventHandler(this.btnconfigurar_Click);
             // 
             // btneliminartlf
             // 
-            this.btneliminartlf.Location = new System.Drawing.Point(490, 499);
+            this.btneliminartlf.Image = ((System.Drawing.Image)(resources.GetObject("btneliminartlf.Image")));
+            this.btneliminartlf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btneliminartlf.Location = new System.Drawing.Point(490, 495);
             this.btneliminartlf.Name = "btneliminartlf";
             this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
             this.btneliminartlf.TabIndex = 26;
@@ -577,7 +592,9 @@
             // 
             // btnprobar
             // 
-            this.btnprobar.Location = new System.Drawing.Point(490, 528);
+            this.btnprobar.Image = ((System.Drawing.Image)(resources.GetObject("btnprobar.Image")));
+            this.btnprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnprobar.Location = new System.Drawing.Point(490, 524);
             this.btnprobar.Name = "btnprobar";
             this.btnprobar.Size = new System.Drawing.Size(88, 23);
             this.btnprobar.TabIndex = 27;
@@ -588,7 +605,7 @@
             // checkmulticonfig
             // 
             this.checkmulticonfig.AutoSize = true;
-            this.checkmulticonfig.Location = new System.Drawing.Point(492, 341);
+            this.checkmulticonfig.Location = new System.Drawing.Point(492, 329);
             this.checkmulticonfig.Name = "checkmulticonfig";
             this.checkmulticonfig.Size = new System.Drawing.Size(80, 17);
             this.checkmulticonfig.TabIndex = 14;
@@ -703,6 +720,8 @@
             // 
             // button4
             // 
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(491, 175);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 23);
@@ -771,6 +790,7 @@
             this.Name = "Form1";
             this.Text = "Configurador de teléfonos Notin";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

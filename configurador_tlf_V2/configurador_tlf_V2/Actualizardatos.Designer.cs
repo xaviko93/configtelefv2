@@ -48,7 +48,7 @@
             // 
             this.textoip.Location = new System.Drawing.Point(120, 50);
             this.textoip.Name = "textoip";
-            this.textoip.Size = new System.Drawing.Size(158, 20);
+            this.textoip.Size = new System.Drawing.Size(133, 20);
             this.textoip.TabIndex = 0;
             // 
             // label1
@@ -63,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 89);
+            this.label2.Location = new System.Drawing.Point(259, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 2;
@@ -71,39 +71,48 @@
             // 
             // textopuerto
             // 
-            this.textopuerto.Location = new System.Drawing.Point(120, 86);
+            this.textopuerto.Location = new System.Drawing.Point(303, 50);
             this.textopuerto.Name = "textopuerto";
-            this.textopuerto.Size = new System.Drawing.Size(158, 20);
+            this.textopuerto.Size = new System.Drawing.Size(56, 20);
             this.textopuerto.TabIndex = 3;
             this.textopuerto.Text = "22";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(291, 86);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(268, 129);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(91, 52);
             this.button1.TabIndex = 4;
             this.button1.Text = "Puerto Notin";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(94, 208);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(20, 129);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
+            this.button2.Size = new System.Drawing.Size(94, 52);
             this.button2.TabIndex = 5;
             this.button2.Text = "Probar conexión";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(196, 208);
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(147, 129);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 23);
+            this.button3.Size = new System.Drawing.Size(91, 52);
             this.button3.TabIndex = 6;
             this.button3.Text = "Actualizar datos";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -120,13 +129,13 @@
             // 
             this.nombrenotaria.Location = new System.Drawing.Point(120, 16);
             this.nombrenotaria.Name = "nombrenotaria";
-            this.nombrenotaria.Size = new System.Drawing.Size(158, 20);
+            this.nombrenotaria.Size = new System.Drawing.Size(239, 20);
             this.nombrenotaria.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 124);
+            this.label4.Location = new System.Drawing.Point(12, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 9;
@@ -134,16 +143,16 @@
             // 
             // usuario
             // 
-            this.usuario.Location = new System.Drawing.Point(120, 121);
+            this.usuario.Location = new System.Drawing.Point(64, 82);
             this.usuario.Name = "usuario";
-            this.usuario.Size = new System.Drawing.Size(158, 20);
+            this.usuario.Size = new System.Drawing.Size(95, 20);
             this.usuario.TabIndex = 10;
             this.usuario.Text = "root";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 161);
+            this.label5.Location = new System.Drawing.Point(165, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 11;
@@ -151,9 +160,10 @@
             // 
             // contra
             // 
-            this.contra.Location = new System.Drawing.Point(120, 158);
+            this.contra.Location = new System.Drawing.Point(235, 82);
             this.contra.Name = "contra";
-            this.contra.Size = new System.Drawing.Size(158, 20);
+            this.contra.PasswordChar = '*';
+            this.contra.Size = new System.Drawing.Size(124, 20);
             this.contra.TabIndex = 12;
             this.contra.Text = "4a9P1dK9xrn1l";
             // 
@@ -161,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 254);
+            this.ClientSize = new System.Drawing.Size(382, 193);
             this.Controls.Add(this.contra);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.usuario);
@@ -179,6 +189,7 @@
             this.Name = "Actualizardatos";
             this.Text = "Actualizardatos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Actualizardatos_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.Actualizardatos_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

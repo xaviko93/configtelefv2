@@ -42,6 +42,7 @@
             // btnBuscarNotaria
             // 
             this.btnBuscarNotaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarNotaria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscarNotaria.Location = new System.Drawing.Point(422, 5);
             this.btnBuscarNotaria.Name = "btnBuscarNotaria";
             this.btnBuscarNotaria.Size = new System.Drawing.Size(75, 23);

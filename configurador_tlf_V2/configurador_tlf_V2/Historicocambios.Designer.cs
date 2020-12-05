@@ -44,6 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.modelofiltro = new System.Windows.Forms.ComboBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridhistorico)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,11 +66,13 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(589, 10);
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(579, 10);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(90, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(116, 23);
             this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "Buscar notaría";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
@@ -164,19 +167,38 @@
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(579, 363);
+            this.btnFiltrar.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("btnFiltrar.Image")));
+            this.btnFiltrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFiltrar.Location = new System.Drawing.Point(579, 310);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(116, 75);
+            this.btnFiltrar.Size = new System.Drawing.Size(116, 61);
             this.btnFiltrar.TabIndex = 14;
             this.btnFiltrar.Text = "FILTRAR";
+            this.btnFiltrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // btnLimpiarFiltros
+            // 
+            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnLimpiarFiltros.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiarFiltros.Image")));
+            this.btnLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(579, 377);
+            this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(116, 61);
+            this.btnLimpiarFiltros.TabIndex = 15;
+            this.btnLimpiarFiltros.Text = "LIMPIAR FILTROS";
+            this.btnLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLimpiarFiltros.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
             // 
             // Historicocambios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 450);
+            this.Controls.Add(this.btnLimpiarFiltros);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.modelofiltro);
             this.Controls.Add(this.label6);
@@ -195,6 +217,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Historicocambios";
             this.Text = "Histórico de cambios";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Historicocambios_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.gridhistorico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,5 +240,6 @@
         private System.Windows.Forms.ComboBox modelofiltro;
         private System.Windows.Forms.Button btnFiltrar;
         public System.Windows.Forms.TextBox nombrenotariafiltro;
+        private System.Windows.Forms.Button btnLimpiarFiltros;
     }
 }

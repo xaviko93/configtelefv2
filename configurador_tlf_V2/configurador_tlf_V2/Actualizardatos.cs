@@ -79,5 +79,13 @@ namespace configurador_tlf_V2
         {
             this.Owner.Show();
         }
+
+        private void Actualizardatos_VisibleChanged(object sender, EventArgs e)
+        {
+            if (nombrenotaria.Text == "" && Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null)
+            {
+                nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica;
+            }
+        }
     }
 }

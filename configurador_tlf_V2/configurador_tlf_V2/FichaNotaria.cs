@@ -43,8 +43,7 @@ namespace configurador_tlf_V2
                 gridextensiones.Columns.Clear();
             }
             catch { }
-
-
+            Form1.VariablesGlobales.nombrenotariaseleccionadapublica = nombrenotaria.Text.ToString();
             MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySql.Data.MySqlClient.MySqlDataAdapter m_datos2 = new MySql.Data.MySqlClient.MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
@@ -109,21 +108,30 @@ namespace configurador_tlf_V2
 
         private async Task winscpejecutar()
         {
-            if (File.Exists("C:\\Program Files\\PuTTY\\putty.exe"))
+            if (File.Exists("C:\\Program Files (x86)\\WinSCP\\WinSCP.exe"))
             {
                 String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
                 ejecutarcomandocmd(comando);
             }
             else
             {
-                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/putty.msi >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
+                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/winscp.exe >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
                 ejecutarcomandocmd(comandoinstchoco);
                 await Task.Delay(6000);
-                ejecutarcomandocmd("start putty.msi /passive");
+                ejecutarcomandocmd("start winscp.exe /allusers /silent");
                 await Task.Delay(2000);
-                ejecutarcomandocmd("DEL /F /A putty.msi");
+                ejecutarcomandocmd("DEL /F /A winscp.exe");
                 String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
                 ejecutarcomandocmd(comando);
+            }
+        }
+
+        private void FichaNotaria_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null && nombrenotaria.Text == "Ninguna")
+            {
+                nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
+                cargarextensiones();
             }
         }
     }

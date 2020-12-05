@@ -78,7 +78,11 @@ namespace configurador_tlf_V2
 
         }
 
+        public static class VariablesGlobales
+        {
+            public static String nombrenotariaseleccionadapublica;
 
+        }
 
         MySqlConnection Conexion = new MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");
         DataSet ds;
@@ -121,7 +125,7 @@ namespace configurador_tlf_V2
             }
             catch { }
 
-
+            VariablesGlobales.nombrenotariaseleccionadapublica = buscadornotaria.Text.ToString();
             MySqlCommand mostrar2 = new MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria, UltActualiz FROM telefonos WHERE NomNotaria ='" + buscadornotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySqlDataAdapter m_datos2 = new MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
@@ -763,6 +767,15 @@ namespace configurador_tlf_V2
             registronuevotlf.Connection = Conexion;
             registronuevotlf.ExecuteNonQuery();
             Conexion.Close();
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (VariablesGlobales.nombrenotariaseleccionadapublica != null && buscadornotaria.Text == null)
+            {
+                buscadornotaria.Text = VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
+                cargarextensiones();
+            }
         }
     }
 }

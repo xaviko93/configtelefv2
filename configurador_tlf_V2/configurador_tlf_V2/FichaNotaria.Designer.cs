@@ -144,6 +144,8 @@
             // 
             // button1
             // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(220, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 23);
@@ -153,6 +155,8 @@
             // 
             // btnnuevoext
             // 
+            this.btnnuevoext.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevoext.Image")));
+            this.btnnuevoext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnnuevoext.Location = new System.Drawing.Point(126, 130);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
@@ -218,11 +222,14 @@
             // btnbuscar
             // 
             this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
+            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnbuscar.Location = new System.Drawing.Point(497, 2);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(88, 38);
             this.btnbuscar.TabIndex = 59;
             this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnbuscar.UseVisualStyleBackColor = true;
             this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
@@ -348,6 +355,7 @@
             this.Name = "FichaNotaria";
             this.Text = "FichaNotaria";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FichaNotaria_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.FichaNotaria_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
