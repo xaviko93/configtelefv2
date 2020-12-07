@@ -49,7 +49,7 @@
             this.textoip.Location = new System.Drawing.Point(120, 50);
             this.textoip.Name = "textoip";
             this.textoip.Size = new System.Drawing.Size(133, 20);
-            this.textoip.TabIndex = 0;
+            this.textoip.TabIndex = 1;
             // 
             // label1
             // 
@@ -74,17 +74,17 @@
             this.textopuerto.Location = new System.Drawing.Point(303, 50);
             this.textopuerto.Name = "textopuerto";
             this.textopuerto.Size = new System.Drawing.Size(56, 20);
-            this.textopuerto.TabIndex = 3;
+            this.textopuerto.TabIndex = 2;
             this.textopuerto.Text = "22";
             // 
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(268, 129);
+            this.button1.Location = new System.Drawing.Point(268, 125);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 52);
-            this.button1.TabIndex = 4;
+            this.button1.Size = new System.Drawing.Size(91, 56);
+            this.button1.TabIndex = 8;
             this.button1.Text = "Puerto Notin";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(20, 129);
+            this.button2.Location = new System.Drawing.Point(14, 125);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 52);
-            this.button2.TabIndex = 5;
+            this.button2.Size = new System.Drawing.Size(94, 56);
+            this.button2.TabIndex = 6;
             this.button2.Text = "Probar conexión";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
@@ -107,10 +107,10 @@
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(147, 129);
+            this.button3.Location = new System.Drawing.Point(140, 125);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 52);
-            this.button3.TabIndex = 6;
+            this.button3.Size = new System.Drawing.Size(99, 56);
+            this.button3.TabIndex = 7;
             this.button3.Text = "Actualizar datos";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.nombrenotaria.Location = new System.Drawing.Point(120, 16);
             this.nombrenotaria.Name = "nombrenotaria";
             this.nombrenotaria.Size = new System.Drawing.Size(239, 20);
-            this.nombrenotaria.TabIndex = 8;
+            this.nombrenotaria.TabIndex = 0;
             // 
             // label4
             // 
@@ -146,7 +146,7 @@
             this.usuario.Location = new System.Drawing.Point(64, 82);
             this.usuario.Name = "usuario";
             this.usuario.Size = new System.Drawing.Size(95, 20);
-            this.usuario.TabIndex = 10;
+            this.usuario.TabIndex = 4;
             this.usuario.Text = "root";
             // 
             // label5
@@ -164,7 +164,7 @@
             this.contra.Name = "contra";
             this.contra.PasswordChar = '*';
             this.contra.Size = new System.Drawing.Size(124, 20);
-            this.contra.TabIndex = 12;
+            this.contra.TabIndex = 5;
             this.contra.Text = "4a9P1dK9xrn1l";
             // 
             // Actualizardatos

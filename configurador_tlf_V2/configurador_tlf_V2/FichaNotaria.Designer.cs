@@ -45,16 +45,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ippublicatexto = new System.Windows.Forms.TextBox();
             this.ippublicapretexto = new System.Windows.Forms.Label();
-            this.nombrenotaria = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
             this.Putty = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnGuardarcambios = new System.Windows.Forms.Button();
             this.usuarioputty = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.contraputty = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.winscp = new System.Windows.Forms.Button();
+            this.nombrenotaria = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,15 +210,6 @@
             this.ippublicapretexto.TabIndex = 53;
             this.ippublicapretexto.Text = "IP pública:";
             // 
-            // nombrenotaria
-            // 
-            this.nombrenotaria.AutoSize = true;
-            this.nombrenotaria.Location = new System.Drawing.Point(150, 15);
-            this.nombrenotaria.Name = "nombrenotaria";
-            this.nombrenotaria.Size = new System.Drawing.Size(47, 13);
-            this.nombrenotaria.TabIndex = 58;
-            this.nombrenotaria.Text = "Ninguna";
-            // 
             // btnbuscar
             // 
             this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,18 +251,19 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnGuardarcambios
             // 
-            this.button3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(354, 453);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 54);
-            this.button3.TabIndex = 55;
-            this.button3.Text = "Guardar cambios";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnGuardarcambios.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnGuardarcambios.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarcambios.Image")));
+            this.btnGuardarcambios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardarcambios.Location = new System.Drawing.Point(354, 453);
+            this.btnGuardarcambios.Name = "btnGuardarcambios";
+            this.btnGuardarcambios.Size = new System.Drawing.Size(112, 54);
+            this.btnGuardarcambios.TabIndex = 55;
+            this.btnGuardarcambios.Text = "Guardar cambios";
+            this.btnGuardarcambios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardarcambios.UseVisualStyleBackColor = true;
+            this.btnGuardarcambios.Click += new System.EventHandler(this.btnGuardarcambios_Click);
             // 
             // usuarioputty
             // 
@@ -321,21 +313,30 @@
             this.winscp.UseVisualStyleBackColor = true;
             this.winscp.Click += new System.EventHandler(this.winscp_Click);
             // 
+            // nombrenotaria
+            // 
+            this.nombrenotaria.Enabled = false;
+            this.nombrenotaria.Location = new System.Drawing.Point(148, 12);
+            this.nombrenotaria.Name = "nombrenotaria";
+            this.nombrenotaria.Size = new System.Drawing.Size(263, 20);
+            this.nombrenotaria.TabIndex = 65;
+            this.nombrenotaria.Text = "Ninguna";
+            // 
             // FichaNotaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 508);
+            this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.winscp);
             this.Controls.Add(this.usuarioputty);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.contraputty);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnbuscar);
-            this.Controls.Add(this.nombrenotaria);
             this.Controls.Add(this.Putty);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnGuardarcambios);
             this.Controls.Add(this.puertotexto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ippublicatexto);
@@ -369,7 +370,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnnuevoext;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGuardarcambios;
         private System.Windows.Forms.Button Putty;
         private System.Windows.Forms.Button btnbuscar;
         public System.Windows.Forms.TextBox mascararedinput;
@@ -377,7 +378,6 @@
         public System.Windows.Forms.TextBox ipcentralitainput;
         public System.Windows.Forms.TextBox puertotexto;
         public System.Windows.Forms.TextBox ippublicatexto;
-        public System.Windows.Forms.Label nombrenotaria;
         public System.Windows.Forms.DataGridView gridextensiones;
         public System.Windows.Forms.Label textomascarared;
         public System.Windows.Forms.Label textopuertadeenlace;
@@ -389,5 +389,6 @@
         public System.Windows.Forms.TextBox contraputty;
         public System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button winscp;
+        public System.Windows.Forms.TextBox nombrenotaria;
     }
 }

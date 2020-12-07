@@ -16,6 +16,13 @@ namespace configurador_tlf_V2
 {
     public partial class FichaNotaria : Form
     {
+
+        String nombrenotariaanterior;
+        String ippublicaanterior;
+        String puertoanterior;
+        String ipcentralitaanterior;
+        String mascaraanterior;
+        String puertaanterior;
         public FichaNotaria()
         {
             InitializeComponent();
@@ -36,6 +43,7 @@ namespace configurador_tlf_V2
         DataSet ds2;
         public void cargarextensiones()
         {
+            guardardatosiniciales();
             Conexion.Open();
 
             try
@@ -51,6 +59,67 @@ namespace configurador_tlf_V2
 
             gridextensiones.DataSource = ds2.Tables[0];
             Conexion.Close();
+        }
+
+        public void guardardatosiniciales()
+        {
+            nombrenotariaanterior = nombrenotaria.Text;
+            ippublicaanterior = ippublicatexto.Text;
+            puertoanterior = puertotexto.Text;
+            ipcentralitaanterior = ipcentralitainput.Text;
+            mascaraanterior = mascararedinput.Text;
+            puertaanterior = puertadeenlaceinput.Text;
+        }
+
+        public void compararcambios()
+        {
+            String mensajecambios = "";
+            int nombrediferente = 0;
+            int ippublicadiferente = 0;
+            int puertodiferente = 0;
+            int ipcentralitadiferente = 0;
+            int mascaradiferente = 0;
+            int puertadirferente = 0;
+
+            if (nombrenotariaanterior != nombrenotaria.Text)
+            {
+                nombrediferente = 1;
+                mensajecambios = mensajecambios + "Nombre notaría = " + nombrenotaria.Text + "\n";
+            }
+
+            if (ippublicaanterior != ippublicatexto.Text)
+            {
+                ippublicadiferente = 1;
+                mensajecambios = mensajecambios + "Ip Pública = " + ippublicatexto.Text + "\n";
+            }
+
+            if (puertoanterior != puertotexto.Text)
+            {
+                puertodiferente = 1;
+                mensajecambios = mensajecambios + "Puerto = " + puertotexto.Text + "\n";
+            }
+
+            if (ipcentralitaanterior != ipcentralitainput.Text)
+            {
+                ipcentralitadiferente = 1;
+                mensajecambios = mensajecambios + "Ip Centralita = " + ipcentralitainput.Text + "\n";
+            }
+
+            if (mascaraanterior != mascararedinput.Text)
+            {
+                mascaradiferente = 1;
+                mensajecambios = mensajecambios + "Máscara de red = " + mascararedinput.Text + "\n";
+            }
+
+            if (puertaanterior != puertadeenlaceinput.Text)
+            {
+                puertadirferente = 1;
+                mensajecambios = mensajecambios + "Puerta de enlace = " + puertadeenlaceinput.Text + "\n";
+            }
+
+            DialogResult dialogResult = MessageBox.Show("¿Quieres actualizar los campos editados en la base datos? Los campos editados son:\n\n" + mensajecambios, "Realizar cambios en la base de datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
         }
 
         private void FichaNotaria_FormClosing(object sender, FormClosingEventArgs e)
@@ -133,6 +202,11 @@ namespace configurador_tlf_V2
                 nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
                 cargarextensiones();
             }
+        }
+
+        private void btnGuardarcambios_Click(object sender, EventArgs e)
+        {
+            compararcambios();
         }
     }
 }
