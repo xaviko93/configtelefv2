@@ -27,7 +27,6 @@ namespace configurador_tlf_V2
                 notarias.SubItems.Add(dr["IPCentralita"].ToString());
                 notarias.SubItems.Add(dr["MascaraRed"].ToString());
                 notarias.SubItems.Add(dr["PuertaEnlace"].ToString());
-                notarias.SubItems.Add(dr["IpPublica"].ToString());
                 listabusquedanotarias.Items.Add(notarias);
             }
             cmd.Connection.Close();
@@ -49,7 +48,6 @@ namespace configurador_tlf_V2
                 notarias.SubItems.Add(dr["IPCentralita"].ToString());
                 notarias.SubItems.Add(dr["MascaraRed"].ToString());
                 notarias.SubItems.Add(dr["PuertaEnlace"].ToString());
-                notarias.SubItems.Add(dr["IpPublica"].ToString());
                 listabusquedanotarias.Items.Add(notarias);
             }
             cmd.Connection.Close();
@@ -76,7 +74,6 @@ namespace configurador_tlf_V2
                 pantallaprincipal2.ipcentralitainput.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
                 pantallaprincipal2.mascararedinput.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
                 pantallaprincipal2.puertadeenlaceinput.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal2.ippublicatexto.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
                 pantallaprincipal2.cargarextensiones();
                 pantallaprincipal2.Show();
                 this.Close();
@@ -148,7 +145,6 @@ namespace configurador_tlf_V2
                 pantallaprincipal2.ipcentralitainput.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
                 pantallaprincipal2.mascararedinput.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
                 pantallaprincipal2.puertadeenlaceinput.Text = listabusquedanotarias.SelectedItems[0].SubItems[3].Text;
-                pantallaprincipal2.ippublicatexto.Text = listabusquedanotarias.SelectedItems[0].SubItems[4].Text;
                 pantallaprincipal2.cargarextensiones();
                 pantallaprincipal2.Show();
                 this.Close();

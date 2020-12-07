@@ -73,18 +73,20 @@ namespace configurador_tlf_V2
 
         public void compararcambios()
         {
+            String consultasql = "";
             String mensajecambios = "";
             int nombrediferente = 0;
             int ippublicadiferente = 0;
             int puertodiferente = 0;
             int ipcentralitadiferente = 0;
             int mascaradiferente = 0;
-            int puertadirferente = 0;
+            int puertadiferente = 0;
 
             if (nombrenotariaanterior != nombrenotaria.Text)
             {
                 nombrediferente = 1;
                 mensajecambios = mensajecambios + "Nombre notaría = " + nombrenotaria.Text + "\n";
+                consultasql = consultasql + "UPDATE centralita SET NomNotaria = '" + nombrenotaria.Text + "' WHERE NomNotaria = '" + nombrenotariaanterior + "'; UPDATE telefonos SET NomNotaria = '" + nombrenotaria.Text + "' WHERE NomNotaria = '" + nombrenotariaanterior + "'; UPDATE histcambios SET Notaria = '" + nombrenotaria.Text + "' WHERE Notaria = '" + nombrenotariaanterior + "'; ";
             }
 
             if (ippublicaanterior != ippublicatexto.Text)
@@ -103,23 +105,44 @@ namespace configurador_tlf_V2
             {
                 ipcentralitadiferente = 1;
                 mensajecambios = mensajecambios + "Ip Centralita = " + ipcentralitainput.Text + "\n";
+                consultasql = consultasql + "UPDATE centralita SET IPCentralita = '" + ipcentralitainput.Text + "' WHERE NomNotaria = '" + nombrenotaria.Text + "'; ";
             }
 
             if (mascaraanterior != mascararedinput.Text)
             {
                 mascaradiferente = 1;
                 mensajecambios = mensajecambios + "Máscara de red = " + mascararedinput.Text + "\n";
+                consultasql = consultasql + "UPDATE centralita SET MascaraRed = '" + mascararedinput.Text + "' WHERE NomNotaria = '" + nombrenotaria.Text + "'; ";
             }
 
             if (puertaanterior != puertadeenlaceinput.Text)
             {
-                puertadirferente = 1;
+                puertadiferente = 1;
                 mensajecambios = mensajecambios + "Puerta de enlace = " + puertadeenlaceinput.Text + "\n";
+                consultasql = consultasql + "UPDATE centralita SET PuertaEnlace = '" + puertadeenlaceinput.Text + "' WHERE NomNotaria = '" + nombrenotaria.Text + "'; ";
             }
 
             DialogResult dialogResult = MessageBox.Show("¿Quieres actualizar los campos editados en la base datos? Los campos editados son:\n\n" + mensajecambios, "Realizar cambios en la base de datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
+                    MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);  
+                    MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand(consultasql, MyConn2);
+                    MySql.Data.MySqlClient.MySqlDataReader MyReader2;
+                    MyConn2.Open();
+                    MyReader2 = MyCommand2.ExecuteReader();
+                    MessageBox.Show("Campos actualizados", "Éxito");
+                    while (MyReader2.Read()){}
+                    MyConn2.Close();
+                    guardardatosiniciales();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void FichaNotaria_FormClosing(object sender, FormClosingEventArgs e)
