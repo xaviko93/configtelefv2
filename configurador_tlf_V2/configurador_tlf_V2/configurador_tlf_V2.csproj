@@ -148,6 +148,12 @@
     <Compile Include="Actualizardatos.Designer.cs">
       <DependentUpon>Actualizardatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Agregartlfichanotaria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregartlfichanotaria.Designer.cs">
+      <DependentUpon>Agregartlfichanotaria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Buscadornotariaficha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     <Compile Include="TELEFONOS\YEALINKW52P.cs" />
     <EmbeddedResource Include="Actualizardatos.resx">
       <DependentUpon>Actualizardatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agregartlfichanotaria.resx">
+      <DependentUpon>Agregartlfichanotaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Buscadornotariaficha.resx">
       <DependentUpon>Buscadornotariaficha.cs</DependentUpon>

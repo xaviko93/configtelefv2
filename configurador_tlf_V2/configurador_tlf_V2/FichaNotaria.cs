@@ -26,10 +26,9 @@ namespace configurador_tlf_V2
         public FichaNotaria()
         {
             InitializeComponent();
-
-
         }
-
+        
+        //ABRE EL BUSCADOR DE NOTARIAS
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -41,6 +40,8 @@ namespace configurador_tlf_V2
 
         MySql.Data.MySqlClient.MySqlConnection Conexion = new MySql.Data.MySqlClient.MySqlConnection("server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970");
         DataSet ds2;
+
+        //CARGA LAS EXTENSIONES Y LOS DATOS DE LA NOTARIA CUANDO LA SELECCIONAS
         public void cargarextensiones()
         {
             guardardatosiniciales();
@@ -61,6 +62,7 @@ namespace configurador_tlf_V2
             Conexion.Close();
         }
 
+        //GUARDA LOS DATOS CARGADOS EN STRINGS PARA COMPARARLOS POSTERIORMENTE
         public void guardardatosiniciales()
         {
             nombrenotariaanterior = nombrenotaria.Text;
@@ -71,6 +73,12 @@ namespace configurador_tlf_V2
             puertaanterior = puertadeenlaceinput.Text;
         }
 
+        //COMPARA LOS CAMBIOS REALIZADS EN LOS DATOS ANTERIORMENTE CARGADOS Y PREGUNTA SI DESEAS ESTAS SEGURO DE REALIZAR LOS CAMBIOS
+
+        private void btnGuardarcambios_Click(object sender, EventArgs e)
+        {
+            compararcambios();
+        }
         public void compararcambios()
         {
             String consultasql = "";
@@ -145,12 +153,14 @@ namespace configurador_tlf_V2
             }
         }
 
+        //ABRE EL FORMULARIO ANTERIOR SI ESTE SE CIERRA
         private void FichaNotaria_FormClosing(object sender, FormClosingEventArgs e)
         {
             Herramientas pantallaprincipal2 = Owner as Herramientas;
             pantallaprincipal2.Show();
         }
 
+        //COMPRUEBA SI ESTÁ PUTTY INSTALADO Y LO ABRE CON LA IP PUBLICA DE LA FICHA
         private void Putty_Click(object sender, EventArgs e)
         {
             puttyejecutar();
@@ -169,13 +179,14 @@ namespace configurador_tlf_V2
                 ejecutarcomandocmd(comandoinstchoco);
                 await Task.Delay(6000);
                 ejecutarcomandocmd("start putty.msi /passive");
-                await Task.Delay(2000);
+                await Task.Delay(5000);
                 ejecutarcomandocmd("DEL /F /A putty.msi");
                 String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
                 ejecutarcomandocmd(comando);
             }
         }
 
+        //FUNCION PARA EJECUTAR COMANDOS CMD
         public void ejecutarcomandocmd(String comandoimportado)
         {
             Process cmd = new Process();
@@ -193,10 +204,13 @@ namespace configurador_tlf_V2
             Console.Read();
         }
 
+        //COMPRUEBA SI WINSCP ESTÁ INSTALADO Y LO ABRE CON ESA CONFIGURACION
         private void winscp_Click(object sender, EventArgs e)
         {
             winscpejecutar();
         }
+
+
 
         private async Task winscpejecutar()
         {
@@ -211,13 +225,14 @@ namespace configurador_tlf_V2
                 ejecutarcomandocmd(comandoinstchoco);
                 await Task.Delay(6000);
                 ejecutarcomandocmd("start winscp.exe /allusers /silent");
-                await Task.Delay(2000);
+                await Task.Delay(5000);
                 ejecutarcomandocmd("DEL /F /A winscp.exe");
                 String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
                 ejecutarcomandocmd(comando);
             }
         }
 
+        //COMPRUEBA SI SE HA SELECCIONADO LA NOTARIA EN OTRA PARTE DE LA APLICACION PARA CARGARLA AL ABRIR EL FORMULARIO SI NO SE HA SELECCIONADO ANTES OTRA EN ESTE FORM
         private void FichaNotaria_VisibleChanged(object sender, EventArgs e)
         {
             if (Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null && nombrenotaria.Text == "Ninguna")
@@ -227,9 +242,104 @@ namespace configurador_tlf_V2
             }
         }
 
-        private void btnGuardarcambios_Click(object sender, EventArgs e)
+
+
+        private void btnnuevoext_Click(object sender, EventArgs e)
         {
-            compararcambios();
+            //CALCULA LA EXTENSIÓN DISPONIBLE PARA SUGERIRLA
+            int extensionocupada;
+            String extensionausar = "";
+            String ipausar = "";
+            int contador = 0;
+            int numerototalext = gridextensiones.Rows.Count;
+            if (nombrenotariaanterior == null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Ninguna Notaría seleccionada. Selecciona una antes de añadir un teléfono.", "Selecciona Notaría", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                return;
+            }
+            if(numerototalext > 1)
+            {
+                try
+            {
+                String extensionstringprimero = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                int extensionprimera = Int32.Parse(extensionstringprimero);
+                
+                for (int i = 1; i <= numerototalext; i++)
+                {
+                    contador = i - 1;
+                    String extensionstring = gridextensiones.Rows[contador].Cells[0].Value.ToString();
+                    extensionocupada = Int32.Parse(extensionstring);
+
+                    if (extensionprimera == extensionocupada)
+                    {
+                        extensionprimera++;
+                    }
+                    else
+                    {
+                        extensionausar = extensionprimera.ToString();
+                        break;
+                    }
+                    if (i == numerototalext-1)
+                    {
+                        extensionausar = extensionprimera.ToString();
+                        break;
+                    }
+                }
+
+                //CALCULA LA IP DISPONIBLE PARA SUGERIRLA
+                String ipsiguientexto = gridextensiones.Rows[contador-1].Cells[1].Value.ToString();
+                string[] ultimocachoipsiguiente = ipsiguientexto.Split('.');
+                int ipsiguiente = Int32.Parse(ultimocachoipsiguiente[3]);
+                String ipsiguientefilatexto = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                string[] ultimocachoipsiguientefila = ipsiguientefilatexto.Split('.');
+                int ipsiguientefila = Int32.Parse(ultimocachoipsiguientefila[3]);
+                ipsiguiente++;
+
+                if (ipsiguiente != ipsiguientefila)
+                {
+                    ipausar = ultimocachoipsiguiente[0] + "." + ultimocachoipsiguiente[1] + "." + ultimocachoipsiguiente[2] + "." + ipsiguiente.ToString();
+                } else {
+                    String ipprimeraocupada = gridextensiones.Rows[0].Cells[1].Value.ToString();
+                    string[] ultimocachoip = ipprimeraocupada.Split('.');
+                    int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+
+                    for (int i = 1; i <= numerototalext; i++)
+                    {
+                        contador = i - 1;
+                        String ipstring = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                        string[] ultimocachoipocupada = ipstring.Split('.');
+                        int ipocupada = Int32.Parse(ultimocachoipocupada[3]);
+
+                        if (ultimocachonumero == ipocupada)
+                        {
+                            ultimocachonumero++;
+                        }
+                        else
+                        {
+                            ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                            break;
+                        }
+                        if (i == numerototalext-1)
+                        {
+                            ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                            break;
+                        }
+                    }
+                }
+
+            }
+            catch (System.ArgumentOutOfRangeException) { }
+            }
+
+            //CREA EL FORMULARIO F2 RELLENANDO SUS DATOS
+            Agregartlfichanotaria f2 = new Agregartlfichanotaria();
+            f2.textoextension.Text = extensionausar.ToString();
+            f2.textoalias.Text = extensionausar.ToString();
+            f2.textoip.Text = ipausar.ToString();
+            f2.textonotaria.Text = nombrenotariaanterior.ToString();
+            f2.StartPosition = FormStartPosition.Manual;
+            f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
+            f2.Show(this);
         }
     }
 }

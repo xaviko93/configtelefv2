@@ -163,6 +163,7 @@
             this.btnnuevoext.TabIndex = 49;
             this.btnnuevoext.Text = "Nuevo";
             this.btnnuevoext.UseVisualStyleBackColor = true;
+            this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
             // 
             // gridextensiones
             // 
