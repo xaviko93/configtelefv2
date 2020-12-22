@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace configurador_tlf_V2
@@ -16,9 +9,9 @@ namespace configurador_tlf_V2
         {
             InitializeComponent();
 
-            listamodelo.Items.Add("YEALINK T27G");
-            listamodelo.Items.Add("YEALINK T26P");
-            listamodelo.Items.Add("YEALINK W52P");
+            listamodelo.Items.Add("Yealink SIP-T27G");
+            listamodelo.Items.Add("Yealink SIP-T26P");
+            listamodelo.Items.Add("Yealink SIP-W52P");
             listamodelo.SelectedIndex = 0;
         }
 
@@ -29,15 +22,20 @@ namespace configurador_tlf_V2
             {
                 try
                 {
+                    string fechaact = DateTime.Now.ToString("dd/MM/yy");
+
                     string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
                     MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);
-                    MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO telefonos(NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie, UltActualiz) VALUES(" +  ", '$extension1', '$ip1', '$alias1', '$modelo1', '$fechaactualizacion')", MyConn2);
+                    MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand("INSERT INTO telefonos(NomNotaria, Extension, Iptelefono, Alias, Modelo, Nserie, UltActualiz) VALUES('" + textonotaria.Text.ToString() + "', '" + textoextension.Text.ToString() + "', '" + textoip.Text.ToString() + "', '" + textoalias.Text.ToString() + "', ' "+ listamodelo.SelectedItem.ToString() + "', '" + textonserie.Text.ToString() + "', '" + fechaact.ToString() + "')", MyConn2);
                     MySql.Data.MySqlClient.MySqlDataReader MyReader2;
                     MyConn2.Open();
                     MyReader2 = MyCommand2.ExecuteReader();
                     MessageBox.Show("Teléfono añadido correctamente", "Éxito");
                     while (MyReader2.Read()) { }
                     MyConn2.Close();
+                    FichaNotaria pantallaprincipal2 = Owner as FichaNotaria;
+                    pantallaprincipal2.cargarextensiones();
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -45,6 +43,11 @@ namespace configurador_tlf_V2
                 }
             }
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

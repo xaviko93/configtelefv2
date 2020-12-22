@@ -39,7 +39,7 @@
             this.textoip = new System.Windows.Forms.TextBox();
             this.listamodelo = new System.Windows.Forms.ComboBox();
             this.textonserie = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardarcambios = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textonotaria = new System.Windows.Forms.Label();
@@ -126,19 +126,20 @@
             this.textonserie.Size = new System.Drawing.Size(172, 20);
             this.textonserie.TabIndex = 9;
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.ForeColor = System.Drawing.Color.DarkRed;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(135, 226);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 54);
-            this.button2.TabIndex = 58;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(135, 226);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(111, 54);
+            this.btnCancelar.TabIndex = 58;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardarcambios
             // 
@@ -179,7 +180,7 @@
             this.ClientSize = new System.Drawing.Size(258, 303);
             this.Controls.Add(this.textonotaria);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardarcambios);
             this.Controls.Add(this.textonserie);
             this.Controls.Add(this.listamodelo);
@@ -208,7 +209,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox listamodelo;
         private System.Windows.Forms.TextBox textonserie;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardarcambios;
         public System.Windows.Forms.TextBox textoextension;
         public System.Windows.Forms.TextBox textoalias;

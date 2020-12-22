@@ -130,11 +130,14 @@ namespace configurador_tlf_V2
                 consultasql = consultasql + "UPDATE centralita SET PuertaEnlace = '" + puertadeenlaceinput.Text + "' WHERE NomNotaria = '" + nombrenotaria.Text + "'; ";
             }
 
+            if(mensajecambios != "")
+            {
+
             DialogResult dialogResult = MessageBox.Show("¿Quieres actualizar los campos editados en la base datos? Los campos editados son:\n\n" + mensajecambios, "Realizar cambios en la base de datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
-            {
-                try
                 {
+                try
+                    {
                     string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
                     MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);  
                     MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand(consultasql, MyConn2);
@@ -145,10 +148,11 @@ namespace configurador_tlf_V2
                     while (MyReader2.Read()){}
                     MyConn2.Close();
                     guardardatosiniciales();
-                }
+                    }
                 catch (Exception ex)
-                {
+                    {
                     MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
@@ -340,6 +344,12 @@ namespace configurador_tlf_V2
             f2.StartPosition = FormStartPosition.Manual;
             f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
             f2.Show(this);
+        }
+
+        //ELIMINA EL TELEFONO SELECCIONADO EN EL DATAGRID DE LA BASE DE DATOS
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

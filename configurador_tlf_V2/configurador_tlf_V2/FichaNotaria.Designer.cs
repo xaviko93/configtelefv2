@@ -38,7 +38,7 @@
             this.ipcentralitainput = new System.Windows.Forms.TextBox();
             this.textoipcentralita = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnnuevoext = new System.Windows.Forms.Button();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
             this.puertotexto = new System.Windows.Forms.TextBox();
@@ -142,16 +142,17 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Datos Teléfonos:";
             // 
-            // button1
+            // btnEliminar
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(220, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 23);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(220, 130);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(88, 23);
+            this.btnEliminar.TabIndex = 50;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnnuevoext
             // 
@@ -342,7 +343,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ippublicatexto);
             this.Controls.Add(this.ippublicapretexto);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnnuevoext);
             this.Controls.Add(this.gridextensiones);
             this.Controls.Add(this.label2);
@@ -368,7 +369,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnnuevoext;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnGuardarcambios;
