@@ -23,11 +23,12 @@ namespace configurador_tlf_V2
         String ipcentralitaanterior;
         String mascaraanterior;
         String puertaanterior;
+        String valorceldanterior;
         public FichaNotaria()
         {
             InitializeComponent();
         }
-        
+
         //ABRE EL BUSCADOR DE NOTARIAS
         private void btnbuscar_Click(object sender, EventArgs e)
         {
@@ -53,7 +54,7 @@ namespace configurador_tlf_V2
             }
             catch { }
             Form1.VariablesGlobales.nombrenotariaseleccionadapublica = nombrenotaria.Text.ToString();
-            MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, NomNotaria, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
+            MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySql.Data.MySqlClient.MySqlDataAdapter m_datos2 = new MySql.Data.MySqlClient.MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
@@ -130,28 +131,28 @@ namespace configurador_tlf_V2
                 consultasql = consultasql + "UPDATE centralita SET PuertaEnlace = '" + puertadeenlaceinput.Text + "' WHERE NomNotaria = '" + nombrenotaria.Text + "'; ";
             }
 
-            if(mensajecambios != "")
+            if (mensajecambios != "")
             {
 
-            DialogResult dialogResult = MessageBox.Show("¿Quieres actualizar los campos editados en la base datos? Los campos editados son:\n\n" + mensajecambios, "Realizar cambios en la base de datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+                DialogResult dialogResult = MessageBox.Show("¿Quieres actualizar los campos editados en la base datos? Los campos editados son:\n\n" + mensajecambios, "Realizar cambios en la base de datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
-                try
+                    try
                     {
-                    string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
-                    MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);  
-                    MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand(consultasql, MyConn2);
-                    MySql.Data.MySqlClient.MySqlDataReader MyReader2;
-                    MyConn2.Open();
-                    MyReader2 = MyCommand2.ExecuteReader();
-                    MessageBox.Show("Campos actualizados", "Éxito");
-                    while (MyReader2.Read()){}
-                    MyConn2.Close();
-                    guardardatosiniciales();
+                        string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
+                        MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);
+                        MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand(consultasql, MyConn2);
+                        MySql.Data.MySqlClient.MySqlDataReader MyReader2;
+                        MyConn2.Open();
+                        MyReader2 = MyCommand2.ExecuteReader();
+                        MessageBox.Show("Campos actualizados", "Éxito");
+                        while (MyReader2.Read()) { }
+                        MyConn2.Close();
+                        guardardatosiniciales();
                     }
-                catch (Exception ex)
+                    catch (Exception ex)
                     {
-                    MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -258,81 +259,83 @@ namespace configurador_tlf_V2
             int numerototalext = gridextensiones.Rows.Count;
             if (nombrenotariaanterior == null)
             {
-                DialogResult dialogResult = MessageBox.Show("Ninguna Notaría seleccionada. Selecciona una antes de añadir un teléfono.", "Selecciona Notaría", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                DialogResult dialogResult = MessageBox.Show("Ninguna Notaría seleccionada. Selecciona una antes de añadir un teléfono.", "Selecciona Notaría", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(numerototalext > 1)
+            if (numerototalext > 1)
             {
                 try
-            {
-                String extensionstringprimero = gridextensiones.Rows[0].Cells[0].Value.ToString();
-                int extensionprimera = Int32.Parse(extensionstringprimero);
-                
-                for (int i = 1; i <= numerototalext; i++)
                 {
-                    contador = i - 1;
-                    String extensionstring = gridextensiones.Rows[contador].Cells[0].Value.ToString();
-                    extensionocupada = Int32.Parse(extensionstring);
-
-                    if (extensionprimera == extensionocupada)
-                    {
-                        extensionprimera++;
-                    }
-                    else
-                    {
-                        extensionausar = extensionprimera.ToString();
-                        break;
-                    }
-                    if (i == numerototalext-1)
-                    {
-                        extensionausar = extensionprimera.ToString();
-                        break;
-                    }
-                }
-
-                //CALCULA LA IP DISPONIBLE PARA SUGERIRLA
-                String ipsiguientexto = gridextensiones.Rows[contador-1].Cells[1].Value.ToString();
-                string[] ultimocachoipsiguiente = ipsiguientexto.Split('.');
-                int ipsiguiente = Int32.Parse(ultimocachoipsiguiente[3]);
-                String ipsiguientefilatexto = gridextensiones.Rows[contador].Cells[1].Value.ToString();
-                string[] ultimocachoipsiguientefila = ipsiguientefilatexto.Split('.');
-                int ipsiguientefila = Int32.Parse(ultimocachoipsiguientefila[3]);
-                ipsiguiente++;
-
-                if (ipsiguiente != ipsiguientefila)
-                {
-                    ipausar = ultimocachoipsiguiente[0] + "." + ultimocachoipsiguiente[1] + "." + ultimocachoipsiguiente[2] + "." + ipsiguiente.ToString();
-                } else {
-                    String ipprimeraocupada = gridextensiones.Rows[0].Cells[1].Value.ToString();
-                    string[] ultimocachoip = ipprimeraocupada.Split('.');
-                    int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+                    String extensionstringprimero = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                    int extensionprimera = Int32.Parse(extensionstringprimero);
 
                     for (int i = 1; i <= numerototalext; i++)
                     {
                         contador = i - 1;
-                        String ipstring = gridextensiones.Rows[contador].Cells[1].Value.ToString();
-                        string[] ultimocachoipocupada = ipstring.Split('.');
-                        int ipocupada = Int32.Parse(ultimocachoipocupada[3]);
+                        String extensionstring = gridextensiones.Rows[contador].Cells[0].Value.ToString();
+                        extensionocupada = Int32.Parse(extensionstring);
 
-                        if (ultimocachonumero == ipocupada)
+                        if (extensionprimera == extensionocupada)
                         {
-                            ultimocachonumero++;
+                            extensionprimera++;
                         }
                         else
                         {
-                            ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                            extensionausar = extensionprimera.ToString();
                             break;
                         }
-                        if (i == numerototalext-1)
+                        if (i == numerototalext - 1)
                         {
-                            ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                            extensionausar = extensionprimera.ToString();
                             break;
                         }
                     }
-                }
 
-            }
-            catch (System.ArgumentOutOfRangeException) { }
+                    //CALCULA LA IP DISPONIBLE PARA SUGERIRLA
+                    String ipsiguientexto = gridextensiones.Rows[contador - 1].Cells[1].Value.ToString();
+                    string[] ultimocachoipsiguiente = ipsiguientexto.Split('.');
+                    int ipsiguiente = Int32.Parse(ultimocachoipsiguiente[3]);
+                    String ipsiguientefilatexto = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                    string[] ultimocachoipsiguientefila = ipsiguientefilatexto.Split('.');
+                    int ipsiguientefila = Int32.Parse(ultimocachoipsiguientefila[3]);
+                    ipsiguiente++;
+
+                    if (ipsiguiente != ipsiguientefila)
+                    {
+                        ipausar = ultimocachoipsiguiente[0] + "." + ultimocachoipsiguiente[1] + "." + ultimocachoipsiguiente[2] + "." + ipsiguiente.ToString();
+                    }
+                    else
+                    {
+                        String ipprimeraocupada = gridextensiones.Rows[0].Cells[1].Value.ToString();
+                        string[] ultimocachoip = ipprimeraocupada.Split('.');
+                        int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
+
+                        for (int i = 1; i <= numerototalext; i++)
+                        {
+                            contador = i - 1;
+                            String ipstring = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                            string[] ultimocachoipocupada = ipstring.Split('.');
+                            int ipocupada = Int32.Parse(ultimocachoipocupada[3]);
+
+                            if (ultimocachonumero == ipocupada)
+                            {
+                                ultimocachonumero++;
+                            }
+                            else
+                            {
+                                ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                                break;
+                            }
+                            if (i == numerototalext - 1)
+                            {
+                                ipausar = ultimocachoip[0] + "." + ultimocachoip[1] + "." + ultimocachoip[2] + "." + ultimocachonumero.ToString();
+                                break;
+                            }
+                        }
+                    }
+
+                }
+                catch (System.ArgumentOutOfRangeException) { }
             }
 
             //CREA EL FORMULARIO F2 RELLENANDO SUS DATOS
@@ -350,6 +353,60 @@ namespace configurador_tlf_V2
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+            DialogResult result = MessageBox.Show("¿Seguro que quieres eliminar el teléfono con extensión " + gridextensiones.CurrentRow.Cells[0].Value + " de la base de datos?", "Eliminar teléfono", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
+                MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);
+                MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM telefonos WHERE NomNotaria = '" + nombrenotariaanterior.ToString() + "' AND Extension = '" + gridextensiones.CurrentRow.Cells[0].Value + "'", MyConn2);
+                MySql.Data.MySqlClient.MySqlDataReader MyReader2;
+                MyConn2.Open();
+                MyReader2 = MyCommand2.ExecuteReader();
+                MessageBox.Show("Teléfono eliminado correctamente", "Éxito");
+                while (MyReader2.Read()) { }
+                MyConn2.Close();
+                cargarextensiones();
+
+            }
+        }
+
+        private void gridextensiones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            String mensaje = "";
+            String consultamysql;
+            int numcolumnaeditada = gridextensiones.CurrentCell.ColumnIndex;
+            String nombrecolumna = gridextensiones.Columns[numcolumnaeditada].HeaderText;
+            String valornuevo = gridextensiones.CurrentCell.Value.ToString();
+            switch (nombrecolumna)
+            {
+                case "Extension":
+                    mensaje = valorceldanterior + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua extensión = " + valorceldanterior + Environment.NewLine + "Nueva extensión = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Extension = '" + valornuevo + "' WHERE Extension = '" + valorceldanterior + "' AND NomNotaria = '" + nombrenotariaanterior + "' AND Iptelefono = '" + gridextensiones.CurrentRow.Cells[1].Value + "' AND Alias = '" + gridextensiones.CurrentRow.Cells[2].Value + "' AND Nserie = '" + gridextensiones.CurrentRow.Cells[3].Value + "' AND Modelo = '" + gridextensiones.CurrentRow.Cells[4].Value + "'";
+                    break;
+
+                case "Iptelefono":
+                    mensaje = gridextensiones.CurrentRow.Cells[0].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua IP = " + valorceldanterior + Environment.NewLine + "Nueva IP = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Iptelefono = '" + valornuevo + "' WHERE Extension = '" + gridextensiones.CurrentRow.Cells[0].Value + "' AND NomNotaria = '" + nombrenotariaanterior + "'";
+                    break;
+
+            }
+
+
+            DialogResult result = MessageBox.Show("¿Seguro que quieres editar la siguiente información del teléfono con extensión " + mensaje, "Editar datos teléfono", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+            }
+        }
+
+        private void gridextensiones_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                valorceldanterior = gridextensiones.CurrentCell.Value.ToString();
+            }
+            catch (NullReferenceException p) { }
+            
         }
     }
 }
