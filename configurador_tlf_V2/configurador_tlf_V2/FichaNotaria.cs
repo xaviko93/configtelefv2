@@ -54,7 +54,7 @@ namespace configurador_tlf_V2
             }
             catch { }
             Form1.VariablesGlobales.nombrenotariaseleccionadapublica = nombrenotaria.Text.ToString();
-            MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT Extension, Iptelefono, Alias, Nserie, Modelo, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
+            MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT ID, Extension, Iptelefono, Alias, Nserie, Modelo, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySql.Data.MySqlClient.MySqlDataAdapter m_datos2 = new MySql.Data.MySqlClient.MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
             m_datos2.Fill(ds2);
@@ -266,13 +266,13 @@ namespace configurador_tlf_V2
             {
                 try
                 {
-                    String extensionstringprimero = gridextensiones.Rows[0].Cells[0].Value.ToString();
+                    String extensionstringprimero = gridextensiones.Rows[0].Cells[1].Value.ToString();
                     int extensionprimera = Int32.Parse(extensionstringprimero);
 
                     for (int i = 1; i <= numerototalext; i++)
                     {
                         contador = i - 1;
-                        String extensionstring = gridextensiones.Rows[contador].Cells[0].Value.ToString();
+                        String extensionstring = gridextensiones.Rows[contador].Cells[1].Value.ToString();
                         extensionocupada = Int32.Parse(extensionstring);
 
                         if (extensionprimera == extensionocupada)
@@ -292,10 +292,10 @@ namespace configurador_tlf_V2
                     }
 
                     //CALCULA LA IP DISPONIBLE PARA SUGERIRLA
-                    String ipsiguientexto = gridextensiones.Rows[contador - 1].Cells[1].Value.ToString();
+                    String ipsiguientexto = gridextensiones.Rows[contador - 1].Cells[2].Value.ToString();
                     string[] ultimocachoipsiguiente = ipsiguientexto.Split('.');
                     int ipsiguiente = Int32.Parse(ultimocachoipsiguiente[3]);
-                    String ipsiguientefilatexto = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                    String ipsiguientefilatexto = gridextensiones.Rows[contador].Cells[2].Value.ToString();
                     string[] ultimocachoipsiguientefila = ipsiguientefilatexto.Split('.');
                     int ipsiguientefila = Int32.Parse(ultimocachoipsiguientefila[3]);
                     ipsiguiente++;
@@ -306,14 +306,14 @@ namespace configurador_tlf_V2
                     }
                     else
                     {
-                        String ipprimeraocupada = gridextensiones.Rows[0].Cells[1].Value.ToString();
+                        String ipprimeraocupada = gridextensiones.Rows[0].Cells[2].Value.ToString();
                         string[] ultimocachoip = ipprimeraocupada.Split('.');
                         int ultimocachonumero = Int32.Parse(ultimocachoip[3]);
 
                         for (int i = 1; i <= numerototalext; i++)
                         {
                             contador = i - 1;
-                            String ipstring = gridextensiones.Rows[contador].Cells[1].Value.ToString();
+                            String ipstring = gridextensiones.Rows[contador].Cells[2].Value.ToString();
                             string[] ultimocachoipocupada = ipstring.Split('.');
                             int ipocupada = Int32.Parse(ultimocachoipocupada[3]);
 
@@ -353,13 +353,13 @@ namespace configurador_tlf_V2
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            DialogResult result = MessageBox.Show("¿Seguro que quieres eliminar el teléfono con extensión " + gridextensiones.CurrentRow.Cells[0].Value + " de la base de datos?", "Eliminar teléfono", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("¿Seguro que quieres eliminar el teléfono con extensión " + gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?", "Eliminar teléfono", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
                 string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
                 MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);
-                MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM telefonos WHERE NomNotaria = '" + nombrenotariaanterior.ToString() + "' AND Extension = '" + gridextensiones.CurrentRow.Cells[0].Value + "'", MyConn2);
+                MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand("DELETE FROM telefonos WHERE NomNotaria = '" + nombrenotariaanterior.ToString() + "' AND Extension = '" + gridextensiones.CurrentRow.Cells[1].Value + "'", MyConn2);
                 MySql.Data.MySqlClient.MySqlDataReader MyReader2;
                 MyConn2.Open();
                 MyReader2 = MyCommand2.ExecuteReader();
@@ -374,7 +374,7 @@ namespace configurador_tlf_V2
         private void gridextensiones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             String mensaje = "";
-            String consultamysql;
+            String consultamysql = "";
             int numcolumnaeditada = gridextensiones.CurrentCell.ColumnIndex;
             String nombrecolumna = gridextensiones.Columns[numcolumnaeditada].HeaderText;
             String valornuevo = gridextensiones.CurrentCell.Value.ToString();
@@ -382,20 +382,56 @@ namespace configurador_tlf_V2
             {
                 case "Extension":
                     mensaje = valorceldanterior + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua extensión = " + valorceldanterior + Environment.NewLine + "Nueva extensión = " + valornuevo;
-                    consultamysql = "UPDATE telefonos SET Extension = '" + valornuevo + "' WHERE Extension = '" + valorceldanterior + "' AND NomNotaria = '" + nombrenotariaanterior + "' AND Iptelefono = '" + gridextensiones.CurrentRow.Cells[1].Value + "' AND Alias = '" + gridextensiones.CurrentRow.Cells[2].Value + "' AND Nserie = '" + gridextensiones.CurrentRow.Cells[3].Value + "' AND Modelo = '" + gridextensiones.CurrentRow.Cells[4].Value + "'";
+                    consultamysql = "UPDATE telefonos SET Extension = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
                     break;
 
                 case "Iptelefono":
-                    mensaje = gridextensiones.CurrentRow.Cells[0].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua IP = " + valorceldanterior + Environment.NewLine + "Nueva IP = " + valornuevo;
-                    consultamysql = "UPDATE telefonos SET Iptelefono = '" + valornuevo + "' WHERE Extension = '" + gridextensiones.CurrentRow.Cells[0].Value + "' AND NomNotaria = '" + nombrenotariaanterior + "'";
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua IP = " + valorceldanterior + Environment.NewLine + "Nueva IP = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Iptelefono = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
                     break;
 
+                case "Alias":
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antiguo Alias = " + valorceldanterior + Environment.NewLine + "Nuevo Alias = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Alias = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
+                    break;
+                case "Modelo":
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antiguo Modelo = " + valorceldanterior + Environment.NewLine + "Nuevo Modelo = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Modelo = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
+                    break;
+                case "Nserie":
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antiguo número de serie = " + valorceldanterior + Environment.NewLine + "Nuevo número de serie = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET Nserie = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
+                    break;
+                case "UltActualiz":
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antiguo Alias = " + valorceldanterior + Environment.NewLine + "Nuevo Alias = " + valornuevo;
+                    consultamysql = "UPDATE telefonos SET UltActualiz = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
+                    break;
             }
 
 
             DialogResult result = MessageBox.Show("¿Seguro que quieres editar la siguiente información del teléfono con extensión " + mensaje, "Editar datos teléfono", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                valorceldanterior = valornuevo;
+
+                try
+                {
+                    string MyConnection2 = "server=datostelefonos.ddnsfree.com; database=datostelefonos; Uid=jlozano ; pwd=raper0_legendari0; port=36970";
+                    MySql.Data.MySqlClient.MySqlConnection MyConn2 = new MySql.Data.MySqlClient.MySqlConnection(MyConnection2);
+                    MySql.Data.MySqlClient.MySqlCommand MyCommand2 = new MySql.Data.MySqlClient.MySqlCommand(consultamysql, MyConn2);
+                    MySql.Data.MySqlClient.MySqlDataReader MyReader2;
+                    MyConn2.Open();
+                    MyReader2 = MyCommand2.ExecuteReader();
+                    MessageBox.Show("Campos actualizados", "Éxito");
+                    while (MyReader2.Read()) { }
+                    MyConn2.Close();
+                    guardardatosiniciales();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
 

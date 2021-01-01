@@ -84,7 +84,7 @@
             this.mascararedinput.Location = new System.Drawing.Point(474, 90);
             this.mascararedinput.Name = "mascararedinput";
             this.mascararedinput.Size = new System.Drawing.Size(109, 20);
-            this.mascararedinput.TabIndex = 41;
+            this.mascararedinput.TabIndex = 7;
             // 
             // textomascarared
             // 
@@ -102,7 +102,7 @@
             this.puertadeenlaceinput.Location = new System.Drawing.Point(300, 90);
             this.puertadeenlaceinput.Name = "puertadeenlaceinput";
             this.puertadeenlaceinput.Size = new System.Drawing.Size(111, 20);
-            this.puertadeenlaceinput.TabIndex = 40;
+            this.puertadeenlaceinput.TabIndex = 6;
             // 
             // textopuertadeenlace
             // 
@@ -120,7 +120,7 @@
             this.ipcentralitainput.Location = new System.Drawing.Point(89, 90);
             this.ipcentralitainput.Name = "ipcentralitainput";
             this.ipcentralitainput.Size = new System.Drawing.Size(108, 20);
-            this.ipcentralitainput.TabIndex = 44;
+            this.ipcentralitainput.TabIndex = 5;
             // 
             // textoipcentralita
             // 
@@ -149,7 +149,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(220, 130);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(88, 23);
-            this.btnEliminar.TabIndex = 50;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -161,7 +161,7 @@
             this.btnnuevoext.Location = new System.Drawing.Point(126, 130);
             this.btnnuevoext.Name = "btnnuevoext";
             this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
-            this.btnnuevoext.TabIndex = 49;
+            this.btnnuevoext.TabIndex = 8;
             this.btnnuevoext.Text = "Nuevo";
             this.btnnuevoext.UseVisualStyleBackColor = true;
             this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
@@ -175,7 +175,7 @@
             this.gridextensiones.Name = "gridextensiones";
             this.gridextensiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridextensiones.Size = new System.Drawing.Size(564, 288);
-            this.gridextensiones.TabIndex = 48;
+            this.gridextensiones.TabIndex = 10;
             this.gridextensiones.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridextensiones_CellValueChanged);
             this.gridextensiones.SelectionChanged += new System.EventHandler(this.gridextensiones_SelectionChanged);
             // 
@@ -184,7 +184,7 @@
             this.puertotexto.Location = new System.Drawing.Point(474, 51);
             this.puertotexto.Name = "puertotexto";
             this.puertotexto.Size = new System.Drawing.Size(109, 20);
-            this.puertotexto.TabIndex = 52;
+            this.puertotexto.TabIndex = 4;
             this.puertotexto.Text = "6598";
             // 
             // label3
@@ -202,7 +202,7 @@
             this.ippublicatexto.Location = new System.Drawing.Point(300, 51);
             this.ippublicatexto.Name = "ippublicatexto";
             this.ippublicatexto.Size = new System.Drawing.Size(111, 20);
-            this.ippublicatexto.TabIndex = 51;
+            this.ippublicatexto.TabIndex = 3;
             // 
             // ippublicapretexto
             // 
@@ -222,7 +222,7 @@
             this.btnbuscar.Location = new System.Drawing.Point(497, 2);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(88, 38);
-            this.btnbuscar.TabIndex = 59;
+            this.btnbuscar.TabIndex = 1;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnbuscar.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@
             this.Putty.Location = new System.Drawing.Point(107, 453);
             this.Putty.Name = "Putty";
             this.Putty.Size = new System.Drawing.Size(82, 54);
-            this.Putty.TabIndex = 57;
+            this.Putty.TabIndex = 15;
             this.Putty.Text = "Putty";
             this.Putty.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Putty.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             this.button2.Location = new System.Drawing.Point(472, 453);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 54);
-            this.button2.TabIndex = 56;
+            this.button2.TabIndex = 12;
             this.button2.Text = "Cancelar cambios";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
@@ -263,7 +263,7 @@
             this.btnGuardarcambios.Location = new System.Drawing.Point(354, 453);
             this.btnGuardarcambios.Name = "btnGuardarcambios";
             this.btnGuardarcambios.Size = new System.Drawing.Size(112, 54);
-            this.btnGuardarcambios.TabIndex = 55;
+            this.btnGuardarcambios.TabIndex = 11;
             this.btnGuardarcambios.Text = "Guardar cambios";
             this.btnGuardarcambios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardarcambios.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             this.usuarioputty.Location = new System.Drawing.Point(260, 457);
             this.usuarioputty.Name = "usuarioputty";
             this.usuarioputty.Size = new System.Drawing.Size(61, 20);
-            this.usuarioputty.TabIndex = 62;
+            this.usuarioputty.TabIndex = 13;
             this.usuarioputty.Text = "root";
             // 
             // label5
@@ -292,7 +292,7 @@
             this.contraputty.Name = "contraputty";
             this.contraputty.PasswordChar = '*';
             this.contraputty.Size = new System.Drawing.Size(61, 20);
-            this.contraputty.TabIndex = 60;
+            this.contraputty.TabIndex = 14;
             this.contraputty.Text = "4a9P1dK9xrn1l";
             // 
             // label6
@@ -311,7 +311,7 @@
             this.winscp.Location = new System.Drawing.Point(19, 453);
             this.winscp.Name = "winscp";
             this.winscp.Size = new System.Drawing.Size(82, 54);
-            this.winscp.TabIndex = 64;
+            this.winscp.TabIndex = 16;
             this.winscp.Text = "WinSCP";
             this.winscp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.winscp.UseVisualStyleBackColor = true;
@@ -323,7 +323,7 @@
             this.nombrenotaria.Location = new System.Drawing.Point(148, 12);
             this.nombrenotaria.Name = "nombrenotaria";
             this.nombrenotaria.Size = new System.Drawing.Size(263, 20);
-            this.nombrenotaria.TabIndex = 65;
+            this.nombrenotaria.TabIndex = 2;
             this.nombrenotaria.Text = "Ninguna";
             // 
             // FichaNotaria
