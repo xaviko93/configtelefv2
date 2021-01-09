@@ -371,6 +371,8 @@ namespace configurador_tlf_V2
             }
         }
 
+        //DETECTA QUE EL VALOR DE UNA CELDA HA CAMBIADO Y PREGUNTA SI QUIERES HACER ESE CAMBIO EN LA SQL
+
         private void gridextensiones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             String mensaje = "";
@@ -403,7 +405,7 @@ namespace configurador_tlf_V2
                     consultamysql = "UPDATE telefonos SET Nserie = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
                     break;
                 case "UltActualiz":
-                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antiguo Alias = " + valorceldanterior + Environment.NewLine + "Nuevo Alias = " + valornuevo;
+                    mensaje = gridextensiones.CurrentRow.Cells[1].Value + " de la base de datos?:" + Environment.NewLine + Environment.NewLine + "Antigua última actualización = " + valorceldanterior + Environment.NewLine + "Nueva última actualización = " + valornuevo;
                     consultamysql = "UPDATE telefonos SET UltActualiz = '" + valornuevo + "' WHERE ID = '" + gridextensiones.CurrentRow.Cells[0].Value + "'";
                     break;
             }
@@ -435,14 +437,16 @@ namespace configurador_tlf_V2
             }
         }
 
-        private void gridextensiones_SelectionChanged(object sender, EventArgs e)
+        //CADA VEZ QUE SE SELECCIONA UNA CELDA DEL GRID CAPTURA EL VALOR Y LO GUARDA EN UNA VARIABLE
+        private void gridextensiones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 valorceldanterior = gridextensiones.CurrentCell.Value.ToString();
             }
-            catch (NullReferenceException p) { }
-            
+            catch (NullReferenceException p)
+            {
+            }
         }
     }
 }

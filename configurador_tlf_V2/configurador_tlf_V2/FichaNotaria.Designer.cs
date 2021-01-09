@@ -176,8 +176,8 @@
             this.gridextensiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridextensiones.Size = new System.Drawing.Size(564, 288);
             this.gridextensiones.TabIndex = 10;
+            this.gridextensiones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridextensiones_CellClick);
             this.gridextensiones.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridextensiones_CellValueChanged);
-            this.gridextensiones.SelectionChanged += new System.EventHandler(this.gridextensiones_SelectionChanged);
             // 
             // puertotexto
             // 
