@@ -32,19 +32,35 @@ namespace configurador_tlf_V2
         private void Button2_Click(object sender, EventArgs e)
         {
             //Probando conexion
-            try
-            {
-                using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), "root", "4a9P1dK9xrn1l"))
-                {
-                    client.Connect();
-                    client.Disconnect();
-                    MessageBox.Show("Conectado correctamente");
+                int puerto = Int32.Parse(textopuerto.Text.ToString());
+                string conip = "178.23.210.121";
+                string conus = "root";
+                string concontra = "4a9P1dK9xrn1l";
 
+
+
+            using (var client = new SshClient(conip, puerto, conus, concontra))
+                {
+
+                //Start the connection
+                int attempts = 0;
+                do
+                {
+                    try
+                    {
+                        client.Connect();
+                    }
+                    catch
+                    {
+                        attempts++;
+                    }
+                } while (attempts < 5 && !client.IsConnected);
+                var output = client.RunCommand("echo test");
+                    client.Disconnect();
+                    Console.WriteLine(output.ToString());
+                    MessageBox.Show("Conectado correctamente");
                 }
-            } catch
-            {
-                MessageBox.Show("No se puede conectar a la centralita por SSH");
-            }
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)

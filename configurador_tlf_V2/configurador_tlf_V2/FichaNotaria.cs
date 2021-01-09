@@ -168,73 +168,15 @@ namespace configurador_tlf_V2
         //COMPRUEBA SI ESTÁ PUTTY INSTALADO Y LO ABRE CON LA IP PUBLICA DE LA FICHA
         private void Putty_Click(object sender, EventArgs e)
         {
-            puttyejecutar();
-        }
-
-        private async Task puttyejecutar()
-        {
-            if (File.Exists("C:\\Program Files\\PuTTY\\putty.exe"))
-            {
-                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
-                ejecutarcomandocmd(comando);
-            }
-            else
-            {
-                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/putty.msi >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
-                ejecutarcomandocmd(comandoinstchoco);
-                await Task.Delay(6000);
-                ejecutarcomandocmd("start putty.msi /passive");
-                await Task.Delay(5000);
-                ejecutarcomandocmd("DEL /F /A putty.msi");
-                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
-                ejecutarcomandocmd(comando);
-            }
-        }
-
-        //FUNCION PARA EJECUTAR COMANDOS CMD
-        public void ejecutarcomandocmd(String comandoimportado)
-        {
-            Process cmd = new Process();
-            cmd.StartInfo.FileName = "cmd.exe";
-            cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = false;
-            cmd.StartInfo.UseShellExecute = false;
-            cmd.Start();
-            cmd.StandardInput.WriteLine(comandoimportado);
-            cmd.StandardInput.Flush();
-            cmd.StandardInput.Close();
-            cmd.WaitForExit();
-            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
-            Console.Read();
+            Funciones funciones = new Funciones();
+            funciones.puttyejecutar(ippublicatexto.Text.ToString(), puertotexto.Text.ToString(), usuarioputty.Text.ToString(), contraputty.Text.ToString(), "");
         }
 
         //COMPRUEBA SI WINSCP ESTÁ INSTALADO Y LO ABRE CON ESA CONFIGURACION
         private void winscp_Click(object sender, EventArgs e)
         {
-            winscpejecutar();
-        }
-
-
-
-        private async Task winscpejecutar()
-        {
-            if (File.Exists("C:\\Program Files (x86)\\WinSCP\\WinSCP.exe"))
-            {
-                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
-                ejecutarcomandocmd(comando);
-            }
-            else
-            {
-                String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get PROGRAMAS/winscp.exe >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
-                ejecutarcomandocmd(comandoinstchoco);
-                await Task.Delay(6000);
-                ejecutarcomandocmd("start winscp.exe /allusers /silent");
-                await Task.Delay(5000);
-                ejecutarcomandocmd("DEL /F /A winscp.exe");
-                String comando = "C:\\\"Program Files\"\\PuTTY\\putty.exe -ssh " + usuarioputty.Text.ToString() + "@" + ippublicatexto.Text.ToString() + " " + puertotexto.Text.ToString() + " -pw " + contraputty.Text.ToString();
-                ejecutarcomandocmd(comando);
-            }
+            Funciones funciones = new Funciones();
+            funciones.winscpejecutar(ippublicatexto.Text.ToString(), puertotexto.Text.ToString(), usuarioputty.Text.ToString(), contraputty.Text.ToString());
         }
 
         //COMPRUEBA SI SE HA SELECCIONADO LA NOTARIA EN OTRA PARTE DE LA APLICACION PARA CARGARLA AL ABRIR EL FORMULARIO SI NO SE HA SELECCIONADO ANTES OTRA EN ESTE FORM
@@ -246,7 +188,6 @@ namespace configurador_tlf_V2
                 cargarextensiones();
             }
         }
-
 
 
         private void btnnuevoext_Click(object sender, EventArgs e)
