@@ -357,8 +357,9 @@
             this.Controls.Add(this.textopuertadeenlace);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FichaNotaria";
-            this.Text = "FichaNotaria";
+            this.Text = "Ficha de Notaria";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FichaNotaria_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.FichaNotaria_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).EndInit();
