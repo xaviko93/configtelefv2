@@ -215,9 +215,6 @@ namespace configurador_tlf_V2
                 dr.Read();
                 puertadeenlaceinput.Text = dr.GetValue(2).ToString();
                 cmd.Connection.Close();
-
-
-
                 cargarextensiones();
             }
         }

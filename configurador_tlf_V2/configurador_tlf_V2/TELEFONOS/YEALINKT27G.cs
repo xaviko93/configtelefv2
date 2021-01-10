@@ -91,22 +91,17 @@ namespace configurador_tlf_V2.TELEFONOS
         public async Task limpiaryconfigurarextensiones(String ipactual, WebBrowser webBrowser1, DataGridView gridextensiones, DataGridView gridtelefonos, int extensionaomitir)
         {
 
-            //LIMPIANDO EXTENSIONES
+            int numextgridextensiones = gridextensiones.Rows.Count - 1;
+            int numextgridtelefonos = gridtelefonos.Rows.Count - 2;
+            int numtelefaconfigurar = numextgridextensiones + numextgridtelefonos;
+            int contadorgridtelefonos = 0;
 
             webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&q=load");
-
             await cargapagina();
 
             for (int l = 1; l < 22; l++)
             {
-
-                webBrowser1.Document.GetElementById("value_" + l).SetAttribute("value", "1");
-                webBrowser1.Document.GetElementById("label_" + l).SetAttribute("value", "1");
-                webBrowser1.Document.GetElementById("line_" + l).SetAttribute("value", "1");
-                webBrowser1.Document.GetElementById("extern_" + l).SetAttribute("value", "1");
-                webBrowser1.Document.GetElementById("type_" + l).SetAttribute("value", "0");
-
-                if (l == 7)
+                if (l == 8)
                 {
                     webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
                     await cargagrande();
@@ -114,317 +109,53 @@ namespace configurador_tlf_V2.TELEFONOS
                     await cargapagina();
                 }
 
-                if (l == 14)
+                if (l == 15)
                 {
                     webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
                     await cargagrande();
                     webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
                     await cargapagina();
                 }
-            }
-
-            webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargagrande();
-
-            //CONFIGURANDO EXTENSIONES
-
-            webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=1&q=load");
-            await cargapagina();
-
-            numextensiones = gridextensiones.Rows.Count - 1;
-
-            if (numextensiones > 6)
-            {
-
-                for (contadorextensiones = 0; contadorextensiones < 7; contadorextensiones++)
+                if (l <= numtelefaconfigurar)
                 {
 
-                    numfila = contadorextensiones + 1;
-                    webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-                }
+                    webBrowser1.Document.GetElementById("type_" + l).SetAttribute("value", "16");
 
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-
-                for (contadorextensiones = 0; contadorextensiones < 7; contadorextensiones++)
-                {
-                    numfila = contadorextensiones + 1;
-                    String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
-                    String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
-                    webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                    webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                    webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                    webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                }
-
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-
-                webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
-                await cargapagina();
-
-            }
-
-            if (numextensiones > 13)
-            {
-
-
-                for (contadorextensiones = 7; contadorextensiones < 14; contadorextensiones++)
-                {
-
-                    int numfila = contadorextensiones + 1;
-                    webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-                }
-
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-
-                for (contadorextensiones = 7; contadorextensiones < 14; contadorextensiones++)
-                {
-                    numfila = contadorextensiones + 1;
-                    String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
-                    String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
-                    webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                    webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                    webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                    webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                }
-
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-
-                webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
-                await cargapagina();
-
-            }
-
-            if (numextensiones != 7 && numextensiones != 14)
-            {
-
-            
-
-            int contadorextaparte;
-            for (contadorextaparte = contadorextensiones; contadorextaparte < numextensiones; contadorextaparte++)
-            {
-                int numfila = contadorextaparte + 1;
-                webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-            }
-
-            await cargapagina();
-            webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargagrande();
-
-            int contadorextaparte2;
-            for (contadorextaparte2 = contadorextensiones; contadorextaparte2 < numextensiones; contadorextaparte2++)
-            {
-                numfila = contadorextaparte2 + 1;
-                String extensiontelefono = gridextensiones.Rows[contadorextaparte2].Cells[0].Value.ToString();
-                String aliastelefono = gridextensiones.Rows[contadorextaparte2].Cells[2].Value.ToString();
-                webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-            }
-
-            contadorextensiones = contadorextaparte2;
-
-            await cargapagina();
-            webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargagrande();
-            }
-        }
-
-
-
-        //CONFIGURA LAS EXTENSIONES DE LOS TLF QUE SE ESTAN CONFIGURANDO JUNTO AL ACTUAL
-        public async Task configurarextensionestlfaconfigurar(String ipactual, WebBrowser webBrowser1, DataGridView gridextensiones, DataGridView gridtelefonos, int extensionaomitir)
-        {
-            numextensionesdetlf = gridtelefonos.Rows.Count - 1;
-            numtotalaconfig = numextensionesdetlf + numextensiones;
-
-            if (contadorextensiones < 7)
-            {
-                int contadorextactual;
-                contadorextactual = contadorextensiones;
-                numfila = contadorextactual + 1;
-                int numlineatemp = numlineatlf;
-                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
+                    if ( l <= numextgridextensiones)
                     {
-                        String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
-                    numlineatemp++;
-                        int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                        if (extensiontelefononumero != extensionaomitir)
-                        {
-                            webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-                            numfila++;
-                        }
-                        else
-                        {
-                            contadorextactual--;
-                        }
-                    }
-
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-                contadorextactual = contadorextensiones;
-                numlineatemp = numlineatlf;
-                numfila = contadorextactual + 1;
-                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
+                        contadorextensiones = l - 1;
+                        String extensiontelefono = gridextensiones.Rows[contadorextensiones].Cells[0].Value.ToString();
+                        String aliastelefono = gridextensiones.Rows[contadorextensiones].Cells[2].Value.ToString();
+                        webBrowser1.Document.GetElementById("value_" + l).SetAttribute("value", extensiontelefono.ToString());
+                        webBrowser1.Document.GetElementById("label_" + l).SetAttribute("value", aliastelefono);
+                        webBrowser1.Document.GetElementById("line_" + l).SetAttribute("value", "0");
+                        webBrowser1.Document.GetElementById("extern_" + l).SetAttribute("value", extensiontelefono.ToString());
+                    } else
                     {
-
-
-                        String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
-                        String aliastelefono = gridtelefonos.Rows[numlineatemp].Cells[1].Value.ToString();
-                    numlineatemp++;
-                        int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                        if (extensiontelefononumero != extensionaomitir)
+                        if (extensionaomitir.ToString() == gridtelefonos.Rows[contadorgridtelefonos].Cells[0].Value.ToString())
                         {
-                            webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                            webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                            webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                            webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                            numfila++;
+                            contadorgridtelefonos++;
                         }
-                        else
-                        {
-                            contadorextactual--;
-                        }
+                        String extensiontelefono = gridtelefonos.Rows[contadorgridtelefonos].Cells[0].Value.ToString();
+                        String aliastelefono = gridtelefonos.Rows[contadorgridtelefonos].Cells[1].Value.ToString();
+                        webBrowser1.Document.GetElementById("value_" + l).SetAttribute("value", extensiontelefono.ToString());
+                        webBrowser1.Document.GetElementById("label_" + l).SetAttribute("value", aliastelefono);
+                        webBrowser1.Document.GetElementById("line_" + l).SetAttribute("value", "0");
+                        webBrowser1.Document.GetElementById("extern_" + l).SetAttribute("value", extensiontelefono.ToString());
+                        contadorgridtelefonos++;
                     }
-                    numlineatlf = numlineatemp;
-                    contadorextensiones = contadorextactual;
-
-                    await cargapagina();
-                    webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                    await cargagrande();
-
-                    webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=2&q=load");
-                    await cargapagina();
-
-                }
-
-            
-
-                if (contadorextensiones < 14)
-                {
-                    int contadorextactual = contadorextensiones;
-                    numfila = contadorextactual + 1;
-                    int numlineatemp = numlineatlf;
-                    for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
-                        {
-                            String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
-                            numlineatemp++;
-                            int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                            if (extensiontelefononumero != extensionaomitir)
-                            {
-                                webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-                                numfila++;
-                            }
-                            else
-                            {
-                                contadorextactual--;
-                            }
-                        }
-
-                await cargapagina();
-                webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                await cargagrande();
-                contadorextactual = contadorextensiones;
-                numlineatemp = numlineatlf;
-                        numfila = contadorextactual + 1;
-                        for (contadorextactual = contadorextensiones; contadorextactual < numtotalaconfig - 1; contadorextactual++)
-                        {
-
-
-                            String extensiontelefono = gridtelefonos.Rows[numlineatemp].Cells[0].Value.ToString();
-                            String aliastelefono = gridtelefonos.Rows[numlineatemp].Cells[1].Value.ToString();
-                            numlineatemp++;
-                            int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                            if (extensiontelefononumero != extensionaomitir)
-                            {
-                                webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                                webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                                webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                                webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                                numfila++;
-                            }
-                            else
-                            {
-                                contadorextactual--;
-                            }
-                        }
-
-                        numlineatlf = numlineatemp;
-                        contadorextensiones = contadorextactual;
-
-                        await cargapagina();
-                        webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-                        await cargagrande();
-
-                        webBrowser1.Navigate("http://" + ipactual + "/servlet?m=mod_data&p=dsskey&model=1&linepage=3&q=load");
-                        await cargapagina();
-
-                    
-                }
-
-
-            numfila = contadorextensiones + 1;
-            int contadorextaparte;
-            int filaactual = numlineatlf;
-            for (contadorextaparte = contadorextensiones; contadorextaparte < numtotalaconfig - 1; contadorextaparte++)
-            {
-
-                String extensiontelefono = gridtelefonos.Rows[filaactual].Cells[0].Value.ToString();
-                filaactual++;
-                int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                if (extensiontelefononumero != extensionaomitir)
-                {
-                    webBrowser1.Document.GetElementById("type_" + numfila).SetAttribute("value", "16");
-                    numfila++;
                 }
                 else
                 {
-                    contadorextaparte--;
+                    webBrowser1.Document.GetElementById("value_" + l).SetAttribute("value", "1");
+                    webBrowser1.Document.GetElementById("label_" + l).SetAttribute("value", "1");
+                    webBrowser1.Document.GetElementById("line_" + l).SetAttribute("value", "1");
+                    webBrowser1.Document.GetElementById("extern_" + l).SetAttribute("value", "1");
+                    webBrowser1.Document.GetElementById("type_" + l).SetAttribute("value", "0");
                 }
+
             }
-            numfila = contadorextensiones + 1;
-            int contadorextaparte2;
-            filaactual = numlineatlf;
-            for (contadorextaparte2 = contadorextensiones; contadorextaparte2 < numtotalaconfig - 1; contadorextaparte2++)
-            {
-
-                String extensiontelefono = gridtelefonos.Rows[filaactual].Cells[0].Value.ToString();
-                String aliastelefono = gridtelefonos.Rows[filaactual].Cells[1].Value.ToString();
-                filaactual++;
-                int extensiontelefononumero = Int32.Parse(extensiontelefono);
-
-                if (extensiontelefononumero != extensionaomitir)
-                {
-                    webBrowser1.Document.GetElementById("value_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                    webBrowser1.Document.GetElementById("label_" + numfila).SetAttribute("value", aliastelefono);
-                    webBrowser1.Document.GetElementById("line_" + numfila).SetAttribute("value", "0");
-                    webBrowser1.Document.GetElementById("extern_" + numfila).SetAttribute("value", extensiontelefono.ToString());
-                    numfila++;
-                }
-                else
-                {
-                    contadorextaparte2--;
-                }
-            }
-
-            await cargapagina();
             webBrowser1.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargagrande();
-
         }
             
 
@@ -436,13 +167,7 @@ namespace configurador_tlf_V2.TELEFONOS
 
             webBrowser.Document.GetElementsByTagName("select").GetElementsByName("NetworkIPAddressMode")[0].SetAttribute("value", "0");
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanType")[0].SetAttribute("value", "2");
-            webBrowser.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargapagina();
-
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticDNSEnable")[0].SetAttribute("value", "1");
-            webBrowser.Document.GetElementById("btn_confirm1").InvokeMember("Click");
-            await cargapagina();
-
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticIp")[0].SetAttribute("value", ipaconfigurar2);
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticMask")[0].SetAttribute("value", mascaraaconfigurar2);
             webBrowser.Document.GetElementsByTagName("input").GetElementsByName("NetworkWanStaticGateWay")[0].SetAttribute("value", puertaaconfigurar2);

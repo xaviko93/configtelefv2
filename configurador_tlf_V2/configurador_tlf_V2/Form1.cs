@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Management.Automation;
+using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -616,22 +618,30 @@ namespace configurador_tlf_V2
 
         public async Task mensajerecordatorio()
         {
-            MessageBox.Show("Asegúrate de tener el teléfono configurado en Español y conectado con la IP: " + ipactualtelefono, "Comprobación");
-        }
+
+            string sCmdText = @"/K ping -a " + ipactualtelefono + " -t";
+            Process p = new Process();
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.Arguments = sCmdText;
+            p.StartInfo.RedirectStandardOutput = false;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.CreateNoWindow = false;
+            p.Start();
+
+            MessageBox.Show("Asegúrate de tener el teléfono configurado en Español y configurado con la IP: " + ipactualtelefono, "Comprobación", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            }
 
         public async Task configurart27gAsync(String ipactualtelefono, int extensiontelefono, String aliastelefono, String ipcentralitatelefono, String iptelefonoaconfigurar, String mascaraderedtelefono, String puertadeenlacetelefono)
         {
                 TELEFONOS.YEALINKT27G T27G = new TELEFONOS.YEALINKT27G();
                 
-                progressBartlf.Maximum = 4;
+                progressBartlf.Maximum = 3;
                 progressBartlf.Value = 0;
                 textoproceso.Text = "GENERAL";
                 await T27G.configuraciongeneralAsync(ipactualtelefono, extensiontelefono, aliastelefono, ipcentralitatelefono, webBrowser1);
                 progressBartlf.Value += 1;
                 textoproceso.Text = "EXTENSIONES";
                 await T27G.limpiaryconfigurarextensiones(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
-                progressBartlf.Value += 1;
-                await T27G.configurarextensionestlfaconfigurar(ipactualtelefono, webBrowser1, gridextensiones, gridtelefonosaconfigurar, extensiontelefono);
                 progressBartlf.Value += 1;
                 textoproceso.Text = "RED";
                 await T27G.configurarred(ipactualtelefono, webBrowser1, iptelefonoaconfigurar, mascaraderedtelefono, puertadeenlacetelefono);
