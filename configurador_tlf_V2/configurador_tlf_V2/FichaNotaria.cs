@@ -168,6 +168,12 @@ namespace configurador_tlf_V2
         //COMPRUEBA SI ESTÁ PUTTY INSTALADO Y LO ABRE CON LA IP PUBLICA DE LA FICHA
         private void Putty_Click(object sender, EventArgs e)
         {
+            if(ippublicatexto.Text.ToString()=="" || puertotexto.Text.ToString()=="" || usuarioputty.Text.ToString()=="" || contraputty.Text.ToString() == "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Alguno/s del los campos necesarios para conectar está vacío, revísalos y vuelve a intentarlo", "Campos necesarios vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Funciones funciones = new Funciones();
             funciones.puttyejecutar(ippublicatexto.Text.ToString(), puertotexto.Text.ToString(), usuarioputty.Text.ToString(), contraputty.Text.ToString(), "");
         }

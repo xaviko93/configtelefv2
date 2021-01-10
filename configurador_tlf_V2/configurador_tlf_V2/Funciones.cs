@@ -67,8 +67,6 @@ namespace configurador_tlf_V2
 
                 String comando = "C:\\\"Program Files (x86)\"\\WinSCP\\WinSCP.exe sftp://" + usuariocon + ":" + contracon + "@" + ipcon + ":" + puertocon + "/";
                 ejecutarcomandocmd(comando);
-                
-            
         }
     }
 }

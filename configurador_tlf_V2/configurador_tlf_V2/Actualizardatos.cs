@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,71 +25,32 @@ namespace configurador_tlf_V2
             
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        public async Task actualizardatos()
         {
-            textopuerto.Text = "6598";
-        }
+            Funciones funciones = new Funciones();
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            //Probando conexion
-                int puerto = Int32.Parse(textopuerto.Text.ToString());
-                string conip = "178.23.210.121";
-                string conus = "root";
-                string concontra = "4a9P1dK9xrn1l";
+            String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get Scripts2020/comandosputtyconfigtelef.txt >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
+            funciones.ejecutarcomandocmd(comandoinstchoco);
+            await Task.Delay(1500);
+
+            string archivo = "comandosputtyconfigtelef.txt";
+            string text = File.ReadAllText(archivo);
+            text = text.Replace("sustituirpornombrenotaria", nombrenotaria.Text.ToString());
+            File.WriteAllText(archivo, text);
+
+            funciones.puttyejecutar(textoip.Text.ToString(), textopuerto.Text.ToString(), usuario.Text.ToString(), contra.Text.ToString(), archivo);
+
+            await Task.Delay(10000);
+            funciones.ejecutarcomandocmd("DEL " + archivo);
 
 
 
-            using (var client = new SshClient(conip, puerto, conus, concontra))
-                {
-
-                //Start the connection
-                int attempts = 0;
-                do
-                {
-                    try
-                    {
-                        client.Connect();
-                    }
-                    catch
-                    {
-                        attempts++;
-                    }
-                } while (attempts < 5 && !client.IsConnected);
-                var output = client.RunCommand("echo test");
-                    client.Disconnect();
-                    Console.WriteLine(output.ToString());
-                    MessageBox.Show("Conectado correctamente");
-                }
-            
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             //Realizando comandos
-            try
-            {
-
-                using (var client = new SshClient(textoip.Text.ToString(), Int32.Parse(textopuerto.Text.ToString()), usuario.Text.ToString(), contra.Text.ToString()))
-                {
-                    client.Connect();
-                    client.RunCommand("sudo rm scriptinstalacion.sh");
-                    client.RunCommand("sudo rm -rf /datostelefonos");
-                    client.RunCommand("sudo mkdir /datostelefonos");
-                    client.RunCommand("wget -c wget --user=jlozano --password=raper0_legendari0 'ftp://telefonos.notin.net/Scripts2020/scriptinstalacion.sh'");
-                    client.RunCommand("sudo chmod 777 scriptinstalacion.sh");
-                    client.RunCommand("sudo apt-get install dos2unix -y");
-                    client.RunCommand("dos2unix scriptinstalacion.sh");
-                    client.RunCommand("./scriptinstalacion.sh '" + nombrenotaria.Text.ToString() + "'");
-                    client.Disconnect();
-                    MessageBox.Show("Datos actualizados correctamente");
-
-                }
-            }
-            catch
-            {
-                MessageBox.Show("No se puede conectar a la centralita por SSH");
-            }
+            actualizardatos();
         }
 
         private void Actualizardatos_FormClosing(object sender, FormClosingEventArgs e)
