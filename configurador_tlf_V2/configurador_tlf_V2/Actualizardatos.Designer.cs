@@ -157,7 +157,7 @@
             this.Controls.Add(this.textoip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Actualizardatos";
-            this.Text = "Actualizardatos";
+            this.Text = "Actualizar / Añadir Notaria";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Actualizardatos_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.Actualizardatos_VisibleChanged);
             this.ResumeLayout(false);

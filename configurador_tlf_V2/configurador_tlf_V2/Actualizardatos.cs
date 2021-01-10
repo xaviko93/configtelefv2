@@ -27,6 +27,8 @@ namespace configurador_tlf_V2
 
         public async Task actualizardatos()
         {
+
+
             Funciones funciones = new Funciones();
 
             String comandoinstchoco = "echo open telefonos.notin.net>> ftp &echo user jlozano raper0_legendari0 >> ftp &echo binary >> ftp &echo get Scripts2020/comandosputtyconfigtelef.txt >> ftp &echo bye >> ftp &ftp -n -v -s:ftp &del ftp";
@@ -49,6 +51,11 @@ namespace configurador_tlf_V2
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            if (textoip.Text.ToString() == "" || textopuerto.Text.ToString() == "" || nombrenotaria.Text.ToString() == "" || contra.Text.ToString() == "" || usuario.Text.ToString() == "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Alguno/s del los campos necesarios para conectar está vacío, revísalos y vuelve a intentarlo", "Campos necesarios vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             //Realizando comandos
             actualizardatos();
         }

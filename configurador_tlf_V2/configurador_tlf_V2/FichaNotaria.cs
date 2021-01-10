@@ -46,6 +46,8 @@ namespace configurador_tlf_V2
         public void cargarextensiones()
         {
             guardardatosiniciales();
+
+
             Conexion.Open();
 
             try
@@ -191,6 +193,31 @@ namespace configurador_tlf_V2
             if (Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null && nombrenotaria.Text == "Ninguna")
             {
                 nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
+                nombrenotaria.Enabled = true;
+                textoipcentralita.Enabled = true;
+                ipcentralitainput.Enabled = true;
+                textomascarared.Enabled = true;
+                mascararedinput.Enabled = true;
+                textopuertadeenlace.Enabled = true;
+                puertadeenlaceinput.Enabled = true;
+                ippublicapretexto.Enabled = true;
+                ippublicatexto.Enabled = true;
+
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand("SELECT IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString() + "%'", Conexion);
+                MySql.Data.MySqlClient.MySqlDataReader dr;
+                ListViewItem notarias = new ListViewItem();
+                cmd.Connection.Open();
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                ipcentralitainput.Text = dr.GetValue(0).ToString();
+                dr.Read();
+                mascararedinput.Text = dr.GetValue(1).ToString();
+                dr.Read();
+                puertadeenlaceinput.Text = dr.GetValue(2).ToString();
+                cmd.Connection.Close();
+
+
+
                 cargarextensiones();
             }
         }
