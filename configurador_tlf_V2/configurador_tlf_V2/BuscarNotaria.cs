@@ -9,7 +9,7 @@ namespace configurador_tlf_V2
 
         public String notariaabuscar2;
        
-        public BuscarNotaria()
+        public BuscarNotaria(Form ventanapadre)
         {
             InitializeComponent();
 
@@ -57,7 +57,7 @@ namespace configurador_tlf_V2
         {
             try
             {
-                Form1 pantallaprincipal = Owner as Form1;
+                ventanapadre pantallaprincipal = Owner as ventanapadre;
                 pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
                 pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
                 pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;
@@ -76,7 +76,7 @@ namespace configurador_tlf_V2
         {
             try
             {
-                Form1 pantallaprincipal = Owner as Form1;
+                ventanapadre pantallaprincipal = Owner as ventanapadre;
                 pantallaprincipal.buscadornotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[0].Text;
                 pantallaprincipal.ipcentralitanotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[1].Text;
                 pantallaprincipal.mascararednotaria.Text = listabusquedanotarias.SelectedItems[0].SubItems[2].Text;

@@ -28,7 +28,7 @@ namespace configurador_tlf_V2
 
         private void Herramientas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Owner.Show();
+            Application.Exit();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -52,6 +52,15 @@ namespace configurador_tlf_V2
             f2.StartPosition = FormStartPosition.Manual;
             f2.Location = new Point(this.Location.X + (this.Width - f2.Width) / 2, this.Location.Y + (this.Height - f2.Height) / 2);
             f2.Show(this);
+        }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form frm = new BuscarNotaria(this);
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.Location = new Point(this.Location.X + (this.Width - frm.Width) / 2, this.Location.Y + (this.Height - frm.Height) / 2);
+            frm.Show(this);
         }
     }
 }

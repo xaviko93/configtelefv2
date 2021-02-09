@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace configurador_tlf_V2
 {
 
-    public partial class Form1 : Form
+    public partial class ventanapadre : Form
     {
 
         public String notariaabuscar;
@@ -37,7 +37,7 @@ namespace configurador_tlf_V2
         public String modeloviejo;
         public String nserieviejo;
 
-        public Form1()
+        public ventanapadre()
         {
             InitializeComponent();
 
@@ -95,9 +95,9 @@ namespace configurador_tlf_V2
             
             checkNotariaManual.Checked = false;
             radioAutomatica.Checked = true;
-
+            
             this.Hide();
-            Form frm = new BuscarNotaria();
+            Form frm = new BuscarNotaria(this);
             frm.StartPosition = FormStartPosition.Manual;
             frm.Location = new Point(this.Location.X + (this.Width - frm.Width) / 2, this.Location.Y + (this.Height - frm.Height) / 2);
             frm.Show(this);

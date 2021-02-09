@@ -187,6 +187,12 @@
     <Compile Include="BuscarNotaria.Designer.cs">
       <DependentUpon>BuscarNotaria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasena_Acceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrasena_Acceso.Designer.cs">
+      <DependentUpon>Contrasena_Acceso.cs</DependentUpon>
+    </Compile>
     <Compile Include="FichaNotaria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BuscarNotaria.resx">
       <DependentUpon>BuscarNotaria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasena_Acceso.resx">
+      <DependentUpon>Contrasena_Acceso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FichaNotaria.resx">
       <DependentUpon>FichaNotaria.cs</DependentUpon>

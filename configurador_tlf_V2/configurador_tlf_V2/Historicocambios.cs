@@ -16,10 +16,10 @@ namespace configurador_tlf_V2
         public Historicocambios()
         {
             InitializeComponent();
-            if (nombrenotariafiltro.Text == "" && Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null)
+            if (nombrenotariafiltro.Text == "" && ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica != null)
             {
-                nombrenotariafiltro.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica;
-                MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios WHERE Notaria LIKE '" + Form1.VariablesGlobales.nombrenotariaseleccionadapublica + "'", Conexion);
+                nombrenotariafiltro.Text = ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica;
+                MySqlCommand cmd = new MySqlCommand("SELECT Notaria, Fecha, Hora, Extension, AliasInstalado, IPInstalado, NserieInstalado, ModeloInstalado, AliasRetirado, IPRetirado, NserieRetirado, ModeloRetirado FROM histcambios WHERE Notaria LIKE '" + ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica + "'", Conexion);
                 MySqlDataAdapter m_datos2 = new MySqlDataAdapter(cmd);
                 ds2 = new DataSet();
                 m_datos2.Fill(ds2);

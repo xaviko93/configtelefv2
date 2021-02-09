@@ -55,7 +55,7 @@ namespace configurador_tlf_V2
                 gridextensiones.Columns.Clear();
             }
             catch { }
-            Form1.VariablesGlobales.nombrenotariaseleccionadapublica = nombrenotaria.Text.ToString();
+            ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica = nombrenotaria.Text.ToString();
             MySql.Data.MySqlClient.MySqlCommand mostrar2 = new MySql.Data.MySqlClient.MySqlCommand("SELECT ID, Extension, Iptelefono, Alias, Nserie, Modelo, UltActualiz FROM telefonos WHERE NomNotaria ='" + nombrenotaria.Text.ToString() + "' ORDER BY Extension", Conexion);
             MySql.Data.MySqlClient.MySqlDataAdapter m_datos2 = new MySql.Data.MySqlClient.MySqlDataAdapter(mostrar2);
             ds2 = new DataSet();
@@ -190,9 +190,9 @@ namespace configurador_tlf_V2
         //COMPRUEBA SI SE HA SELECCIONADO LA NOTARIA EN OTRA PARTE DE LA APLICACION PARA CARGARLA AL ABRIR EL FORMULARIO SI NO SE HA SELECCIONADO ANTES OTRA EN ESTE FORM
         private void FichaNotaria_VisibleChanged(object sender, EventArgs e)
         {
-            if (Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null && nombrenotaria.Text == "Ninguna")
+            if (ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica != null && nombrenotaria.Text == "Ninguna")
             {
-                nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
+                nombrenotaria.Text = ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica.ToString();
                 nombrenotaria.Enabled = true;
                 textoipcentralita.Enabled = true;
                 ipcentralitainput.Enabled = true;
@@ -203,7 +203,7 @@ namespace configurador_tlf_V2
                 ippublicapretexto.Enabled = true;
                 ippublicatexto.Enabled = true;
 
-                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand("SELECT IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + Form1.VariablesGlobales.nombrenotariaseleccionadapublica.ToString() + "%'", Conexion);
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand("SELECT IPCentralita, MascaraRed, PuertaEnlace FROM centralita WHERE NomNotaria LIKE '%" + ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica.ToString() + "%'", Conexion);
                 MySql.Data.MySqlClient.MySqlDataReader dr;
                 ListViewItem notarias = new ListViewItem();
                 cmd.Connection.Open();

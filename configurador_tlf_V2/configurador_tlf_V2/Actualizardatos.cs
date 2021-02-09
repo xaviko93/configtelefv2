@@ -67,9 +67,9 @@ namespace configurador_tlf_V2
 
         private void Actualizardatos_VisibleChanged(object sender, EventArgs e)
         {
-            if (nombrenotaria.Text == "" && Form1.VariablesGlobales.nombrenotariaseleccionadapublica != null)
+            if (nombrenotaria.Text == "" && ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica != null)
             {
-                nombrenotaria.Text = Form1.VariablesGlobales.nombrenotariaseleccionadapublica;
+                nombrenotaria.Text = ventanapadre.VariablesGlobales.nombrenotariaseleccionadapublica;
             }
         }
     }

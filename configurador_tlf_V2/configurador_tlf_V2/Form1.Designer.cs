@@ -1,6 +1,6 @@
 ﻿namespace configurador_tlf_V2
 {
-    partial class Form1
+    partial class ventanapadre
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventanapadre));
             this.label1 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,11 +36,8 @@
             this.progressBartotal = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
             this.buscadornotaria = new System.Windows.Forms.TextBox();
-            this.btnbuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.gridextensiones = new System.Windows.Forms.DataGridView();
-            this.btnnuevoext = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.numeroactual = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.aliasinput = new System.Windows.Forms.TextBox();
@@ -61,7 +58,6 @@
             this.textoipactual = new System.Windows.Forms.Label();
             this.listamodelo = new System.Windows.Forms.ComboBox();
             this.textomodelotelefonos = new System.Windows.Forms.Label();
-            this.btnagregar = new System.Windows.Forms.Button();
             this.radioAutomatica = new System.Windows.Forms.RadioButton();
             this.radioManual = new System.Windows.Forms.RadioButton();
             this.numerototal = new System.Windows.Forms.Label();
@@ -77,9 +73,6 @@
             this.IPCentralita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mascarared = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PuertaEnlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnconfigurar = new System.Windows.Forms.Button();
-            this.btneliminartlf = new System.Windows.Forms.Button();
-            this.btnprobar = new System.Windows.Forms.Button();
             this.checkmulticonfig = new System.Windows.Forms.CheckBox();
             this.ipcentralitanotaria = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -94,6 +87,13 @@
             this.textoproceso = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnprobar = new System.Windows.Forms.Button();
+            this.btneliminartlf = new System.Windows.Forms.Button();
+            this.btnagregar = new System.Windows.Forms.Button();
+            this.btnconfigurar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnnuevoext = new System.Windows.Forms.Button();
+            this.btnbuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridextensiones)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NTLFinput)).BeginInit();
@@ -161,20 +161,6 @@
             this.buscadornotaria.Size = new System.Drawing.Size(359, 20);
             this.buscadornotaria.TabIndex = 1;
             // 
-            // btnbuscar
-            // 
-            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
-            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbuscar.Location = new System.Drawing.Point(492, 12);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(88, 38);
-            this.btnbuscar.TabIndex = 2;
-            this.btnbuscar.Text = "Buscar";
-            this.btnbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbuscar.UseVisualStyleBackColor = true;
-            this.btnbuscar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -195,30 +181,6 @@
             this.gridextensiones.Size = new System.Drawing.Size(474, 162);
             this.gridextensiones.TabIndex = 6;
             this.gridextensiones.SelectionChanged += new System.EventHandler(this.gridextensiones_SelectionChanged);
-            // 
-            // btnnuevoext
-            // 
-            this.btnnuevoext.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevoext.Image")));
-            this.btnnuevoext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnnuevoext.Location = new System.Drawing.Point(491, 116);
-            this.btnnuevoext.Name = "btnnuevoext";
-            this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
-            this.btnnuevoext.TabIndex = 8;
-            this.btnnuevoext.Text = "Nuevo";
-            this.btnnuevoext.UseVisualStyleBackColor = true;
-            this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(491, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // numeroactual
             // 
@@ -427,21 +389,6 @@
             this.textomodelotelefonos.TabIndex = 0;
             this.textomodelotelefonos.Text = "Modelo teléfono:";
             // 
-            // btnagregar
-            // 
-            this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
-            this.btnagregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnagregar.Location = new System.Drawing.Point(492, 352);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(86, 48);
-            this.btnagregar.TabIndex = 24;
-            this.btnagregar.Text = "Agregar";
-            this.btnagregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnagregar.UseVisualStyleBackColor = false;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
-            // 
             // radioAutomatica
             // 
             this.radioAutomatica.AutoSize = true;
@@ -561,46 +508,6 @@
             // 
             this.PuertaEnlace.HeaderText = "Puerta Enlace";
             this.PuertaEnlace.Name = "PuertaEnlace";
-            // 
-            // btnconfigurar
-            // 
-            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnconfigurar.Enabled = false;
-            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfigurar.Image = ((System.Drawing.Image)(resources.GetObject("btnconfigurar.Image")));
-            this.btnconfigurar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnconfigurar.Location = new System.Drawing.Point(491, 553);
-            this.btnconfigurar.Name = "btnconfigurar";
-            this.btnconfigurar.Size = new System.Drawing.Size(87, 50);
-            this.btnconfigurar.TabIndex = 28;
-            this.btnconfigurar.Text = "Configurar";
-            this.btnconfigurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnconfigurar.UseVisualStyleBackColor = false;
-            this.btnconfigurar.Click += new System.EventHandler(this.btnconfigurar_Click);
-            // 
-            // btneliminartlf
-            // 
-            this.btneliminartlf.Image = ((System.Drawing.Image)(resources.GetObject("btneliminartlf.Image")));
-            this.btneliminartlf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btneliminartlf.Location = new System.Drawing.Point(490, 495);
-            this.btneliminartlf.Name = "btneliminartlf";
-            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
-            this.btneliminartlf.TabIndex = 26;
-            this.btneliminartlf.Text = "Eliminar";
-            this.btneliminartlf.UseVisualStyleBackColor = true;
-            this.btneliminartlf.Click += new System.EventHandler(this.btneliminartlf_Click);
-            // 
-            // btnprobar
-            // 
-            this.btnprobar.Image = ((System.Drawing.Image)(resources.GetObject("btnprobar.Image")));
-            this.btnprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnprobar.Location = new System.Drawing.Point(490, 524);
-            this.btnprobar.Name = "btnprobar";
-            this.btnprobar.Size = new System.Drawing.Size(88, 23);
-            this.btnprobar.TabIndex = 27;
-            this.btnprobar.Text = "Probar";
-            this.btnprobar.UseVisualStyleBackColor = true;
-            this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
             // 
             // checkmulticonfig
             // 
@@ -742,6 +649,99 @@
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // btnprobar
+            // 
+            this.btnprobar.Image = ((System.Drawing.Image)(resources.GetObject("btnprobar.Image")));
+            this.btnprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnprobar.Location = new System.Drawing.Point(490, 524);
+            this.btnprobar.Name = "btnprobar";
+            this.btnprobar.Size = new System.Drawing.Size(88, 23);
+            this.btnprobar.TabIndex = 27;
+            this.btnprobar.Text = "Probar";
+            this.btnprobar.UseVisualStyleBackColor = true;
+            this.btnprobar.Click += new System.EventHandler(this.btnprobar_Click);
+            // 
+            // btneliminartlf
+            // 
+            this.btneliminartlf.Image = ((System.Drawing.Image)(resources.GetObject("btneliminartlf.Image")));
+            this.btneliminartlf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btneliminartlf.Location = new System.Drawing.Point(490, 495);
+            this.btneliminartlf.Name = "btneliminartlf";
+            this.btneliminartlf.Size = new System.Drawing.Size(88, 23);
+            this.btneliminartlf.TabIndex = 26;
+            this.btneliminartlf.Text = "Eliminar";
+            this.btneliminartlf.UseVisualStyleBackColor = true;
+            this.btneliminartlf.Click += new System.EventHandler(this.btneliminartlf_Click);
+            // 
+            // btnagregar
+            // 
+            this.btnagregar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
+            this.btnagregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnagregar.Location = new System.Drawing.Point(492, 352);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(86, 48);
+            this.btnagregar.TabIndex = 24;
+            this.btnagregar.Text = "Agregar";
+            this.btnagregar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnagregar.UseVisualStyleBackColor = false;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
+            // 
+            // btnconfigurar
+            // 
+            this.btnconfigurar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnconfigurar.Enabled = false;
+            this.btnconfigurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconfigurar.Image = ((System.Drawing.Image)(resources.GetObject("btnconfigurar.Image")));
+            this.btnconfigurar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnconfigurar.Location = new System.Drawing.Point(491, 553);
+            this.btnconfigurar.Name = "btnconfigurar";
+            this.btnconfigurar.Size = new System.Drawing.Size(87, 50);
+            this.btnconfigurar.TabIndex = 28;
+            this.btnconfigurar.Text = "Configurar";
+            this.btnconfigurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnconfigurar.UseVisualStyleBackColor = false;
+            this.btnconfigurar.Click += new System.EventHandler(this.btnconfigurar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(491, 145);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnnuevoext
+            // 
+            this.btnnuevoext.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevoext.Image")));
+            this.btnnuevoext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnnuevoext.Location = new System.Drawing.Point(491, 116);
+            this.btnnuevoext.Name = "btnnuevoext";
+            this.btnnuevoext.Size = new System.Drawing.Size(88, 23);
+            this.btnnuevoext.TabIndex = 8;
+            this.btnnuevoext.Text = "Nuevo";
+            this.btnnuevoext.UseVisualStyleBackColor = true;
+            this.btnnuevoext.Click += new System.EventHandler(this.btnnuevoext_Click);
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
+            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbuscar.Location = new System.Drawing.Point(492, 12);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(88, 38);
+            this.btnbuscar.TabIndex = 2;
+            this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
